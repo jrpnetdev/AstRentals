@@ -129,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
+    <Content Include="App\carCountService.js" />
     <Content Include="App\carListController.js" />
     <Content Include="App\carService.js" />
     <Content Include="assets\css\custom-style.css" />

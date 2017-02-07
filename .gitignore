@@ -240,3 +240,6 @@ _Pvt_Extensions
 
 #Images controller
 **/AstRentals.Api/Controllers/CarImageController.cs
+
+#Seed Data
+**/AstRentals.Api/Data/AstRentalsMigrations/Configuration.cs

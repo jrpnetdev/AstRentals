@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using AstRentals.Api.Models;
 using AstRentals.Data.Entities;
 using AstRentals.Data.Infrastructure;
 
@@ -23,12 +24,35 @@ namespace AstRentals.Api.Controllers
         }
 
         // GET api/cars?make=Ford&index=3&size=10
-        public IEnumerable<Car> Get(string make, int index, int size)
+        //public IEnumerable<Car> Get(string make, int index, int size)
+        //{
+        //    //int cars = _repo.Count;
+        //    var cars = _repo.FindAll(c => c.Make == make, index, size).OrderByDescending(c => c.Year).ToList();
+
+        //    return cars;
+        //}
+
+        // GET api/cars?make=Bentley&size=10
+        public CarListViewModel Get(string make, int index, int size)
         {
             //int cars = _repo.Count;
-            var cars = _repo.FindAll(c => c.Make == make, index, size).OrderByDescending(c => c.Year).ToList();
+            var cars = _repo.FindAll(c => c.Make == make, index, size).OrderBy(c => c.Year).ToList();
 
-            return cars;
+            CarListViewModel clvm = new CarListViewModel();
+            clvm.Cars = cars;
+            clvm.TotalCars = _repo.FindAll(c => c.Make == make).Count();
+
+            var pages = clvm.TotalCars / size;
+            var remainder = clvm.TotalCars % size;
+            if (remainder != 0)
+            {
+                pages += 1;
+            }
+
+            clvm.NumberOfPages = pages;
+            clvm.CurrentPage = index;
+
+            return clvm;
         }
 
         // GET api/cars/5

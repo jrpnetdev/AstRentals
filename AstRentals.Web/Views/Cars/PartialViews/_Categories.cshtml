@@ -1,22 +1,25 @@
 ﻿<!-- Sections Menu-->
-<ul class="nav nav-section-menu mb-4 py-3" id="Categories">
+<ul class="nav nav-section-menu mb-4 py-3" id="Categories" ng-controller="carCategoriesController as vm">
     <li class="nav-header">Categories</li>
     <li>
         <a href="#mens" data-toggle="collapse" class="nav-link text-uppercase text-slab first active">
-            Mens
+            Cars By Make
             <small class="d-inline-block text-xs text-lowercase">(active)</small>
             <i class="fa fa-angle-right"></i>
         </a>
         <ul class="nav nav-section-menu collapse show" id="mens">
-            <li><a href="#" class="nav-link">Shoes</a></li>
-            <li><a href="#" class="nav-link">Shirts</a></li>
-            <li><a href="#" class="nav-link">Trousers</a></li>
-            <li><a href="#" class="nav-link">Suits</a></li>
-            <li><a href="#" class="nav-link">Jackets</a></li>
-            <li><a href="#" class="nav-link">Sportswear</a></li>
-            <li><a href="#" class="nav-link">Shorts</a></li>
-            <li><a href="#" class="nav-link">Swimwear</a></li>
-            <li><a href="#" class="nav-link">T-shirts</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPage('Aston Martin', 1, 10)">Aston Martin</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPage('Audi', 1, 10)">Audi</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPage('Bentley', 1, 10)">Bentley</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPage('BMW', 1, 10)">BMW</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPage('Dodge', 1, 10)">Dodge</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPage('Ford', 1, 10)">Ford</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPage('Mazda', 1, 10)">Mazda</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPage('Mercedes-Benz', 1, 10)">Mercedes-Benz</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPage('Mitsubishi', 1, 10)">Mitsubishi</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPage('Pontiac', 1, 10)">Pontiac</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPage('Porsche', 1, 10)">Porsche</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPage('Volkswagen', 1, 10)">Volkswagen</a></li>
         </ul>
     </li>
     <li>

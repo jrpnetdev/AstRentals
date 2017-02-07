@@ -1,38 +1,20 @@
 ﻿(function (module) {
 
-    var cars = [];
+    var carList =[];
 
     var carService = function ($http) {
 
-        var getCars = function () {
-
-            $http.get('http://localhost:50604/api/cars?make=Ford&index=1&size=10')
-                .then(function (response) {
-                    // Success
-                    angular.copy(response.data, cars);
-                }, function () {
-                    // Failure
-            });
-
-            return cars;
+        var getCarsByPage = function (make, index, size) {
+            return $http.get('http://localhost:50604/api/cars?make=' + make + '&index=' + index + '&size=' + size);
         };
 
 
-        var getCarsByMake = function (make) {
-            
-            $http.get('http://localhost:50604/api/cars?make=' + make +'&index=1&size=10')
-                .then(function (response) {
-                    // Success
-                    angular.copy(response.data, cars);
-                }, function () {
-                    // Failure
-                });
-
-            return cars;
+        var getCarsByMake = function (make, size) {
+            return $http.get('http://localhost:50604/api/cars?make=' + make + '&size=' + size);
         };
 
         return {
-            getCars: getCars,
+            getCarsByPage: getCarsByPage,
             getCarsByMake: getCarsByMake
         };
     };

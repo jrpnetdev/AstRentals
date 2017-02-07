@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AstRentals.Api.Models;
 using AstRentals.Data.Infrastructure;
 
 namespace AstRentals.Api.Controllers
@@ -17,9 +18,20 @@ namespace AstRentals.Api.Controllers
             _repo = repo;
         }
 
-        public int Get()
+        public List<CarMakeCount> Get()
         {
-            return _repo.Count;
+            //return _repo.Count;
+
+            var cars = _repo.All();
+
+            var grouped = cars.GroupBy(c => c.Make)
+                .Select(g => new CarMakeCount()
+                {
+                    Make = g.Key,
+                    Count = g.Select(c => c).Distinct().Count()
+                }).ToList();
+
+            return grouped;
         }
 
         public int Get(string make)
