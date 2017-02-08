@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 
 namespace AstRentals.Web.Controllers
 {
@@ -10,9 +11,14 @@ namespace AstRentals.Web.Controllers
             return View();
         }
 
-        public ActionResult Details()
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (!id.HasValue)
+            {
+                return RedirectToAction("Index","Error");
+            }
+
+            return View(id);
         }
     }
 }

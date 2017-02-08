@@ -1,10 +1,10 @@
-﻿
+﻿@model int?
 @{
     ViewBag.Title = "Details";
 }
 
  <!-- ======== Region: body ======== -->
-<div class="page page-shop header-compact-sticky page-shop-product navbar-layout-navbar-below">
+<div class="page page-shop header-compact-sticky page-shop-product navbar-layout-navbar-below" ng-controller="carDetailsController as vm" ng-init="vm.getCar(@Model)">
 
     <!-- plugin: page loading indicator, delete to remove loader -->
     <div class="page-loader" data-toggle="page-loader"></div>
@@ -84,7 +84,7 @@
                             <!-- Product details -->
                             <p class="text-muted text-uppercase text-xs mb-0"><span class="text-primary">Mens</span> / Jackets</p>
                             <h2 class="card-title mb-2">
-                                Leather Jacket
+                                {{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})
                             </h2>
                             <h4 class="font-weight-bold text-primary">
                                 <del class="op-5">$24.99</del>
@@ -163,7 +163,7 @@
                                 <!-- Tab 1: Description tab content -->
                                 <div class="tab-pane active show" id="product-description">
                                     <h4 class="card-title">
-                                        Product Description
+                                        Product Description @Model
                                     </h4>
                                     <p class="card-text">Amet cui eligo esca fere modo nutus pecus. Blandit esca quis. Feugiat nostrud sino ullamcorper vicis. Augue huic roto. Amet camur commoveo dolor importunus luptatum si te.</p>
                                     <p class="card-text">Et exerci iusto jumentum odio tation ut. Dignissim euismod interdico melior saluto usitas vero. Abico pecus quibus quidem quis te uxor.</p>
@@ -430,4 +430,6 @@
     <!-- Angular scripts -->
     <script src="~/assets/js/angular.js"></script>
     <script src="~/App/app.js"></script>
+    <script src="~/App/carService.js"></script>
+    <script src="~/App/carDetailsController.js"></script>
 }

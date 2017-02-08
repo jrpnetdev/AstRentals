@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "404 Error";
+}
+
+ <!-- ======== Region: body ======== -->
+
+    <!-- plugin: page loading indicator, delete to remove loader -->
+    <div class="page-loader" data-toggle="page-loader"></div>
+
+    <a href="#content" id="top" class="sr-only">Skip to content</a>
+
+
+    <!-- ======== Region: #page-header ======== -->
+    <div id="page-header">
+        <div class="container clearfix">
+            <h3 class="mb-0 float-md-left">
+                Car Rentals List
+            </h3>
+            <!-- Page header breadcrumb -->
+            <nav class="breadcrumb float-md-right"> <a class="breadcrumb-item" href="@Url.Action("Index", "Home")">Home</a> <a class="breadcrumb-item" href="@Url.Action("Index", "Home")">Shop Home</a> <span class="breadcrumb-item active">Products List</span> </nav>
+        </div>
+    </div>
+
+
+    <!-- ======== Region: #content ======== -->
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="w-90 mx-auto">
+                        <h2 class="error-code font-xs-x7 font-md-x10">
+                            404 <i class="fa fa-file-text text-primary font-xs-x6 font-md-x8"></i>
+                        </h2>
+                        <h2 class="error-message font-xs-x2 font-md-x2">
+                            Oops, This Page Could Not Be Found!
+                        </h2>
+                        <p class="error-details font-xs-x1">Enim nisi massa nascetur, pulvinar porttitor ut sed penatibus, tincidunt? Phasellus lacus, eros, mid lorem ridiculus amet, urna? Ultricies et et mus nisi lundium! Pulvinar enim, duis et. </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h4>
+                        Maybe you were looking for:
+                    </h4>
+                    <ul class="list-unstyled list-lg list-bordered">
+                        <li><i class="fa fa-angle-right list-item-icon"></i> <a href="index.htm">Home</a></li>
+                        <li><i class="fa fa-angle-right list-item-icon"></i> <a href="features.htm">Features</a></li>
+                        <li><i class="fa fa-angle-right list-item-icon"></i> <a href="pricing.htm">Pricing</a></li>
+                        <li><i class="fa fa-angle-right list-item-icon"></i> <a href="customers.htm">Customers</a></li>
+                    </ul>
+                    <form class="error-search mt-4">
+                        <h4>
+                            Or Search for it:
+                        </h4>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search the site">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="button">Search</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -13,9 +13,14 @@
             return $http.get('http://localhost:50604/api/cars?make=' + make + '&size=' + size);
         };
 
+        var getCarById = function (id) {
+            return $http.get('http://localhost:50604/api/cars?id=' + id);
+        };
+
         return {
             getCarsByPage: getCarsByPage,
-            getCarsByMake: getCarsByMake
+            getCarsByMake: getCarsByMake,
+            getCarById: getCarById
         };
     };
 

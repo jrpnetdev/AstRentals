@@ -14,9 +14,9 @@
         };
         
         model.getPage = function (make, page, size) {
-            if (page >= model.numberOfPages || page <= 1) {
-                return;
-            }
+            //if (page >= model.numberOfPages || page <= 1) {
+            //    return;
+            //}
             carService.getCarsByPage(make, page, size)
                 .then(function(response) {
                     model.cars = response.data.cars;

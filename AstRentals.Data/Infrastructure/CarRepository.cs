@@ -42,7 +42,7 @@ namespace AstRentals.Data.Infrastructure
 
         public IQueryable<Car> FindAll(Expression<Func<Car, bool>> predicate, int index, int size)
         {
-            var skip = index * size;
+            var skip = (index-1) * size;
 
             IQueryable<Car> query = _ctx.Cars;
 

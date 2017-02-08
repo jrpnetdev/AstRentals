@@ -24,19 +24,19 @@ namespace AstRentals.Api.Controllers
         }
 
         // GET api/cars?make=Ford&index=3&size=10
-        //public IEnumerable<Car> Get(string make, int index, int size)
-        //{
-        //    //int cars = _repo.Count;
-        //    var cars = _repo.FindAll(c => c.Make == make, index, size).OrderByDescending(c => c.Year).ToList();
+        public IEnumerable<Car> Get(string make)
+        {
+            //int cars = _repo.Count;
+            var cars = _repo.FindAll(c => c.Make == make).OrderByDescending(c => c.Year).ToList();
 
-        //    return cars;
-        //}
+            return cars;
+        }
 
         // GET api/cars?make=Bentley&size=10
         public CarListViewModel Get(string make, int index, int size)
         {
             //int cars = _repo.Count;
-            var cars = _repo.FindAll(c => c.Make == make, index, size).OrderBy(c => c.Year).ToList();
+            var cars = _repo.FindAll(c => c.Make == make, index, size).OrderBy(c => c.Id).ToList();
 
             CarListViewModel clvm = new CarListViewModel();
             clvm.Cars = cars;
