@@ -264,6 +264,10 @@
     <Compile Include="Data\AstRentalsMigrations\201702042318193_AddImageUrl.Designer.cs">
       <DependentUpon>201702042318193_AddImageUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\AstRentalsMigrations\201702101306520_AddCarInfo.cs" />
+    <Compile Include="Data\AstRentalsMigrations\201702101306520_AddCarInfo.Designer.cs">
+      <DependentUpon>201702101306520_AddCarInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\AstRentalsMigrations\Configuration.cs" />
     <Compile Include="Data\IdentityMigrations\201701291741372_InitalCreate.cs" />
     <Compile Include="Data\IdentityMigrations\201701291741372_InitalCreate.Designer.cs">
@@ -358,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Data\AstRentalsMigrations\201702042318193_AddImageUrl.resx">
       <DependentUpon>201702042318193_AddImageUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\AstRentalsMigrations\201702101306520_AddCarInfo.resx">
+      <DependentUpon>201702101306520_AddCarInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Data\IdentityMigrations\201701291741372_InitalCreate.resx">
       <DependentUpon>201701291741372_InitalCreate.cs</DependentUpon>

@@ -14,6 +14,7 @@ namespace AstRentals.Data.Infrastructure
         //public DbSet<Address> Addresses { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Car> Cars { get; set; }
+        public DbSet<CarInfo> CarInfo { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

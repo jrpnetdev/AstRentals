@@ -133,6 +133,7 @@
     <Content Include="App\carCountService.js" />
     <Content Include="App\carDetailsController.js" />
     <Content Include="App\carListController.js" />
+    <Content Include="App\carInfoService.js" />
     <Content Include="App\carService.js" />
     <Content Include="App\directives\carSpec.html" />
     <Content Include="App\directives\categories.html" />

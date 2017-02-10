@@ -1,7 +1,5 @@
 ﻿(function (module) {
 
-    var carList =[];
-
     var carService = function ($http) {
 
         var getCarsByPage = function (make, index, size) {
