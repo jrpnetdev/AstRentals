@@ -84,7 +84,7 @@
                             <!-- Product details -->
                             <p class="text-muted text-uppercase text-xs mb-0"><span class="text-primary">Mens</span> / Jackets</p>
                             <h2 class="card-title mb-2">
-                                {{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})
+                                {{vm.car.make}} {{vm.car.model}} ({{vm.car.year}}) @Model
                             </h2>
                             <h4 class="font-weight-bold text-primary">
                                 <del class="op-5">$24.99</del>
@@ -92,14 +92,13 @@
                             </h4>
                             <div class="product-offer-countdown">
                                 <p class="mb-t mb-0 text-xs">Offers end in:</p>
-                                <div class="countdown" data-countdown="2017/1/30" data-countdown-format='<span class="count">
-                    <span class="digit">%-d</span> days
-                  </span>
-                  <span class="count"><span class="digit">%-H</span> hrs</span>
-                  <span class="count"><span class="digit">%-M</span> mins</span>
-                  <span class="count"><span class="digit">%-S</span> secs</span>
-                  '>
-                </div>
+                                <div class="countdown" data-countdown="2017/2/30" data-countdown-format='<span class="count">
+                                    <span class="digit">%-d</span> days</span>
+                                    <span class="count"><span class="digit">%-H</span> hrs</span>
+                                    <span class="count"><span class="digit">%-M</span> mins</span>
+                                    <span class="count"><span class="digit">%-S</span> secs</span>
+                                    '>
+                                </div>
                             </div>
                             <div class="pos-md-absolute pos-t pos-r mr-4 mt-3 text-md-right">
                                 <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i>
@@ -115,22 +114,30 @@
                                 <div class="col-md-4 mb-3">
                                     <select class="form-control form-control-sm">
                                         <option value="red">Red</option>
-                                        <option value="yellow">Yellow</option>
+                                        <option value="silver">Silver</option>
                                         <option value="blue">Blue</option>
-                                        <option value="green">Green</option>
+                                        <option value="black">Black</option>
                                     </select>
                                 </div>
-                                <div class="col-md-12 text-sm text-uppercase">Size</div>
+                                <div class="col-md-12 text-sm text-uppercase">Features</div>
                                 <div class="col-md-4 mb-3">
                                     <select class="form-control form-control-sm">
-                                        <option value="S">S</option>
-                                        <option value="M">M</option>
-                                        <option value="L">L</option>
-                                        <option value="XL">XL</option>
+                                        <option value="3door">3 Door</option>
+                                        <option value="5door">5 Door</option>
+                                        <option value="convertible">Convertible</option>
                                     </select>
                                 </div>
-                                <div class="col-md-12 text-sm text-uppercase">Quantity</div>
+                                <div class="col-md-12 text-sm text-uppercase">Insurance and Cover</div>
                                 <div class="col-md-4 mb-3">
+                                    <select class="form-control form-control-sm">
+                                        <option value="cancellation">Basic Cover (£0.00)</option>
+                                        <option value="cancellation">Basic Cover + Cancellation Guarantee (£20.00)</option>
+                                        <option value="extended">Extended Insurance (£100.00)</option>
+                                        <option value="premium">Premium Cover (£250.00)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12 text-sm text-uppercase">Hire Date</div>
+                                @*<div class="col-md-4 mb-3">
                                     <div class="input-group input-group-quantity input-group-sm" data-toggle="quantity">
                                         <span class="input-group-btn">
                                             <input type="button" value="-" class="btn btn-secondary quantity-down" field="quantity" />
@@ -140,7 +147,7 @@
                                             <input type="button" value="+" class="btn btn-secondary quantity-up" field="quantity" />
                                         </span>
                                     </div>
-                                </div>
+                                </div>*@
                             </div>
                             <a href="shop-cart.htm" class="btn btn-primary"><i class="fa fa-cart-plus mr-2"></i> Add to Cart</a>
                             <a href="#" class="btn btn-link btn-sm"><i class="fa fa-heart"></i> Add to Wishlist</a>
@@ -163,7 +170,7 @@
                                 <!-- Tab 1: Description tab content -->
                                 <div class="tab-pane active show" id="product-description">
                                     <h4 class="card-title">
-                                        Product Description @Model
+                                        Product Description 
                                     </h4>
                                     <p class="card-text">Amet cui eligo esca fere modo nutus pecus. Blandit esca quis. Feugiat nostrud sino ullamcorper vicis. Augue huic roto. Amet camur commoveo dolor importunus luptatum si te.</p>
                                     <p class="card-text">Et exerci iusto jumentum odio tation ut. Dignissim euismod interdico melior saluto usitas vero. Abico pecus quibus quidem quis te uxor.</p>
@@ -172,39 +179,16 @@
                                 <!-- Tab 2: Specification tab content -->
                                 <div class="tab-pane" id="product-spec">
                                     <h4 class="card-title">
-                                        Product Specification
+                                        Car Specification: {{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})
                                     </h4>
-                                    <p class="card-text">Cogo illum importunus nisl obruo populus saepius si. Ad antehabeo blandit commodo inhibeo mauris vindico ymo. Abigo comis dolor lucidus natu tation te ullamcorper validus.</p>
-                                    <table class="table table-sm table-striped mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Size</th>
-                                                <th>Colour</th>
-                                                <th>Width</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>123cm</td>
-                                                <td>Red</td>
-                                                <td>1.4 metres</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>300cm</td>
-                                                <td>Yellow</td>
-                                                <td>10.4 metres</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>156cm</td>
-                                                <td>Blue</td>
-                                                <td>1003 km</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <p class="card-text">Specifications, Features, Packages, Options & Accessories: Specifications, features and equipment, Packages, Options and Accessories shown for our models are based upon the latest information available. 
+                                        We reserve the right to make changes at any time, without notice, to features, equipment, packages, options, price, colours, specifications, accessories and materials. Specifications, dimensions, measurements, ratings and other numbers shown on this website are an approximation based uponmanufacturer information. 
+                                        Your Volvo can be different based on variations in manufacturing and equipment. Please check with your authorized Volvo dealer for complete details. 
+                                        We cannot be responsible for typographical or other errors as we try to make the website as factual and comprehensive. 
+                                        For additional information and the most up to date product details, please contact your nearest authorized dealer. 
+                                        Prices listed are subject to change. Some details are not shown to UK specification and may show optional equipment as well as vehicle colours and interiors not available in the UK market. 
+                                    </p>
+                                    <car-spec></car-spec>
                                 </div>
                                 <!-- Tab 3: Reviews tab content -->
                                 <div class="tab-pane" id="product-reviews">
@@ -432,4 +416,5 @@
     <script src="~/App/app.js"></script>
     <script src="~/App/carService.js"></script>
     <script src="~/App/carDetailsController.js"></script>
+    <script src="~/App/directives/carSpec.js"></script>
 }

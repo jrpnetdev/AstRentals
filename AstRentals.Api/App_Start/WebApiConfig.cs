@@ -21,6 +21,9 @@ namespace AstRentals.Api
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            var formatters = GlobalConfiguration.Configuration.Formatters;
+            formatters.Remove(formatters.XmlFormatter);
+
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
                 new CamelCasePropertyNamesContractResolver();
 

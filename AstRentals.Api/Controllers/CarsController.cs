@@ -20,26 +20,26 @@ namespace AstRentals.Api.Controllers
 
         public IEnumerable<Car> Get()
         {
+            //int cars = _repo.Count;
             return _repo.All();
         }
 
         // GET api/cars?make=Ford&index=3&size=10
         public IEnumerable<Car> Get(string make)
         {
-            //int cars = _repo.Count;
-            var cars = _repo.FindAll(c => c.Make == make).OrderByDescending(c => c.Year).ToList();
 
-            return cars;
+            return _repo.FindAll(c => c.Make == make).OrderByDescending(c => c.Year).ToList();
         }
 
         // GET api/cars?make=Bentley&size=10
         public CarListViewModel Get(string make, int index, int size)
         {
+            CarListViewModel clvm = new CarListViewModel();
+
             //int cars = _repo.Count;
             var cars = _repo.FindAll(c => c.Make == make, index, size).OrderBy(c => c.Id).ToList();
-
-            CarListViewModel clvm = new CarListViewModel();
             clvm.Cars = cars;
+
             clvm.TotalCars = _repo.FindAll(c => c.Make == make).Count();
 
             var pages = clvm.TotalCars / size;
@@ -58,9 +58,7 @@ namespace AstRentals.Api.Controllers
         // GET api/cars/5
         public Car Get(int id)
         {
-            var car = _repo.Find(c => c.Id == id);
-
-            return car;
+            return _repo.Find(c => c.Id == id);
         }
 
         // POST api/cars

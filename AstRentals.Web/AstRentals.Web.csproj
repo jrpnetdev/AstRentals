@@ -134,7 +134,9 @@
     <Content Include="App\carDetailsController.js" />
     <Content Include="App\carListController.js" />
     <Content Include="App\carService.js" />
+    <Content Include="App\directives\carSpec.html" />
     <Content Include="App\directives\categories.html" />
+    <Content Include="App\directives\carSpec.js" />
     <Content Include="App\directives\categoriesDirective.js" />
     <Content Include="assets\css\custom-style.css" />
     <Content Include="assets\css\no-flexbox.css" />
