@@ -7,13 +7,13 @@ namespace AstRentals.Api.Data.AstRentalsMigrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddImageUrl : IMigrationMetadata
+    public sealed partial class InitalCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddImageUrl));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitalCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201702042318193_AddImageUrl"; }
+            get { return "201702102249245_InitalCreate"; }
         }
         
         string IMigrationMetadata.Source

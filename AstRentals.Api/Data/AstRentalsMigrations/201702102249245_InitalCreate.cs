@@ -8,6 +8,17 @@ namespace AstRentals.Api.Data.AstRentalsMigrations
         public override void Up()
         {
             CreateTable(
+                "dbo.CarInfoes",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Make = c.String(),
+                        Model = c.String(),
+                        Info = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Cars",
                 c => new
                     {
@@ -15,6 +26,7 @@ namespace AstRentals.Api.Data.AstRentalsMigrations
                         Year = c.Int(nullable: false),
                         Make = c.String(),
                         Model = c.String(),
+                        ImageUrl = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -53,6 +65,7 @@ namespace AstRentals.Api.Data.AstRentalsMigrations
             DropTable("dbo.Customers");
             DropTable("dbo.Vehicles");
             DropTable("dbo.Cars");
+            DropTable("dbo.CarInfoes");
         }
     }
 }

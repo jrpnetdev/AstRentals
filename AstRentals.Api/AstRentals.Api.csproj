@@ -254,24 +254,17 @@
     <Compile Include="Controllers\CarCountController.cs" />
     <Compile Include="Controllers\CarImageController.cs" />
     <Compile Include="Controllers\CarInfoController.cs" />
+    <Compile Include="Controllers\CarSearchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CarsController.cs" />
-    <Compile Include="Data\AstRentalsMigrations\201701291739100_InitalCreate.cs" />
-    <Compile Include="Data\AstRentalsMigrations\201701291739100_InitalCreate.Designer.cs">
-      <DependentUpon>201701291739100_InitalCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Data\AstRentalsMigrations\201702042318193_AddImageUrl.cs" />
-    <Compile Include="Data\AstRentalsMigrations\201702042318193_AddImageUrl.Designer.cs">
-      <DependentUpon>201702042318193_AddImageUrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Data\AstRentalsMigrations\201702101306520_AddCarInfo.cs" />
-    <Compile Include="Data\AstRentalsMigrations\201702101306520_AddCarInfo.Designer.cs">
-      <DependentUpon>201702101306520_AddCarInfo.cs</DependentUpon>
+    <Compile Include="Data\AstRentalsMigrations\201702102249245_InitalCreate.cs" />
+    <Compile Include="Data\AstRentalsMigrations\201702102249245_InitalCreate.Designer.cs">
+      <DependentUpon>201702102249245_InitalCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\AstRentalsMigrations\Configuration.cs" />
-    <Compile Include="Data\IdentityMigrations\201701291741372_InitalCreate.cs" />
-    <Compile Include="Data\IdentityMigrations\201701291741372_InitalCreate.Designer.cs">
-      <DependentUpon>201701291741372_InitalCreate.cs</DependentUpon>
+    <Compile Include="Data\IdentityMigrations\201702102249020_InitalCreate.cs" />
+    <Compile Include="Data\IdentityMigrations\201702102249020_InitalCreate.Designer.cs">
+      <DependentUpon>201702102249020_InitalCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\IdentityMigrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -286,6 +279,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utilities\SearchUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -357,24 +351,18 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data\AstRentalsMigrations\201701291739100_InitalCreate.resx">
-      <DependentUpon>201701291739100_InitalCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Data\AstRentalsMigrations\201702042318193_AddImageUrl.resx">
-      <DependentUpon>201702042318193_AddImageUrl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Data\AstRentalsMigrations\201702101306520_AddCarInfo.resx">
-      <DependentUpon>201702101306520_AddCarInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Data\IdentityMigrations\201701291741372_InitalCreate.resx">
-      <DependentUpon>201701291741372_InitalCreate.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AstRentals.Data\AstRentals.Data.csproj">
       <Project>{622b53c6-dad7-4d18-bf04-26a7765f4e14}</Project>
       <Name>AstRentals.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\AstRentalsMigrations\201702102249245_InitalCreate.resx">
+      <DependentUpon>201702102249245_InitalCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\IdentityMigrations\201702102249020_InitalCreate.resx">
+      <DependentUpon>201702102249020_InitalCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

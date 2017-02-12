@@ -2,8 +2,12 @@
 @{
     ViewBag.Title = "Details";
 }
+@section styles {
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+}
 
- <!-- ======== Region: body ======== -->
+
+<!-- ======== Region: body ======== -->
 <div class="page page-shop header-compact-sticky page-shop-product navbar-layout-navbar-below" ng-controller="carDetailsController as vm" ng-init="vm.getCar(@Model)">
 
     <!-- plugin: page loading indicator, delete to remove loader -->
@@ -17,7 +21,7 @@
     <div id="page-header">
         <div class="container clearfix">
             <h3 class="mb-0 float-md-left">
-                Product View
+                Car Details
             </h3>
             <!-- Page header breadcrumb -->
             <nav class="breadcrumb float-md-right"> <a class="breadcrumb-item" href="index.htm">Home</a> <a class="breadcrumb-item" href="shop.htm">Shop Home</a> <span class="breadcrumb-item active">Product View</span> </nav>
@@ -32,45 +36,45 @@
                 <div class="col-lg-5">
                     <!-- Shop product carousel Uses Owl Carousel plugin All options here are customisable from the data-owl-carousel-settings="{OBJECT}" item via data- attributes: http://www.owlgraphic.com/owlcarousel/#customizing ie. data-settings="{"items": "4", "lazyLoad":"true", "navigation":"true"}" -->
                     <div class="product-gallery pos-relative">
-                        <div class="bg-info text-white rounded pos-absolute pos-zindex-2 mt-2 ml-2 py-2 px-3">On Sale</div>
+                        @*<div class="bg-info text-white rounded pos-absolute pos-zindex-2 mt-2 ml-2 py-2 px-3">On Sale</div>*@
                         <div class="owl-carousel owl-nav-over" id="product-gallery" data-toggle="owl-carousel" data-owl-carousel-settings='{"responsive":{"0":{"items":1,"nav":true, "dots":false}}}'>
-                            <a href="#" data-img-zoom="assets/img/shop/shoes-2.jpg">
-                                <img src="~/assets/img/shop/shoes-2.jpg" alt="Shoes image" class="lazyOwl img-fluid" width="200" />
+                            <a href="#" data-img-zoom="{{vm.carImages.data.images[0].image_url}}">
+                                <img src="{{vm.carImages.data.images[0].image_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
                             </a>
-                            <a href="#" data-img-zoom="assets/img/shop/mens-sports-2.jpg">
-                                <img src="~/assets/img/shop/mens-sports-2.jpg" alt="Nike Training Top image" class="lazyOwl img-fluid" width="200" />
+                            <a href="#" data-img-zoom="{{vm.carImages.data.images[1].image_url}}">
+                                <img src="{{vm.carImages.data.images[1].image_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
                             </a>
-                            <a href="#" data-img-zoom="assets/img/shop/promo-kids.jpg">
-                                <img src="~/assets/img/shop/promo-kids.jpg" alt="Kids Wolly Jumper image" class="lazyOwl img-fluid" width="200" />
+                            <a href="#" data-img-zoom="{{vm.carImages.data.images[2].image_url}}">
+                                <img src="{{vm.carImages.data.images[2].image_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
                             </a>
-                            <a href="#" data-img-zoom="assets/img/shop/promo-kids-hoodies.jpg">
-                                <img src="~/assets/img/shop/promo-kids-hoodies.jpg" alt="Kids Hoodies image" class="lazyOwl img-fluid" width="200" />
+                            <a href="#" data-img-zoom="{{vm.carImages.data.images[3].image_url}}">
+                                <img src="{{vm.carImages.data.images[3].image_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
                             </a>
-                            <a href="#" data-img-zoom="assets/img/shop/mens-sports.jpg">
-                                <img src="~/assets/img/shop/mens-sports.jpg" alt="Nike Training Top image" class="lazyOwl img-fluid" width="200" />
+                            <a href="#" data-img-zoom="{{vm.carImages.data.images[4].image_url}}">
+                                <img src="{{vm.carImages.data.images[4].image_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
                             </a>
-                            <a href="#" data-img-zoom="assets/img/shop/promo-mens-2.jpg">
-                                <img src="~/assets/img/shop/promo-mens-2.jpg" alt="Leather Jacket image" class="lazyOwl img-fluid" width="200" />
+                            <a href="#" data-img-zoom="{{vm.carImages.data.images[5].image_url}}">
+                                <img src="{{vm.carImages.data.images[5].image_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
                             </a>
                         </div>
                         <div class="owl-thumbs" data-toggle="owl-carousel" data-owl-carousel-thumbs="#product-gallery" data-owl-carousel-settings='{"nav":false, "dots":false, "margin":5}'>
                             <a class="owl-thumb">
-                                <img class="img-fluid" src="~/assets/img/shop/shoes-2.jpg" alt="Card image cap">
+                                <img class="img-fluid" src="{{vm.carImages.data.images[0].thumb_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                             </a>
                             <a class="owl-thumb">
-                                <img class="img-fluid" src="~/assets/img/shop/mens-sports-2.jpg" alt="Card image cap">
+                                <img class="img-fluid" src="{{vm.carImages.data.images[1].thumb_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                             </a>
                             <a class="owl-thumb">
-                                <img class="img-fluid" src="~/assets/img/shop/promo-kids.jpg" alt="Card image cap">
+                                <img class="img-fluid" src="{{vm.carImages.data.images[2].thumb_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                             </a>
                             <a class="owl-thumb">
-                                <img class="img-fluid" src="~/assets/img/shop/promo-kids-hoodies.jpg" alt="Card image cap">
+                                <img class="img-fluid" src="{{vm.carImages.data.images[3].thumb_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                             </a>
                             <a class="owl-thumb">
-                                <img class="img-fluid" src="~/assets/img/shop/mens-sports.jpg" alt="Card image cap">
+                                <img class="img-fluid" src="{{vm.carImages.data.images[4].thumb_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                             </a>
                             <a class="owl-thumb">
-                                <img class="img-fluid" src="~/assets/img/shop/promo-mens-2.jpg" alt="Card image cap">
+                                <img class="img-fluid" src="{{vm.carImages.data.images[5].thumb_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                             </a>
                         </div>
                     </div>
@@ -136,9 +140,10 @@
                                         <option value="premium">Premium Cover (£250.00)</option>
                                     </select>
                                 </div>
-                                <div class="col-md-12 text-sm text-uppercase">Hire Date</div>
-                                @*<div class="col-md-4 mb-3">
-                                    <div class="input-group input-group-quantity input-group-sm" data-toggle="quantity">
+                                <div class="col-md-12 text-sm text-uppercase"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i> Hire Dates</div>
+                                <div class="col-md-4 mb-3">
+                                    <input type="text" name="daterange" value="Select Date"/>
+                                    @*<div class="input-group input-group-quantity input-group-sm" data-toggle="quantity">
                                         <span class="input-group-btn">
                                             <input type="button" value="-" class="btn btn-secondary quantity-down" field="quantity" />
                                         </span>
@@ -146,8 +151,8 @@
                                         <span class="input-group-btn">
                                             <input type="button" value="+" class="btn btn-secondary quantity-up" field="quantity" />
                                         </span>
-                                    </div>
-                                </div>*@
+                                    </div>*@
+                                </div>
                             </div>
                             <a href="shop-cart.htm" class="btn btn-primary"><i class="fa fa-cart-plus mr-2"></i> Add to Cart</a>
                             <a href="#" class="btn btn-link btn-sm"><i class="fa fa-heart"></i> Add to Wishlist</a>
@@ -415,6 +420,15 @@
     <script src="~/App/app.js"></script>
     <script src="~/App/carService.js"></script>
     <script src="~/App/carInfoService.js"></script>
+    <script src="~/App/carImageService.js"></script>
     <script src="~/App/carDetailsController.js"></script>
     <script src="~/App/directives/carSpec.js"></script>
+    <script src="~/App/directives/wrapOwlCarouselDirective.js"></script>
+    <script src="~/assets/js/moment.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('input[name="daterange"]').daterangepicker();
+        });
+    </script>
 }

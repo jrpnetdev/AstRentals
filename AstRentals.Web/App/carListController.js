@@ -17,8 +17,7 @@
             if (page > model.numberOfPages || page < 1) {
                 return;
             }
-            carService.getCarsByPage(make, page, size)
-                .then(function(response) {
+            carService.getCarsByPage(make, page, size).then(function(response) {
                     model.cars = response.data.cars;
                     model.totalCars = response.data.totalCars;
                     model.numberOfPages = response.data.numberOfPages;
@@ -27,6 +26,10 @@
                     model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
             };
         };
+
+        model.search = function(searchtext) {
+        }
+
 
         model.getNumber = function (num) {
             if (num > 10) { num = 10 }

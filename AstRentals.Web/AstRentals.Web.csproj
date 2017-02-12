@@ -132,6 +132,7 @@
     <Content Include="App\app.js" />
     <Content Include="App\carCountService.js" />
     <Content Include="App\carDetailsController.js" />
+    <Content Include="App\carImageService.js" />
     <Content Include="App\carListController.js" />
     <Content Include="App\carInfoService.js" />
     <Content Include="App\carService.js" />
@@ -323,6 +324,7 @@
     <Content Include="assets\js\angular.js" />
     <Content Include="assets\js\angular.min.js" />
     <Content Include="assets\js\jquery-migrate-1.2.1.min.js" />
+    <Content Include="assets\js\moment.js" />
     <Content Include="assets\js\script.js" />
     <Content Include="assets\js\script.min.js" />
     <Content Include="assets\plugins\backstretch\examples\basic.html" />
@@ -2209,7 +2211,7 @@
     <Content Include="assets\plugins\slider-revolution\revolution\js\source\jquery.themepunch.enablelog.js" />
     <Content Include="assets\plugins\slider-revolution\revolution\js\source\jquery.themepunch.revolution.js" />
     <Content Include="assets\plugins\slider-revolution\revolution\js\source\jquery.themepunch.tools.min.js" />
-    <Content Include="favicon.ico" />
+    <Content Include="assets\img\icons\favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="assets\js\angular.min.js.map" />
     <Content Include="assets\plugins\backstretch\bower.json" />
