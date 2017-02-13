@@ -9,8 +9,6 @@ namespace AstRentals.Data.Infrastructure
     {
         IQueryable<Car> All();
 
-        Car Find(params object[] keys);
-
         Car Find(Expression<Func<Car, bool>> predicate);
 
         IQueryable<Car> FindAll(Expression<Func<Car, bool>> predicate);

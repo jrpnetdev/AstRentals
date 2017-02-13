@@ -31,7 +31,6 @@ They can select car and book it for rental.
  - Bootstrap (BootStrapWrap - AppStrap theme - Responsive design - Mobile/Tablet friendly)
 
 ###ToDo:
- - Pagination
  - Login & Register (Modal)
  - Jasmine JS unit tests
  - NUnit .Net Unit tests

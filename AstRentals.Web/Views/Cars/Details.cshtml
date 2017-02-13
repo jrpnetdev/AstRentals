@@ -142,16 +142,16 @@
                                 </div>
                                 <div class="col-md-12 text-sm text-uppercase"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i> Hire Dates</div>
                                 <div class="col-md-4 mb-3">
-                                    <input type="text" name="daterange" value="Select Date"/>
+                                    <input type="text" name="daterange" value="Select Date" />
                                     @*<div class="input-group input-group-quantity input-group-sm" data-toggle="quantity">
-                                        <span class="input-group-btn">
-                                            <input type="button" value="-" class="btn btn-secondary quantity-down" field="quantity" />
-                                        </span>
-                                        <input type="text" name="quantity" value="2" class="quantity form-control" />
-                                        <span class="input-group-btn">
-                                            <input type="button" value="+" class="btn btn-secondary quantity-up" field="quantity" />
-                                        </span>
-                                    </div>*@
+                                            <span class="input-group-btn">
+                                                <input type="button" value="-" class="btn btn-secondary quantity-down" field="quantity" />
+                                            </span>
+                                            <input type="text" name="quantity" value="2" class="quantity form-control" />
+                                            <span class="input-group-btn">
+                                                <input type="button" value="+" class="btn btn-secondary quantity-up" field="quantity" />
+                                            </span>
+                                        </div>*@
                                 </div>
                             </div>
                             <a href="shop-cart.htm" class="btn btn-primary"><i class="fa fa-cart-plus mr-2"></i> Add to Cart</a>
@@ -175,7 +175,7 @@
                                 <!-- Tab 1: Description tab content -->
                                 <div class="tab-pane active show" id="product-description">
                                     <h4 class="card-title">
-                                        Product Description 
+                                        Product Description
                                     </h4>
                                     <p class="card-text">{{vm.carInfo}}</p>
 
@@ -185,12 +185,13 @@
                                     <h4 class="card-title">
                                         Car Specification: {{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})
                                     </h4>
-                                    <p class="card-text">Specifications, Features, Packages, Options & Accessories: Specifications, features and equipment, Packages, Options and Accessories shown for our models are based upon the latest information available. 
-                                        We reserve the right to make changes at any time, without notice, to features, equipment, packages, options, price, colours, specifications, accessories and materials. Specifications, dimensions, measurements, ratings and other numbers shown on this website are an approximation based uponmanufacturer information. 
-                                        Your Volvo can be different based on variations in manufacturing and equipment. Please check with your authorized Volvo dealer for complete details. 
-                                        We cannot be responsible for typographical or other errors as we try to make the website as factual and comprehensive. 
-                                        For additional information and the most up to date product details, please contact your nearest authorized dealer. 
-                                        Prices listed are subject to change. Some details are not shown to UK specification and may show optional equipment as well as vehicle colours and interiors not available in the UK market. 
+                                    <p class="card-text">
+                                        Specifications, Features, Packages, Options & Accessories: Specifications, features and equipment, Packages, Options and Accessories shown for our models are based upon the latest information available.
+                                        We reserve the right to make changes at any time, without notice, to features, equipment, packages, options, price, colours, specifications, accessories and materials. Specifications, dimensions, measurements, ratings and other numbers shown on this website are an approximation based uponmanufacturer information.
+                                        Your Volvo can be different based on variations in manufacturing and equipment. Please check with your authorized Volvo dealer for complete details.
+                                        We cannot be responsible for typographical or other errors as we try to make the website as factual and comprehensive.
+                                        For additional information and the most up to date product details, please contact your nearest authorized dealer.
+                                        Prices listed are subject to change. Some details are not shown to UK specification and may show optional equipment as well as vehicle colours and interiors not available in the UK market.
                                     </p>
                                     <car-spec></car-spec>
                                 </div>
@@ -220,7 +221,7 @@
                                         </li>
                                         <li class="media mb-3 pos-relative">
                                             <a href="#">
-                                                <img src="assets/img/team/adele.jpg" alt="Picture of Alex" class="d-flex mr-3 img-thumbnail img-fluid" />
+                                                <img src="~/assets/img/team/adele.jpg" alt="Picture of Alex" class="d-flex mr-3 img-thumbnail img-fluid" />
                                             </a>
                                             <div class="media-body">
                                                 <ul class="list-inline blog-meta text-muted">
@@ -418,12 +419,12 @@
     <!-- Angular scripts -->
     <script src="~/assets/js/angular.js"></script>
     <script src="~/App/app.js"></script>
-    <script src="~/App/carService.js"></script>
-    <script src="~/App/carInfoService.js"></script>
-    <script src="~/App/carImageService.js"></script>
+    <script src="~/App/services/carService.js"></script>
+    <script src="~/App/services/carInfoService.js"></script>
+    <script src="~/App/services/carImageService.js"></script>
     <script src="~/App/carDetailsController.js"></script>
     <script src="~/App/directives/carSpec.js"></script>
-    <script src="~/App/directives/wrapOwlCarouselDirective.js"></script>
+    <script src="~/App/directives/carHeader.js"></script>
     <script src="~/assets/js/moment.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
     <script type="text/javascript">

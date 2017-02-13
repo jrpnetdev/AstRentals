@@ -12,6 +12,7 @@
     <a href="#content" id="top" class="sr-only">Skip to content</a>
 
     @Html.Partial("PartialViews/_Header")
+    @*<car-header></car-header>*@
 
     <!-- ======== Region: #page-header ======== -->
     <div id="page-header">
@@ -35,7 +36,7 @@
                         <div class="col-lg-6 mb-3 mb-lg-0">
                             <form class="form-inline justify-content-lg-start text-sm">
                                 <label class="control-label mr-2">Keyword:</label>
-                                <input type="text" class="form-control form-control-sm mr-lg-2" placeholder="ie. Calvin Klein">
+                                <input type="text" class="form-control form-control-sm mr-lg-2" ng-model="searchText" placeholder="ie. Ford Mustang" ng-keypress="($event.which === 13)?vm.search(searchText):0">
                                 <a href="#adv-search" data-toggle="collapse" class="text-sm">advanced search</a>
                             </form>
                         </div>
@@ -115,7 +116,7 @@
                         </div>
                     </div>
                     <hr class="my-4" />
-                    
+
                     <div class="row">
                         <div ng-show="vm.error">{{vm.error}}</div>
                         <div ng-repeat="item in vm.cars" ng-if="vm.cars">
@@ -178,16 +179,16 @@
                             <li class="page-item">
                                 <a class="page-link" href="#" aria-label="Previous" ng-click="vm.getPage(vm.cars[0].make, vm.currentPage-1, 10)"> <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span> </a>
                             </li>
-                            
+
                             <li ng-class="vm.currentPage-1 === $index ? 'page-item active' : 'page-item'" ng-repeat="i in vm.getNumber(vm.numberOfPages) track by $index"><a class="page-link" href="#" ng-click="vm.getPage(vm.cars[0].make, $index+1, 10)">{{$index+1}}</a></li>
-                            
+
                             <li class="page-item">
                                 <a class="page-link" href="#" aria-label="Next" ng-click="vm.getPage(vm.cars[0].make, vm.currentPage+1, 10)"> <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span> </a>
                             </li>
                         </ul>
                     </nav>
-                    
-                    
+
+
                 </div>
                 <!-- Products sidebar -->
                 <div class="col-lg-3 pull-lg-9">
@@ -225,20 +226,8 @@
     <script src="~/assets/js/angular.js"></script>
     <script src="~/App/app.js"></script>
     <script src="~/App/carListController.js"></script>
-    <script src="~/App/carService.js"></script>
-    <script src="~/App/carCountService.js"></script>
+    <script src="~/App/services/carService.js"></script>
+    <script src="~/App/services/carSearchService.js"></script>
     <script src="~/App/directives/categoriesDirective.js"></script>
+    <script src="~/App/directives/carHeader.js"></script>
 }
-
-@*<script>
-    $(function() {
-        $('#Collections li')
-            .on('click',
-                function() {
-                    $(this)
-                        .addClass('nav-link text-uppercase text-slab first active')
-                        .siblings()
-                        .removeClass('nav-link text-uppercase text-slab first active');
-                });
-    });
-</script>*@

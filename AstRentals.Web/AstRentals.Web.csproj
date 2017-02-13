@@ -130,12 +130,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
-    <Content Include="App\carCountService.js" />
+    <Content Include="App\directives\carHeader.js" />
+    <Content Include="App\services\carCountService.js" />
     <Content Include="App\carDetailsController.js" />
-    <Content Include="App\carImageService.js" />
+    <Content Include="App\services\carImageService.js" />
     <Content Include="App\carListController.js" />
-    <Content Include="App\carInfoService.js" />
-    <Content Include="App\carService.js" />
+    <Content Include="App\services\carInfoService.js" />
+    <Content Include="App\services\carSearchService.js" />
+    <Content Include="App\services\carService.js" />
     <Content Include="App\directives\carSpec.html" />
     <Content Include="App\directives\categories.html" />
     <Content Include="App\directives\carSpec.js" />
@@ -2900,13 +2902,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Cars\PartialViews\_Header.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Error\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cars\PartialViews\_Header.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

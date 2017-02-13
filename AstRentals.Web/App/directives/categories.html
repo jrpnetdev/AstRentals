@@ -2,7 +2,7 @@
 <ul class="nav nav-section-menu mb-4 py-3" id="Categories">
     <li class="nav-header">Categories</li>
     <li>
-        <a href="#mens" data-toggle="collapse" class="nav-link text-uppercase text-slab first active">
+        <a href="#mens" data-toggle="collapse" class="nav-link text-uppercase text-slab first active" ng-class="(status=='make') ? 'nav-link text-uppercase text-slab' : 'nav-link text-uppercase text-slab first active'" ng-click="(status=='make') ? status='mkinactive' : status='make'">
             Cars By Make
             <small class="d-inline-block text-xs text-lowercase">(active)</small>
             <i class="fa fa-angle-right"></i>
@@ -23,17 +23,19 @@
         </ul>
     </li>
     <li>
-        <a href="#womens" data-toggle="collapse" class="nav-link text-uppercase text-slab"> Womens <i class="fa fa-angle-right"></i> </a>
+        <a href="#womens" data-toggle="collapse" class="nav-link text-uppercase text-slab" ng-class="(status=='year') ? 'nav-link text-uppercase text-slab first active' : 'nav-link text-uppercase text-slab'" ng-click="(status=='year') ? status='yrinactive' : status='year'">
+            Cars By Year <i class="fa fa-angle-right"></i>
+        </a>
         <ul class="nav nav-section-menu collapse" id="womens">
-            <li><a href="#" class="nav-link">Dresses</a></li>
-            <li><a href="#" class="nav-link">Jeans</a></li>
-            <li><a href="#" class="nav-link">Skirts</a></li>
-            <li><a href="#" class="nav-link">Suits</a></li>
-            <li><a href="#" class="nav-link">Jackets</a></li>
-            <li><a href="#" class="nav-link">Sportswear</a></li>
-            <li><a href="#" class="nav-link">Shorts</a></li>
-            <li><a href="#" class="nav-link">Swimwear</a></li>
-            <li><a href="#" class="nav-link">T-shirts</a></li>
+            <li><a href="#" class="nav-link">2012</a></li>
+            <li><a href="#" class="nav-link">2011</a></li>
+            <li><a href="#" class="nav-link">2010</a></li>
+            <li><a href="#" class="nav-link">2009</a></li>
+            <li><a href="#" class="nav-link">2008</a></li>
+            <li><a href="#" class="nav-link">2007</a></li>
+            <li><a href="#" class="nav-link">2006</a></li>
+            <li><a href="#" class="nav-link">2005</a></li>
+            <li><a href="#" class="nav-link">2004</a></li>
         </ul>
     </li>
     <li>

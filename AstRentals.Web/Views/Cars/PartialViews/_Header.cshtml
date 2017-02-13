@@ -7,8 +7,8 @@
         <!--Header search region - hidden by default -->
         <div class="header-search collapse" id="search">
             <form class="search-form container">
-                <input type="text" name="search" class="form-control search" value="" placeholder="Search">
-                <button type="button" class="btn btn-link"><span class="sr-only">Search </span><i class="fa fa-search fa-flip-horizontal search-icon"></i></button>
+                <input type="text" name="search" class="form-control search" ng-model="searchText" value="" placeholder="Search" ng-keypress="($event.which === 13)?vm.search(searchText):0">
+                <button type="button" class="btn btn-link" ng-click="vm.search(searchText)"><span class="sr-only">Search </span><i class="fa fa-search fa-flip-horizontal search-icon"></i></button>
                 <button type="button" class="btn btn-link close-btn" data-toggle="search-form-close"><span class="sr-only">Close </span><i class="fa fa-times search-icon"></i></button>
             </form>
         </div>
@@ -170,13 +170,13 @@
                                             <!-- Shop product carousel Uses Owl Carousel plugin All options here are customisable from the data-owl-carousel-settings="{OBJECT}" item via data- attributes: http://www.owlgraphic.com/owlcarousel/#customizing ie. data-settings="{"items": "4", "lazyLoad":"true", "navigation":"true"}" -->
                                             <div class="products-carousel owl-nav-over" data-toggle="owl-carousel" data-owl-carousel-settings='{"items": 1,"responsive":{"0":{"items":1,"nav":true, "dots":false}}}'>
                                                 <a href="#">
-                                                    <img src="~/assets/img/shop/jacket-1.jpg" alt="Item 1 image" class="lazyOwl img-fluid" />
+                                                    <img src="../../../assets/img/shop/jacket-1.jpg" alt="Item 1 image" class="lazyOwl img-fluid" />
                                                 </a>
                                                 <a href="#">
-                                                    <img src="~/assets/img/shop/jacket-2.jpg" alt="Item 2 image" class="lazyOwl img-fluid" />
+                                                    <img src="../../../assets/img/shop/jacket-2.jpg" alt="Item 2 image" class="lazyOwl img-fluid" />
                                                 </a>
                                                 <a href="#">
-                                                    <img src="~/assets/img/shop/jacket-3.jpg" alt="Item 3 image" class="lazyOwl img-fluid" />
+                                                    <img src="../../../assets/img/shop/jacket-3.jpg" alt="Item 3 image" class="lazyOwl img-fluid" />
                                                 </a>
                                             </div>
                                         </div>
