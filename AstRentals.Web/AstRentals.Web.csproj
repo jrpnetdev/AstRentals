@@ -130,7 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
-    <Content Include="App\directives\carHeader.js" />
     <Content Include="App\services\carCountService.js" />
     <Content Include="App\carDetailsController.js" />
     <Content Include="App\services\carImageService.js" />
@@ -142,7 +141,13 @@
     <Content Include="App\directives\categories.html" />
     <Content Include="App\directives\carSpec.js" />
     <Content Include="App\directives\categoriesDirective.js" />
+    <Content Include="assets\Car\banner.jpg" />
+    <Content Include="assets\Car\cars-bg.jpg" />
+    <Content Include="assets\Car\chevrolet-corvette-gs-fd-1-1.jpg" />
+    <Content Include="assets\Car\model-3-tesla2-1.jpg" />
+    <Content Include="assets\Car\R_RANGE_14MY_CC_001_Device-Desktop_640x318_tcm91-216129_desktop_640x318.jpg" />
     <Content Include="assets\css\custom-style.css" />
+    <Content Include="assets\css\daterangepicker.css" />
     <Content Include="assets\css\no-flexbox.css" />
     <Content Include="assets\css\no-flexbox.min.css" />
     <Content Include="assets\css\theme-shop.css" />
@@ -325,6 +330,7 @@
     <Content Include="assets\js\angular-mocks.js" />
     <Content Include="assets\js\angular.js" />
     <Content Include="assets\js\angular.min.js" />
+    <Content Include="assets\js\daterangepicker.js" />
     <Content Include="assets\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="assets\js\moment.js" />
     <Content Include="assets\js\script.js" />

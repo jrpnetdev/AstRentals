@@ -20,12 +20,5 @@ namespace AstRentals.Web.Controllers
 
             return View(id);
         }
-
-        public ActionResult Header()
-        {
-
-            return PartialView("PartialViews/_Header");
-        }
-
     }
 }

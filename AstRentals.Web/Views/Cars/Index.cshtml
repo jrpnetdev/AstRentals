@@ -4,7 +4,7 @@
 }
 
  <!-- ======== Region: body ======== -->
-<div class="page page-shop header-compact-sticky page-shop-list navbar-layout-navbar-below" ng-cloak>
+<div class="page page-shop header-compact-sticky page-shop-list navbar-layout-navbar-below" ng-controller="carListController as vm">
 
     <!-- plugin: page loading indicator, delete to remove loader -->
     <div class="page-loader" data-toggle="page-loader"></div>
@@ -26,7 +26,7 @@
     </div>
 
     <!-- ======== Region: #content ======== -->
-    <div id="content" class="py-3 py-lg-6" ng-controller="carListController as vm">
+    <div id="content" class="py-3 py-lg-6" >
         <div class="container">
             <div class="row">
                 <!-- Products grid -->
@@ -229,5 +229,4 @@
     <script src="~/App/services/carService.js"></script>
     <script src="~/App/services/carSearchService.js"></script>
     <script src="~/App/directives/categoriesDirective.js"></script>
-    <script src="~/App/directives/carHeader.js"></script>
 }

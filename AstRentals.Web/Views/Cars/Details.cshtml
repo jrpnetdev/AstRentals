@@ -3,7 +3,7 @@
     ViewBag.Title = "Details";
 }
 @section styles {
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+    <link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
 }
 
 
@@ -424,9 +424,8 @@
     <script src="~/App/services/carImageService.js"></script>
     <script src="~/App/carDetailsController.js"></script>
     <script src="~/App/directives/carSpec.js"></script>
-    <script src="~/App/directives/carHeader.js"></script>
     <script src="~/assets/js/moment.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <script src="~/assets/js/daterangepicker.js"></script>
     <script type="text/javascript">
         $(function () {
             $('input[name="daterange"]').daterangepicker();
