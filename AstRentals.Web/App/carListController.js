@@ -39,6 +39,11 @@
             };
         }
 
+
+        model.addToWishlist = function (id) {
+            console.log(id);
+        }
+
         model.getNumber = function (num) {
             if (num > 10) { num = 10 }
             return new Array(num);

@@ -84,6 +84,42 @@ namespace AstRentals.Tests.Unit
         }
 
         [Test]
+        public void ReturnsAllCarsWithMatchingModelMakeAndYear()
+        {
+
+            SearchUtilities sut = new SearchUtilities();
+
+            var result = sut.TextSearch("Mustang Ford 2012", cars);
+
+
+            Assert.AreEqual(1, result.Count());
+        }
+
+        [Test]
+        public void ReturnsAllCarsWithMatchingYearMakeAndModel()
+        {
+
+            SearchUtilities sut = new SearchUtilities();
+
+            var result = sut.TextSearch("2012 Ford Mustang", cars);
+
+
+            Assert.AreEqual(1, result.Count());
+        }
+
+        [Test]
+        public void ReturnsAllCarsWithMatchingYearModelAndMake()
+        {
+
+            SearchUtilities sut = new SearchUtilities();
+
+            var result = sut.TextSearch("2012 Mustang Ford", cars);
+
+
+            Assert.AreEqual(1, result.Count());
+        }
+
+        [Test]
         public void ReturnsAllCarsWithMatchingYearAndMakel()
         {
 

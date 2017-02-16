@@ -130,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
+    <Content Include="App\directives\scrollDirective.js" />
     <Content Include="App\services\carCountService.js" />
     <Content Include="App\carDetailsController.js" />
     <Content Include="App\services\carImageService.js" />
