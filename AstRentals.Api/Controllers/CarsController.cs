@@ -55,6 +55,30 @@ namespace AstRentals.Api.Controllers
             return clvm;
         }
 
+        // GET api/cars?make=Bentley&size=10
+        public CarListViewModel Get(int year, int index, int size)
+        {
+            CarListViewModel clvm = new CarListViewModel();
+
+            //int cars = _repo.Count;
+            var cars = _repo.FindAll(c => c.Year == year, index, size).OrderBy(c => c.Id).ToList();
+            clvm.Cars = cars;
+
+            clvm.TotalCars = _repo.FindAll(c => c.Year == year).Count();
+
+            var pages = clvm.TotalCars / size;
+            var remainder = clvm.TotalCars % size;
+            if (remainder != 0)
+            {
+                pages += 1;
+            }
+
+            clvm.NumberOfPages = pages;
+            clvm.CurrentPage = index;
+
+            return clvm;
+        }
+
         // GET api/cars/5
         public Car Get(int id)
         {

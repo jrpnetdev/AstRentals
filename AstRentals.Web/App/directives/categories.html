@@ -8,18 +8,18 @@
             <i class="fa fa-angle-right"></i>
         </a>
         <ul class="nav nav-section-menu collapse show" id="mens">
-            <li><a href="#" class="nav-link" ng-click="vm.getPage('Aston Martin', 1, 10)">Aston Martin</a></li>
-            <li><a href="#" class="nav-link" ng-click="vm.getPage('Audi', 1, 10)">Audi</a></li>
-            <li><a href="#" class="nav-link" ng-click="vm.getPage('Bentley', 1, 10)">Bentley</a></li>
-            <li><a href="#" class="nav-link" ng-click="vm.getPage('BMW', 1, 10)">BMW</a></li>
-            <li><a href="#" class="nav-link" ng-click="vm.getPage('Dodge', 1, 10)">Dodge</a></li>
-            <li><a href="#" class="nav-link" ng-click="vm.getPage('Ford', 1, 10)">Ford</a></li>
-            <li><a href="#" class="nav-link" ng-click="vm.getPage('Mazda', 1, 10)">Mazda</a></li>
-            <li><a href="#" class="nav-link" ng-click="vm.getPage('Mercedes-Benz', 1, 10)">Mercedes-Benz</a></li>
-            <li><a href="#" class="nav-link" ng-click="vm.getPage('Mitsubishi', 1, 10)">Mitsubishi</a></li>
-            <li><a href="#" class="nav-link" ng-click="vm.getPage('Pontiac', 1, 10)">Pontiac</a></li>
-            <li><a href="#" class="nav-link" ng-click="vm.getPage('Porsche', 1, 10)">Porsche</a></li>
-            <li><a href="#" class="nav-link" ng-click="vm.getPage('Volkswagen', 1, 10)">Volkswagen</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageMake('Aston Martin', 1, 10)">Aston Martin</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageMake('Audi', 1, 10)">Audi</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageMake('Bentley', 1, 10)">Bentley</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageMake('BMW', 1, 10)">BMW</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageMake('Dodge', 1, 10)">Dodge</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageMake('Ford', 1, 10)">Ford</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageMake('Mazda', 1, 10)">Mazda</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageMake('Mercedes-Benz', 1, 10)">Mercedes-Benz</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageMake('Mitsubishi', 1, 10)">Mitsubishi</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageMake('Pontiac', 1, 10)">Pontiac</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageMake('Porsche', 1, 10)">Porsche</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageMake('Volkswagen', 1, 10)">Volkswagen</a></li>
         </ul>
     </li>
     <li>
@@ -27,29 +27,32 @@
             Cars By Year <i class="fa fa-angle-right"></i>
         </a>
         <ul class="nav nav-section-menu collapse" id="womens">
-            <li><a href="#" class="nav-link">2012</a></li>
-            <li><a href="#" class="nav-link">2011</a></li>
-            <li><a href="#" class="nav-link">2010</a></li>
-            <li><a href="#" class="nav-link">2009</a></li>
-            <li><a href="#" class="nav-link">2008</a></li>
-            <li><a href="#" class="nav-link">2007</a></li>
-            <li><a href="#" class="nav-link">2006</a></li>
-            <li><a href="#" class="nav-link">2005</a></li>
-            <li><a href="#" class="nav-link">2004</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageYear(2013, 1, 10)">2013</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageYear(2012, 1, 10)">2012</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageYear(2011, 1, 10)">2011</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageYear(2010, 1, 10)">2010</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageYear(2009, 1, 10)">2009</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageYear(2008, 1, 10)">2008</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageYear(2007, 1, 10)">2007</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageYear(2006, 1, 10)">2006</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageYear(2005, 1, 10)">2005</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.getPageYear(2004, 1, 10)">2004</a></li>
         </ul>
     </li>
     <li>
-        <a href="#childrens" data-toggle="collapse" class="nav-link text-uppercase text-slab"> Childrens <i class="fa fa-angle-right"></i> </a>
+        <a href="#childrens" data-toggle="collapse" class="nav-link text-uppercase text-slab" ng-class="(status=='mkmdl') ? 'nav-link text-uppercase text-slab first active' : 'nav-link text-uppercase text-slab'" ng-click="(status=='mkmdl') ? status='mkmdlinactive' : status='mkmdl'">
+             Make & Model <i class="fa fa-angle-right"></i>
+        </a>
         <ul class="nav nav-section-menu collapse" id="childrens">
-            <li><a href="#" class="nav-link">Shoes</a></li>
-            <li><a href="#" class="nav-link">Sports Wear</a></li>
-            <li><a href="#" class="nav-link">School Clothes</a></li>
-            <li><a href="#" class="nav-link">Trousers</a></li>
-            <li><a href="#" class="nav-link">Suits</a></li>
-            <li><a href="#" class="nav-link">Jackets</a></li>
-            <li><a href="#" class="nav-link">Sportswear</a></li>
-            <li><a href="#" class="nav-link">Swimwear</a></li>
-            <li><a href="#" class="nav-link">T-shirts</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.search('Ford Mustang', 1, 10)">Ford Mustang</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.search('Chevrolet Corvette', 1, 10)">Chevrolet Corvette</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.search('Honda Civic', 1, 10)">Honda Civic</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.search('Subaru Impreza', 1, 10)">Subaru Impreza</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.search('BMW M6', 1, 10)">BMW M6</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.search('Volkswagen GTI', 1, 10)">Volkswagen GTI</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.search('Dodge Viper', 1, 10)">Dodge Viper</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.search('Jaguar XJ', 1, 10)">Jaguar XJ</a></li>
+            <li><a href="#" class="nav-link" ng-click="vm.search('Audi A8', 1, 10)">Audi A8</a></li>
         </ul>
     </li>
     <li>

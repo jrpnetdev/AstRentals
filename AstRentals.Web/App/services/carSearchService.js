@@ -2,8 +2,8 @@
 
     var carSearchService = function ($http) {
 
-        var getSearchResults = function (searchText) {
-            return $http.get('http://localhost:50604/api/carsearch?searchtext=' + searchText);
+        var getSearchResults = function (searchText, page, size) {
+            return $http.get('http://localhost:50604/api/carsearch?searchtext=' + searchText + '&index=' + page + '&size=' + size);
         };
 
         return {
