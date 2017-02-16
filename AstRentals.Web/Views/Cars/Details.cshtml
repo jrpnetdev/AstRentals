@@ -92,8 +92,8 @@
                                     {{vm.car.make}} {{vm.car.model}} ({{vm.car.year}}) @Model
                                 </h2>
                                 <h4 class="font-weight-bold text-primary">
-                                    <del class="op-5">$24.99</del>
-                                    / $19.99
+                                    <del class="op-5">£179.99</del>
+                                    / £199.99
                                 </h4>
                                 <div class="product-offer-countdown">
                                     <p class="mb-t mb-0 text-xs">Offers end in:</p>
@@ -141,21 +141,20 @@
                                             <option value="premium">Premium Cover (£250.00)</option>
                                         </select>
                                     </div>
+
                                     <div class="col-md-12 text-sm text-uppercase"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i> Hire Dates</div>
-                                    <div class="col-md-4 mb-3">
-                                        <input type="text" name="daterange" value="Select Date" />
-                                        @*<div class="input-group input-group-quantity input-group-sm" data-toggle="quantity">
-                                                <span class="input-group-btn">
-                                                    <input type="button" value="-" class="btn btn-secondary quantity-down" field="quantity" />
-                                                </span>
-                                                <input type="text" name="quantity" value="2" class="quantity form-control" />
-                                                <span class="input-group-btn">
-                                                    <input type="button" value="+" class="btn btn-secondary quantity-up" field="quantity" />
-                                                </span>
-                                            </div>*@
+                                    <div class="col-md-4 mb-3" ng-controller="DatepickerCtrl">
+                                        <div>
+                                            <div style="display:inline-block; min-height:290px;">
+                                                <uib-datepicker template-url="../../App/DatePicker/datepicker.html" ng-model="dt" min-date="minDate" init-date="initDate" class="well well-sm" custom-class="getDayClass(date, mode)"></uib-datepicker>
+                                            </div>
+
+                                            <div class="col-md-12">Start: {{start | date:'fullDate'}}</div>
+                                            <div class="col-md-12">End: {{end | date:'fullDate'}}</div>
+                                        </div>
                                     </div>
                                 </div>
-                                <a href="shop-cart.htm" class="btn btn-primary"><i class="fa fa-cart-plus mr-2"></i> Add to Cart</a>
+                                <a href="@Url.Action("Checkout")" class="btn btn-primary"><i class="fa fa-car mr-2"></i> Book Rental</a>
                                 <a href="#" class="btn btn-link btn-sm"><i class="fa fa-heart"></i> Add to Wishlist</a>
                                 <p class="text-muted text-xs d-inline hidden-md-down">12769 in stock</p>
                             </div>
@@ -290,111 +289,7 @@
             <!-- /container -->
             <hr class="mt-6 mb-0" />
             <div class="bg-faded py-5">
-                <!-- Related Products -->
-                <div class="container py-4">
-                    <hr class="hr-lg mt-0 mb-3 w-10 mx-auto hr-primary" />
-                    <h2 class="text-center text-uppercase font-weight-bold my-0">
-                        Related Products
-                    </h2>
-                    <hr class="mb-3 w-50 mx-auto" />
-                    <div class="mt-4 owl-nav-over owl-nav-over-lg" data-toggle="owl-carousel" data-owl-carousel-settings='{"responsive":{"0":{"items":1}, "600":{"items":2}, "980":{"items":4}}, "margin":10, "nav":true, "dots":false}'>
-                        <!-- Product 1 -->
-                        <div class="card product-card overlay-hover">
-                            <!-- Hover content -->
-                            <div class="overlay-hover-content overlay-op-7 product-card-hover-tools">
-                                <h4 class="text-white">
-                                    New Balance
-                                </h4>
-                                <a href="shop-cart.htm" class="btn btn-primary text-uppercase font-weight-bold mb-2"><i class="fa fa-cart-plus mr-2"></i> Add to Cart</a>
-                            </div>
-                            <!-- Image & price content -->
-                            <div class="pos-relative">
-                                <img class="card-img-top img-fluid" src="~/assets/img/shop/shoes-2.jpg" alt="Card image cap">
-                                <span class="badge badge-primary product-price-badge pos-absolute pos-t pos-l mt-2 ml-2">
-                                    <del class="op-5">$24.99</del>
-                                    / $19.99
-                                </span>
-                            </div>
-                        </div>
-                        <!-- Product 2 -->
-                        <div class="card product-card overlay-hover">
-                            <!-- Hover content -->
-                            <div class="overlay-hover-content overlay-op-7 product-card-hover-tools">
-                                <h4 class="text-white">
-                                    Nike Training Top
-                                </h4>
-                                <a href="shop-cart.htm" class="btn btn-primary text-uppercase font-weight-bold mb-3"><i class="fa fa-cart-plus mr-2"></i> Add to Cart</a>
-                            </div>
-                            <!-- Image & price content -->
-                            <div class="pos-relative">
-                                <img class="card-img-top img-fluid" src="~/assets/img/shop/mens-sports-2.jpg" alt="Card image cap">
-                                <span class="badge badge-primary product-price-badge pos-absolute pos-t pos-l mt-2 ml-2">$39.99</span>
-                            </div>
-                        </div>
-                        <!-- Product 3 -->
-                        <div class="card product-card overlay-hover">
-                            <!-- Hover content -->
-                            <div class="overlay-hover-content overlay-op-7 product-card-hover-tools">
-                                <h4 class="text-white">
-                                    Kids Wollys
-                                </h4>
-                                <a href="shop-cart.htm" class="btn btn-primary text-uppercase font-weight-bold mb-3"><i class="fa fa-cart-plus mr-2"></i> Add to Cart</a>
-                            </div>
-                            <!-- Image & price content -->
-                            <div class="pos-relative">
-                                <img class="card-img-top img-fluid" src="~/assets/img/shop/promo-kids.jpg" alt="Card image cap">
-                                <span class="badge badge-primary product-price-badge pos-absolute pos-t pos-l mt-2 ml-2">$9.99</span>
-                            </div>
-                        </div>
-                        <!-- Product 4 -->
-                        <div class="card product-card overlay-hover">
-                            <!-- Hover content -->
-                            <div class="overlay-hover-content overlay-op-7 product-card-hover-tools">
-                                <h4 class="text-white">
-                                    Kids Hoodies
-                                </h4>
-                                <a href="shop-cart.htm" class="btn btn-primary text-uppercase font-weight-bold mb-3"><i class="fa fa-cart-plus mr-2"></i> Add to Cart</a>
-                            </div>
-                            <!-- Ribbon -->
-                            <div class="card-ribbon card-ribbon-top card-ribbon-right bg-primary text-white">Eco Friendly</div>
-                            <!-- Image & price content -->
-                            <div class="pos-relative">
-                                <img class="card-img-top img-fluid" src="~/assets/img/shop/promo-kids-hoodies.jpg" alt="Card image cap">
-                                <span class="badge badge-primary product-price-badge pos-absolute pos-t pos-l mt-2 ml-2">$29.99</span>
-                            </div>
-                        </div>
-                        <!-- Product 5 -->
-                        <div class="card product-card overlay-hover">
-                            <!-- Hover content -->
-                            <div class="overlay-hover-content overlay-op-7 product-card-hover-tools">
-                                <h4 class="text-white">
-                                    Shirts
-                                </h4>
-                                <a href="shop-cart.htm" class="btn btn-primary text-uppercase font-weight-bold mb-3"><i class="fa fa-cart-plus mr-2"></i> Add to Cart</a>
-                            </div>
-                            <!-- Image & price content -->
-                            <div class="pos-relative">
-                                <img class="card-img-top img-fluid" src="~/assets/img/shop/promo-mens.jpg" alt="Card image cap">
-                                <span class="badge badge-primary product-price-badge pos-absolute pos-t pos-l mt-2 ml-2">$69.99</span>
-                            </div>
-                        </div>
-                        <!-- Product 6 -->
-                        <div class="card product-card overlay-hover">
-                            <!-- Hover content -->
-                            <div class="overlay-hover-content overlay-op-7 product-card-hover-tools">
-                                <h4 class="text-white">
-                                    Jacket
-                                </h4>
-                                <a href="shop-cart.htm" class="btn btn-primary text-uppercase font-weight-bold mb-3"><i class="fa fa-cart-plus mr-2"></i> Add to Cart</a>
-                            </div>
-                            <!-- Image & price content -->
-                            <div class="pos-relative">
-                                <img class="card-img-top img-fluid" src="~/assets/img/shop/promo-mens-2.jpg" alt="Card image cap">
-                                <span class="badge badge-primary product-price-badge pos-absolute pos-t pos-l mt-2 ml-2">$199.99</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @Html.Partial("PartialViews/_Recommended")
                 <!-- Call to action -->
                 <div class="container" data-url="#">
                     <hr class="hr-lg mt-0 mb-1 w-100 mx-auto hr-danger" />
@@ -419,18 +314,10 @@
 
 @section scripts{
     <!-- Angular scripts -->
-    <script src="~/assets/js/angular.js"></script>
-    <script src="~/App/app.js"></script>
     <script src="~/App/services/carService.js"></script>
     <script src="~/App/services/carInfoService.js"></script>
     <script src="~/App/services/carImageService.js"></script>
     <script src="~/App/carDetailsController.js"></script>
     <script src="~/App/directives/carSpec.js"></script>
-    <script src="~/assets/js/moment.js"></script>
-    <script src="~/assets/js/daterangepicker.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $('input[name="daterange"]').daterangepicker();
-        });
-    </script>
+    <script src="~/App/DatePicker/DatePickerCtrl.js"></script>
 }

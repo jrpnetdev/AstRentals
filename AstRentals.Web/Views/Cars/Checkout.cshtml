@@ -1,0 +1,342 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+}
+
+  <!-- ======== Region: body ======== -->
+    <div class="page page-shop header-compact-sticky page-shop-checkout navbar-layout-navbar-below">
+
+    <!-- plugin: page loading indicator, delete to remove loader -->
+    <div class="page-loader" data-toggle="page-loader"></div>
+
+    <a href="#content" id="top" class="sr-only">Skip to content</a>
+    
+    @Html.Partial("PartialViews/_Header")
+
+    <!-- ======== Region: #page-header ======== -->
+    <div id="page-header">
+        <div class="container clearfix">
+            <h3 class="mb-0 float-md-left">
+                Checkout
+            </h3>
+            <!-- Page header breadcrumb -->
+            <nav class="breadcrumb float-md-right"> <a class="breadcrumb-item" href="index.htm">Home</a> <a class="breadcrumb-item" href="shop.htm">Shop Home</a> <span class="breadcrumb-item active">Checkout</span> </nav>
+        </div>
+    </div>
+
+    <!-- ======== Region: #content ======== -->
+    <div id="content" class="py-5">
+        <div class="container">
+            <h4>
+                Billing Address
+            </h4>
+            <div class="mb-4 bg-faded p-3 rounded mb-4" id="billing">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="sr-only">First Name</label>
+                        <input type="text" class="form-control" placeholder="First Name">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="sr-only">Last Name</label>
+                        <input type="text" class="form-control" placeholder="Last Name">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="sr-only">Phone</label>
+                        <input type="tel" class="form-control" placeholder="Phone">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="sr-only">Email</label>
+                        <input type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input id="field-address-1" type="text" class="form-control" placeholder="Address line 1">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input id="field-address-2" type="text" class="form-control" placeholder="Address line 2">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="sr-only">City</label>
+                        <input type="tel" class="form-control" placeholder="City">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label class="sr-only">Post Code</label>
+                        <input type="email" class="form-control" placeholder="Post Code">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label class="sr-only">Country</label>
+                        <select class="form-control">
+                            <option>Country</option>
+                            <option>United States</option>
+                            <option>Canada</option>
+                            <option>France</option>
+                            <option>UK</option>
+                            <option>Germany</option>
+                            <option>Belgium</option>
+                            <option>Australia</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label" data-toggle="collapse" data-target="#shipping" aria-expanded="false" aria-controls="shipping">
+                        <input class="form-check-input" type="checkbox" value="ship-address-alt">
+                        Ship to different address
+                    </label>
+                </div>
+            </div>
+            <!-- Shipping form -->
+            <div class="collapse" id="shipping">
+                <h4>
+                    Shipping Address
+                </h4>
+                <div class="bg-faded p-3 mb-4 rounded">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="sr-only">First Name</label>
+                            <input type="text" class="form-control" placeholder="First Name">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="sr-only">Last Name</label>
+                            <input type="text" class="form-control" placeholder="Last Name">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control" placeholder="Address line 1">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control" placeholder="Address line 2">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="sr-only">City</label>
+                            <input type="tel" class="form-control" placeholder="City">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="sr-only">Post Code</label>
+                            <input type="email" class="form-control" placeholder="Post Code">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="sr-only">Country</label>
+                            <select class="form-control">
+                                <option>Country</option>
+                                <option>United States</option>
+                                <option>Canada</option>
+                                <option>France</option>
+                                <option>UK</option>
+                                <option>Germany</option>
+                                <option>Belgium</option>
+                                <option>Australia</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    Save to Address Book
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Payment Options -->
+            <h4>
+                Payment Options
+            </h4>
+            <div id="payment-options" class="bg-faded p-3 rounded">
+                <div class="form-check">
+                    <label class="form-check-label" data-toggle="radio-collapse" data-target="#credit-card" data-parent="#payment-options">
+                        <input class="form-check-input" type="radio" value="credit-card" checked>
+                        Credit Card <i class="fa fa-credit-card-alt"></i>
+                    </label>
+                    <div class="collapse show" id="credit-card">
+                        <div class="bg-white p-3 mt-2 rounded pos-relative">
+                            <div class="row">
+                                <div class="col-lg-3 mb-2 md-md-0">
+                                    <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name">
+                                </div>
+                                <div class="col-lg-3 mb-2 md-md-0">
+                                    <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Debit/Credit Card Number">
+                                </div>
+                                <div class="col-md-4 col-lg-2 mb-2 md-md-0">
+                                    <select class="form-control" name="expiry-month" id="expiry-month">
+                                        <option>Expiry Month</option>
+                                        <option value="01">Jan (01)</option>
+                                        <option value="02">Feb (02)</option>
+                                        <option value="03">Mar (03)</option>
+                                        <option value="04">Apr (04)</option>
+                                        <option value="05">May (05)</option>
+                                        <option value="06">June (06)</option>
+                                        <option value="07">July (07)</option>
+                                        <option value="08">Aug (08)</option>
+                                        <option value="09">Sep (09)</option>
+                                        <option value="10">Oct (10)</option>
+                                        <option value="11">Nov (11)</option>
+                                        <option value="12">Dec (12)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 col-lg-2 mb-2 md-md-0">
+                                    <select class="form-control" name="expiry-year">
+                                        <option>Expiry Year</option>
+                                        <option value="17">2017</option>
+                                        <option value="18">2018</option>
+                                        <option value="19">2019</option>
+                                        <option value="20">2020</option>
+                                        <option value="21">2021</option>
+                                        <option value="22">2022</option>
+                                        <option value="23">2023</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 col-lg-2">
+                                    <input type="text" class="form-control" name="cvv" id="cvv" placeholder="Security Code">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label" data-toggle="radio-collapse" data-target="#paypal" data-parent="#payment-options">
+                        <input class="form-check-input" type="radio" value="paypal">
+                        PayPal <i class="fa fa-paypal"></i>
+                    </label>
+                    <div class="collapse" id="paypal">
+                        <div class="bg-white p-3 mt-2 rounded">
+                            <label class="sr-only">PayPal Email</label>
+                            <input type="email" class="form-control" placeholder="PayPal Email">
+                            <small>Input your PayPal email address.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Cart Summary -->
+            <h4 class="mt-5">
+                Cart Summary
+            </h4>
+            <!--Shopping cart items-->
+            <table class="table table-responsive mb-0 cart-table">
+                <thead>
+                    <tr>
+                        <th class="w-5"></th>
+                        <th class="w-10"></th>
+                        <th class="w-20">Item</th>
+                        <th class="w-20">Unit Price</th>
+                        <th class="w-20">Quantity</th>
+                        <th class="w-20 text-md-right">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Cart item 1 -->
+                    <tr>
+                        <td class="text-center align-middle">
+                            <a href="#" class="close cart-remove"> <i class="fa fa-times"></i> </a>
+                        </td>
+                        <td class="text-center">
+                            <a href="#">
+                                <img class="cart-img img-fluid" src="assets/img/shop/gloves-1-thumb.jpg" alt="Product 1">
+                            </a>
+                        </td>
+                        <td> <span class="font-weight-bold">Gloves</span> </td>
+                        <td>$18.99</td>
+                        <td>
+                            <div class="input-group input-group-quantity" data-toggle="quantity">
+                                <span class="input-group-btn">
+                                    <input type="button" value="-" class="btn btn-secondary quantity-down" field="quantity" />
+                                </span>
+                                <input type="text" name="quantity" value="2" class="quantity form-control" />
+                                <span class="input-group-btn">
+                                    <input type="button" value="+" class="btn btn-secondary quantity-up" field="quantity" />
+                                </span>
+                            </div>
+                        </td>
+                        <td class="text-md-right"><span class="font-weight-bold">$37.98</span></td>
+                    </tr>
+                    <!-- Cart item 2 -->
+                    <tr>
+                        <td class="text-center align-middle">
+                            <a href="#" class="close cart-remove"> <i class="fa fa-times"></i> </a>
+                        </td>
+                        <td class="text-center">
+                            <a href="#">
+                                <img class="cart-img img-fluid" src="assets/img/shop/shoes-1-thumb.jpg" alt="Product 1">
+                            </a>
+                        </td>
+                        <td> <span class="font-weight-bold">Shoes</span> </td>
+                        <td>$12.99</td>
+                        <td>
+                            <div class="input-group input-group-quantity" data-toggle="quantity">
+                                <span class="input-group-btn">
+                                    <input type="button" value="-" class="btn btn-secondary quantity-down" field="quantity" />
+                                </span>
+                                <input type="text" name="quantity" value="1" class="quantity form-control" />
+                                <span class="input-group-btn">
+                                    <input type="button" value="+" class="btn btn-secondary quantity-up" field="quantity" />
+                                </span>
+                            </div>
+                        </td>
+                        <td class="text-md-right"><span class="font-weight-bold">$12.99</span></td>
+                    </tr>
+                    <!-- Cart item 3 -->
+                    <tr>
+                        <td class="text-center align-middle">
+                            <a href="#" class="close cart-remove"> <i class="fa fa-times"></i> </a>
+                        </td>
+                        <td class="text-center">
+                            <a href="#">
+                                <img class="cart-img img-fluid" src="assets/img/shop/gloves-1-thumb.jpg" alt="Product 1">
+                            </a>
+                        </td>
+                        <td> <span class="font-weight-bold">Gloves</span> </td>
+                        <td>$18.99</td>
+                        <td>
+                            <div class="input-group input-group-quantity" data-toggle="quantity">
+                                <span class="input-group-btn">
+                                    <input type="button" value="-" class="btn btn-secondary quantity-down" field="quantity" />
+                                </span>
+                                <input type="text" name="quantity" value="2" class="quantity form-control" />
+                                <span class="input-group-btn">
+                                    <input type="button" value="+" class="btn btn-secondary quantity-up" field="quantity" />
+                                </span>
+                            </div>
+                        </td>
+                        <td class="text-md-right"><span class="font-weight-bold">$37.98</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--End of Shopping cart items-->
+            <hr class="my-4 hr-lg" />
+            <div class="cart-content-footer">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h6 class="text-muted mb-3">
+                            All prices are including VAT
+                        </h6>
+                        <!-- Discount form -->
+                        <form action="#" role="form">
+                            <div class="input-group">
+                                <label class="sr-only" for="discount">Discount code</label>
+                                <input type="tel" class="form-control" id="discount" placeholder="Discount code">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-inverse" type="button">Go</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-8 text-md-right mt-3 mt-md-0">
+                        <div class="cart-content-totals">
+                            <h4 class="font-weight-light">
+                                Subtotal: $50.97
+                            </h4>
+                            <h4 class="font-weight-light">
+                                Discount (10%): <span class="text-danger">-$5.97</span>
+                            </h4>
+                            <hr class="my-3 w-50 ml-0 ml-md-auto mr-md-0" />
+                            <h3>
+                                Total: <span class="text-primary">$45.00</span>
+                            </h3>
+                            <hr class="my-3 w-50 ml-0 ml-md-auto mr-md-0" />
+                        </div>
+                        <!-- Proceed to checkout -->
+                        <a href="shop-cart.htm" class="btn btn-outline-primary btn-rounded btn-lg">Back to Cart</a> <a href="shop-confirmation.htm" class="btn btn-primary btn-rounded btn-lg">Make Payment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,5 +20,15 @@ namespace AstRentals.Web.Controllers
 
             return View(id);
         }
+
+        public ActionResult Checkout()
+        {
+            return View();
+        }
+
+        public ActionResult Confirmation()
+        {
+            return View();
+        }
     }
 }

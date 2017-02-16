@@ -130,6 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
+    <Content Include="App\DatePicker\datepicker.html" />
+    <Content Include="App\DatePicker\DatePickerCtrl.js" />
+    <Content Include="App\DatePicker\daypicker.html" />
     <Content Include="App\directives\scrollDirective.js" />
     <Content Include="App\services\carCountService.js" />
     <Content Include="App\carDetailsController.js" />
@@ -328,12 +331,9 @@
     <Content Include="assets\img\team\steve%402x.jpg" />
     <Content Include="assets\img\team\steve.jpg" />
     <Content Include="assets\img\transparent.png" />
-    <Content Include="assets\js\angular-mocks.js" />
+    <Content Include="assets\js\angular-animate.js" />
     <Content Include="assets\js\angular.js" />
-    <Content Include="assets\js\angular.min.js" />
-    <Content Include="assets\js\daterangepicker.js" />
     <Content Include="assets\js\jquery-migrate-1.2.1.min.js" />
-    <Content Include="assets\js\moment.js" />
     <Content Include="assets\js\script.js" />
     <Content Include="assets\js\script.min.js" />
     <Content Include="assets\plugins\backstretch\examples\basic.html" />
@@ -2222,7 +2222,6 @@
     <Content Include="assets\plugins\slider-revolution\revolution\js\source\jquery.themepunch.tools.min.js" />
     <Content Include="assets\img\icons\favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="assets\js\angular.min.js.map" />
     <Content Include="assets\plugins\backstretch\bower.json" />
     <Content Include="assets\plugins\backstretch\LICENSE-MIT" />
     <Content Include="assets\plugins\backstretch\package.json" />
@@ -2916,6 +2915,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Cars\PartialViews\_Header.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cars\Checkout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cars\Confirmation.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cars\PartialViews\_Recommended.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
