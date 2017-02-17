@@ -6,18 +6,11 @@
 
         model.searchType = "make";
         model.searchText = "";
-
-        model.carList = carService.getCarsByPage("Bentley", 1, 10).then(function (response) {
-            model.cars = response.data.cars;
-            model.totalCars = response.data.totalCars;
-            model.numberOfPages = response.data.numberOfPages;
-            model.currentPage = response.data.currentPage;
-        }), function (data, status, header, config) {
-            model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
-        };
+        model.pages = [];
+        var pgx = 0;
         
         model.getPageMake = function (make, page, size) {
-            if (page > model.numberOfPages || page < 1) {
+            if (page > model.numberOfPages || page <= 0) {
                 return;
             }
             carService.getCarsByPage(make, page, size).then(function (response) {
@@ -26,13 +19,21 @@
                     model.totalCars = response.data.totalCars;
                     model.numberOfPages = response.data.numberOfPages;
                     model.currentPage = response.data.currentPage;
+                    
+                    (model.numberOfPages < 10) ? pgx = model.numberOfPages : pgx = size;
+                    
+                    model.pages = new Array(pgx);
+                    for (var i = 1; i <= pgx; i++) {
+                        model.pages[i - 1] = i;
+                    }
+
                 }), function (data, status, header, config) {
                     model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
             };
         };
 
         model.getPageYear = function (year, page, size) {
-            if (page > model.numberOfPages || page < 1) {
+            if (page > model.numberOfPages || page <= 0) {
                 return;
             }
             carService.getCarsByYear(year, page, size).then(function (response) {
@@ -41,12 +42,23 @@
                 model.totalCars = response.data.totalCars;
                 model.numberOfPages = response.data.numberOfPages;
                 model.currentPage = response.data.currentPage;
+
+                (model.numberOfPages < 10) ? pgx = model.numberOfPages : pgx = size;
+
+                model.pages = new Array(pgx);
+                for (var i = 1; i <= pgx; i++) {
+                    model.pages[i - 1] = i;
+                }
+
             }), function (data, status, header, config) {
                 model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
             };
         };
 
         model.search = function (stext, index, size) {
+            if (page > model.numberOfPages || page <= 0) {
+                return;
+            }
             model.searchText = stext;
             carSearchService.getSearchResults(model.searchText, index, 10)
                 .then(function (response) {
@@ -55,19 +67,34 @@
                     model.totalCars = response.data.totalCars;
                     model.numberOfPages = response.data.numberOfPages;
                     model.currentPage = response.data.currentPage;
+
+                    (model.numberOfPages < 10) ? pgx = model.numberOfPages : pgx = size;
+
+                    model.pages = new Array(pgx);
+                    for (var i = 1; i <= pgx; i++) {
+                        model.pages[i - 1] = i;
+                    }
+
                 }), function(data, status, header, config) {
                 model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
             };
         }
 
+        model.getNumber = function () {
 
-        model.addToWishlist = function (id) {
-            console.log(id);
-        }
+            //Add elements when increasing currentPage
+            for (var i = 0; i < model.currentPage - model.pages[model.pages.length - 1]; i++) {
+                model.pages.shift();
+                model.pages.push(model.currentPage);
+            }
 
-        model.getNumber = function (num) {
-            if (num > 10) { num = 10 }
-            return new Array(num);
+            //Add elements when decreasing currentPage
+            for (var i = 0; i < model.pages[0] - model.currentPage; i++) {
+                model.pages.pop();
+                model.pages.unshift(model.currentPage);
+            }
+
+            return model.pages;
         }
 
     };

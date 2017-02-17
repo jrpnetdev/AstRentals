@@ -5,7 +5,7 @@
 
  <div class="ng-cloak">
     <!-- ======== Region: body ======== -->
-    <div class="page page-shop header-compact-sticky page-shop-list navbar-layout-navbar-below" ng-controller="carListController as vm">
+    <div class="page page-shop header-compact-sticky page-shop-list navbar-layout-navbar-below" ng-controller="carListController as vm" ng-init="vm.getPageMake('Bentley', 1, 10)">
 
         <!-- plugin: page loading indicator, delete to remove loader -->
         <div class="page-loader" data-toggle="page-loader"></div>
@@ -147,8 +147,10 @@
                                                     </p>
                                                     <p class="text-muted text-xs">Consectetuer feugiat hendrerit jus neo usitas valde verto. Abbas duis interdico modo ymo.</p>
                                                     <div class="mt-auto">
+                                                    @*<div class="mt-auto" ng-controller="wishlistController as wl">*@
                                                         <a href="shop-cart.htm" class="btn btn-primary btn-sm"><i class="fa fa-car mr-2"></i> Book Car Now</a>
-                                                        <a href="#" class="btn btn-link btn-sm" ng-click="vm.addToWishlist(item.id)"><i class="fa fa-heart"></i> <i class="fa fa-heart-o"></i> Add to Wishlist</a>
+                                                        <a href="#" class="btn btn-link btn-sm"><i class="fa fa-heart"></i> <i class="fa fa-heart-o"></i> Add to Wishlist</a>
+                                                        @*<a href="#" class="btn btn-link btn-sm" ng-click="wl.addToWishlist(item.id)"><i class="fa fa-heart"></i> <i class="fa fa-heart-o"></i> Add to Wishlist</a>*@
                                                         <p class="text-muted text-xs d-inline hidden-md-down">129 in stock</p>
                                                     </div>
                                                 </div>
@@ -183,13 +185,14 @@
                                         <a class="page-link" href="#" aria-label="Previous" ng-click="vm.getPageMake(vm.cars[0].make, vm.currentPage-1, 10)"> <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span> </a>
                                     </li>
 
-                                    <li ng-class="vm.currentPage-1 === $index ? 'page-item active' : 'page-item'" ng-repeat="i in vm.getNumber(vm.numberOfPages) track by $index"><a class="page-link" href="#" ng-click="vm.getPageMake(vm.cars[0].make, $index+1, 10)">{{$index+1}}</a></li>
+                                    <li ng-class="vm.currentPage === i ? 'page-item active' : 'page-item'" ng-repeat="i in vm.getNumber() track by $index"><a class="page-link" href="#" ng-click="vm.getPageMake(vm.cars[0].make, i, 10)">{{i}}</a></li>
 
                                     <li class="page-item">
                                         <a class="page-link" href="#" aria-label="Next" ng-click="vm.getPageMake(vm.cars[0].make, vm.currentPage+1, 10)"> <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span> </a>
                                     </li>
                                 </ul>
                             </nav>
+                            <div class="text-center"><span class="text-primary">Showing page {{vm.currentPage}} of {{vm.numberOfPages}}</span></div>
                         </div>
                         <div ng-show="vm.searchType === 'year'">
                             <nav aria-label="Page navigation">
@@ -198,13 +201,14 @@
                                         <a class="page-link" href="#" aria-label="Previous" ng-click="vm.getPageYear(vm.cars[0].year, vm.currentPage-1, 10)"> <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span> </a>
                                     </li>
 
-                                    <li ng-class="vm.currentPage-1 === $index ? 'page-item active' : 'page-item'" ng-repeat="i in vm.getNumber(vm.numberOfPages) track by $index"><a class="page-link" href="#" ng-click="vm.getPageYear(vm.cars[0].year, $index+1, 10)">{{$index+1}}</a></li>
+                                    <li ng-class="vm.currentPage === i ? 'page-item active' : 'page-item'" ng-repeat="i in vm.getNumber() track by $index"><a class="page-link" href="#" ng-click="vm.getPageYear(vm.cars[0].year, i, 10)">{{i}}</a></li>
 
                                     <li class="page-item">
                                         <a class="page-link" href="#" aria-label="Next" ng-click="vm.getPageYear(vm.cars[0].year, vm.currentPage+1, 10)"> <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span> </a>
                                     </li>
                                 </ul>
                             </nav>
+                            <div class="text-center"><span class="text-primary">Showing page {{vm.currentPage}} of {{vm.numberOfPages}}</span></div>
                         </div>
                         <div ng-show="vm.searchType === 'search'">
                             <nav aria-label="Page navigation">
@@ -213,13 +217,14 @@
                                         <a class="page-link" href="#" aria-label="Previous" ng-click="vm.search(vm.searchText, vm.currentPage-1, 10)"> <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span> </a>
                                     </li>
 
-                                    <li ng-class="vm.currentPage-1 === $index ? 'page-item active' : 'page-item'" ng-repeat="i in vm.getNumber(vm.numberOfPages) track by $index"><a class="page-link" href="#" ng-click="vm.search(vm.searchText, $index+1, 10)">{{$index+1}}</a></li>
+                                    <li ng-class="vm.currentPage === i ? 'page-item active' : 'page-item'" ng-repeat="i in vm.getNumber() track by $index"><a class="page-link" href="#" ng-click="vm.search(vm.searchText, i, 10)">{{i}}</a></li>
 
                                     <li class="page-item">
                                         <a class="page-link" href="#" aria-label="Next" ng-click="vm.search(vm.searchText, vm.currentPage+1, 10)"> <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span> </a>
                                     </li>
                                 </ul>
                             </nav>
+                            <div class="text-center"><span class="text-primary">Showing page {{vm.currentPage}} of {{vm.numberOfPages}}</span></div>
                         </div>
 
                     </div>
@@ -258,6 +263,7 @@
 @section scripts{
     <!-- Angular scripts -->
     <script src="~/App/carListController.js"></script>
+    @*<script src="~/App/wishlistController.js"></script>*@
     <script src="~/App/services/carService.js"></script>
     <script src="~/App/services/carSearchService.js"></script>
     <script src="~/App/directives/categoriesDirective.js"></script>
