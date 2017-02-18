@@ -1,6 +1,6 @@
 ﻿(function (module) {
 
-    var carDetailsController = function (carService, carInfoService, carImageService, sharedProperties) {
+    var carDetailsController = function (carService, carInfoService, carImageService) {
 
         var model = this;
 
@@ -9,7 +9,6 @@
             carService.getCarById(id)
                 .then(function(response) {
                     model.car = response.data;
-                    sharedProperties.setCarId(response.data.id);
 
                     carInfoService.getCarInfo(model.car.make, model.car.model).then(function (response) {
                         model.carInfo = response.data.info;

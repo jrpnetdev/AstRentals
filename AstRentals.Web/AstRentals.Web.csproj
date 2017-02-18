@@ -130,7 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
-    <Content Include="App\services\sharedProperties.js" />
     <Content Include="App\wishlistController.js" />
     <Content Include="App\DatePicker\datepicker.html" />
     <Content Include="App\DatePicker\DatePickerCtrl.js" />

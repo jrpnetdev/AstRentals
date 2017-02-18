@@ -9,11 +9,11 @@
         model.pages = [];
         var pgx = 0;
         
-        model.getPageMake = function (make, page, size) {
-            if (page > model.numberOfPages || page <= 0) {
+        model.getPageMake = function (make, index, size) {
+            if (index > model.numberOfPages || index <= 0) {
                 return;
             }
-            carService.getCarsByPage(make, page, size).then(function (response) {
+            carService.getCarsByPage(make, index, size).then(function (response) {
                     model.searchType = "make";
                     model.cars = response.data.cars;
                     model.totalCars = response.data.totalCars;
@@ -32,11 +32,11 @@
             };
         };
 
-        model.getPageYear = function (year, page, size) {
-            if (page > model.numberOfPages || page <= 0) {
+        model.getPageYear = function (year, index, size) {
+            if (index > model.numberOfPages || index <= 0) {
                 return;
             }
-            carService.getCarsByYear(year, page, size).then(function (response) {
+            carService.getCarsByYear(year, index, size).then(function (response) {
                 model.searchType = "year";
                 model.cars = response.data.cars;
                 model.totalCars = response.data.totalCars;
@@ -56,7 +56,7 @@
         };
 
         model.search = function (stext, index, size) {
-            if (page > model.numberOfPages || page <= 0) {
+            if (index > model.numberOfPages || index <= 0) {
                 return;
             }
             model.searchText = stext;

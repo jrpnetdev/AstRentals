@@ -1,11 +1,14 @@
 ﻿(function (module) {
 
-    var wishlistController = function ($scope, sharedProperties) {
+    var wishlistController = function ($scope) {
 
 
-        $scope.addToWishlist = function () {
-            var id = sharedProperties.getCarId();
+        $scope.addToWishlist = function (id) {
             console.log(id);
+        }
+
+        $scope.test = function (e) {
+            console.log($(e.currentTarget).attr("data-id"));
         }
 
     };

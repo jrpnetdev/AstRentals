@@ -145,7 +145,7 @@
                                     <div class="col-md-12 text-sm text-uppercase"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i> Hire Dates</div>
                                     <div class="col-md-4 mb-3" ng-controller="DatepickerCtrl">
                                         <div>
-                                            <div style="display:inline-block; min-height:290px;">
+                                            <div style="display:inline-block; min-height:255px;">
                                                 <uib-datepicker template-url="../../App/DatePicker/datepicker.html" ng-model="dt" min-date="minDate" init-date="initDate" class="well well-sm" custom-class="getDayClass(date, mode)"></uib-datepicker>
                                             </div>
 
@@ -156,7 +156,7 @@
                                 </div>
                                 <div ng-controller="wishlistController">
                                     <a href="@Url.Action("Checkout")" class="btn btn-primary"><i class="fa fa-car mr-2"></i> Book Rental</a>
-                                    <a href="#" class="btn btn-link btn-sm" ng-click="addToWishlist()"><i class="fa fa-heart"></i> Add to Wishlist</a>
+                                    <a href="#" class="btn btn-link btn-sm" ng-click="addToWishlist(@Model)"><i class="fa fa-heart"></i> Add to Wishlist</a>
                                     <p class="text-muted text-xs d-inline hidden-md-down">12769 in stock</p>
                                 </div>
                             </div>
@@ -319,7 +319,6 @@
     <script src="~/App/services/carService.js"></script>
     <script src="~/App/services/carInfoService.js"></script>
     <script src="~/App/services/carImageService.js"></script>
-    <script src="~/App/services/sharedProperties.js"></script>
     <script src="~/App/carDetailsController.js"></script>
     <script src="~/App/wishlistController.js"></script>
     <script src="~/App/directives/carSpec.js"></script>
