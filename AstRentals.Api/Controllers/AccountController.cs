@@ -337,7 +337,7 @@ namespace AstRentals.Api.Controllers
                 return GetErrorResult(result);
             }
 
-            return Ok();
+            return Ok("You have successfully registered");
         }
 
         // POST api/Account/RegisterExternal

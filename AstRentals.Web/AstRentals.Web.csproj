@@ -129,7 +129,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\accountController.js" />
     <Content Include="App\app.js" />
+    <Content Include="App\loginController.js" />
     <Content Include="App\wishlistController.js" />
     <Content Include="App\DatePicker\datepicker.html" />
     <Content Include="App\DatePicker\DatePickerCtrl.js" />
@@ -2925,6 +2927,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Cars\PartialViews\_Recommended.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\LogIn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

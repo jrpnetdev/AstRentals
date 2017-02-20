@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+<!-- ======== Region: body ======== -->
+<div class="page page-shop header-compact-sticky page-shop-list navbar-layout-navbar-below" ng-controller="accountController as vm">
+
+    <!-- plugin: page loading indicator, delete to remove loader -->
+    <div class="page-loader" data-toggle="page-loader"></div>
+
+    <a href="#content" id="top" class="sr-only">Skip to content</a>
+    
+    @Html.Partial("~/Views/Cars/PartialViews/_Header.cshtml")
+
+    <!-- ======== Region: #content ======== -->
+    <div id="content">
+        <div class="container">
+            <!-- Sign Up form -->
+            <form class="form-login form-wrapper form-medium" role="form" ng-submit="vm.registerUser()">
+                <h3 class="title-divider">
+                    <span>Sign Up</span>
+                    <small class="mt-4">Already signed up? <a href="@Url.Action("LogIn")">Login here</a>.</small>
+                </h3>
+                <h5>
+                    Price Plan
+                </h5>
+                <div class="form-group">
+                    <select class="form-control">
+                        <option>Basic</option>
+                        <option>Pro</option>
+                        <option>Pro +</option>
+                    </select>
+                </div>
+                <hr />
+                <h5>
+                    Account Information
+                </h5>
+                <div class="form-group">
+                    <label class="sr-only" for="signup-email-page">Email address</label>
+                    <input type="email" class="form-control" id="email" ng-model="vm.email" placeholder="Email address">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="signup-password-page">Password</label>
+                    <input type="password" class="form-control" id="password" ng-model="vm.password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="signup-password-page">Confirm Password</label>
+                    <input type="password" class="form-control" id="confpassword" ng-model="vm.confirmpassword" placeholder="Confirm Password">
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" value="term" class="form-check-input" ng-model="vm.acceptedtc">
+                        I agree with the Terms and Conditions.
+                    </label>
+                </div>
+                <div class="alert alert-warning" role="alert" ng-show="vm.error !== ''"> <strong>Warning:</strong> {{vm.error}}</div>
+                <div class="alert alert-success" role="alert" ng-show="vm.success !== ''"> <strong>Success:</strong> {{vm.success}}</div>
+                <hr />
+                <button class="btn btn-primary" type="submit">Sign up</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <!-- Angular scripts -->
+    <script src="~/App/accountController.js"></script>
+}
