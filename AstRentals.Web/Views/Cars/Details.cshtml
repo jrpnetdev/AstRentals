@@ -85,81 +85,82 @@
                             <!-- Ribbon -->
                             <div class="card-ribbon card-ribbon-bottom card-ribbon-right bg-primary text-white">Top Rated</div>
                             <!-- Content -->
-                            <div class="card-block p-4 pos-relative">
-                                <!-- Product details -->
-                                <p class="text-muted text-uppercase text-xs mb-0"><span class="text-primary">Mens</span> / Jackets</p>
-                                <h2 class="card-title mb-2">
-                                    {{vm.car.make}} {{vm.car.model}} ({{vm.car.year}}) @Model
-                                </h2>
-                                <h4 class="font-weight-bold text-primary">
-                                    <del class="op-5">£179.99</del>
-                                    / £199.99
-                                </h4>
-                                <div class="product-offer-countdown">
-                                    <p class="mb-t mb-0 text-xs">Offers end in:</p>
-                                    <div class="countdown" data-countdown="2017/2/30" data-countdown-format='<span class="count">
+                            <form role="form" ng-submit="vm.submitDetails()">
+                                <div class="card-block p-4 pos-relative">
+                                    <!-- Product details -->
+                                    <p class="text-muted text-uppercase text-xs mb-0"><span class="text-primary">Mens</span> / Jackets</p>
+                                    <h2 class="card-title mb-2">
+                                        {{vm.car.make}} {{vm.car.model}} ({{vm.car.year}}) @Model
+                                    </h2>
+                                    <h4 class="font-weight-bold text-primary">
+                                        <del class="op-5">£250.00</del>
+                                        / £199.99 per week
+                                    </h4>
+                                    <div class="product-offer-countdown">
+                                        <p class="mb-t mb-0 text-xs">Offers end in:</p>
+                                        <div class="countdown" data-countdown="2017/2/30" data-countdown-format='<span class="count">
                                     <span class="digit">%-d</span> days</span>
                                     <span class="count"><span class="digit">%-H</span> hrs</span>
                                     <span class="count"><span class="digit">%-M</span> mins</span>
                                     <span class="count"><span class="digit">%-S</span> secs</span>
                                     '>
-                                </div>
-                                </div>
-                                <div class="pos-md-absolute pos-t pos-r mr-4 mt-3 text-md-right">
-                                    <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i>
-                                    <p class="my-0 text-xs">10 reviews | <a href="#reviews">write review</a></p>
-                                </div>
-                                <hr class="my-3" />
-                                <p class="text-muted text-sm">Brevitas in molior ullamcorper. Abdo capto obruo occuro proprius rusticus sit utinam. Consequat esca exputo gravis haero quis saepius si vicis.</p>
-                                <p class="text-muted text-sm">Hos ibidem patria. Fere neque nostrud. Amet huic jus nobis nostrud qui vel verto. Acsi commoveo cui imputo pertineo refero vero vulpes vulputate.</p>
-                                <hr class="my-3 mb-5" />
-                                <!-- Cart options/links -->
-                                <div class="product-options row mb-4">
-                                    <div class="col-md-12 text-sm text-uppercase">Colour</div>
-                                    <div class="col-md-4 mb-3">
-                                        <select class="form-control form-control-sm">
-                                            <option value="red">Red</option>
-                                            <option value="silver">Silver</option>
-                                            <option value="blue">Blue</option>
-                                            <option value="black">Black</option>
-                                        </select>
                                     </div>
-                                    <div class="col-md-12 text-sm text-uppercase">Features</div>
-                                    <div class="col-md-4 mb-3">
-                                        <select class="form-control form-control-sm">
-                                            <option value="3door">3 Door</option>
-                                            <option value="5door">5 Door</option>
-                                            <option value="convertible">Convertible</option>
-                                        </select>
                                     </div>
-                                    <div class="col-md-12 text-sm text-uppercase">Insurance and Cover</div>
-                                    <div class="col-md-4 mb-3">
-                                        <select class="form-control form-control-sm">
-                                            <option value="cancellation">Basic Cover (£0.00)</option>
-                                            <option value="cancellation">Basic Cover + Cancellation Guarantee (£20.00)</option>
-                                            <option value="extended">Extended Insurance (£100.00)</option>
-                                            <option value="premium">Premium Cover (£250.00)</option>
-                                        </select>
+                                    <div class="pos-md-absolute pos-t pos-r mr-4 mt-3 text-md-right">
+                                        <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i>
+                                        <p class="my-0 text-xs">10 reviews | <a href="#reviews">write review</a></p>
                                     </div>
+                                    <hr class="my-3" />
+                                    <p class="text-muted text-sm">Brevitas in molior ullamcorper. Abdo capto obruo occuro proprius rusticus sit utinam. Consequat esca exputo gravis haero quis saepius si vicis.</p>
+                                    <p class="text-muted text-sm">Hos ibidem patria. Fere neque nostrud. Amet huic jus nobis nostrud qui vel verto. Acsi commoveo cui imputo pertineo refero vero vulpes vulputate.</p>
+                                    <hr class="my-3 mb-5" />
+                                    <!-- Cart options/links -->
+                                    <div class="product-options row mb-4">
+                                        <div class="col-md-12 text-sm text-uppercase">Colour</div>
+                                        <div class="col-md-4 mb-3">
+                                            <select class="form-control form-control-sm" ng-model="vm.colour" ng-selected="vm.colour">
+                                                <option value="Red">Red</option>
+                                                <option value="Silver">Silver</option>
+                                                <option value="Blue">Blue</option>
+                                                <option value="Black">Black</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12 text-sm text-uppercase">Features</div>
+                                        <div class="col-md-4 mb-3">
+                                            <select class="form-control form-control-sm" ng-model="vm.features" ng-selected="vm.features">
+                                                <option value="3door">3 Door</option>
+                                                <option value="5door">5 Door</option>
+                                                <option value="convertible">Convertible</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12 text-sm text-uppercase">Insurance and Cover</div>
+                                        <div class="col-md-4 mb-3">
+                                            <select class="form-control form-control-sm" ng-model="vm.cover" ng-selected="vm.cover">
+                                                <option value="basic">Basic Cover (£0.00)</option>
+                                                <option value="cancellation">Basic Cover + Cancellation Guarantee (£20.00)</option>
+                                                <option value="extended">Extended Insurance (£100.00)</option>
+                                                <option value="premium">Premium Cover (£250.00)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12 text-sm text-uppercase"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i> Hire Dates</div>
+                                        <div class="col-md-4 mb-3" ng-controller="DatepickerCtrl">
+                                            <div>
+                                                <div style="display:inline-block; min-height:255px;">
+                                                    <uib-datepicker template-url="../../App/DatePicker/datepicker.html" ng-model="dt" min-date="minDate" init-date="initDate" class="well well-sm" custom-class="getDayClass(date, mode)"></uib-datepicker>
+                                                </div>
 
-                                    <div class="col-md-12 text-sm text-uppercase"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i> Hire Dates</div>
-                                    <div class="col-md-4 mb-3" ng-controller="DatepickerCtrl">
-                                        <div>
-                                            <div style="display:inline-block; min-height:255px;">
-                                                <uib-datepicker template-url="../../App/DatePicker/datepicker.html" ng-model="dt" min-date="minDate" init-date="initDate" class="well well-sm" custom-class="getDayClass(date, mode)"></uib-datepicker>
+                                                <div class="col-md-12">Start: {{start | date:'fullDate'}}</div>
+                                                <div class="col-md-12">End: {{end | date:'fullDate'}}</div>
                                             </div>
-
-                                            <div class="col-md-12">Start: {{start | date:'fullDate'}}</div>
-                                            <div class="col-md-12">End: {{end | date:'fullDate'}}</div>
                                         </div>
                                     </div>
+                                    <div ng-controller="wishlistController">
+                                        <button class="btn btn-primary" type="submit"><i class="fa fa-car mr-2"></i> Book Rental</button>
+                                        <a href="#" class="btn btn-link btn-sm" ng-click="addToWishlist(@Model)"><i class="fa fa-heart"></i> Add to Wishlist</a>
+                                        @*<p class="text-muted text-xs d-inline hidden-md-down">12769 in stock</p>*@
+                                    </div>
                                 </div>
-                                <div ng-controller="wishlistController">
-                                    <a href="@Url.Action("Checkout")" class="btn btn-primary"><i class="fa fa-car mr-2"></i> Book Rental</a>
-                                    <a href="#" class="btn btn-link btn-sm" ng-click="addToWishlist(@Model)"><i class="fa fa-heart"></i> Add to Wishlist</a>
-                                    <p class="text-muted text-xs d-inline hidden-md-down">12769 in stock</p>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-lg-12">

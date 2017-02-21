@@ -1,6 +1,6 @@
 ﻿(function (module) {
 
-    var accountController = function($http) {
+    var registerController = function($http) {
 
         var model = this;
 
@@ -28,14 +28,13 @@
                 .then(function(response) {
                     model.success = response.data;
                 }, function (err) {
-                    model.error = err.data.modelState;
                     // ToDo Json strigify this
-                    console.log(err.data.modelState);
+                    model.error = err.data.modelState;
             });
         }
 
     };
 
-    module.controller("accountController", accountController);
+    module.controller("registerController", registerController);
 
 }(angular.module("app")));

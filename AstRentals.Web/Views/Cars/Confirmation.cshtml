@@ -1,4 +1,4 @@
-﻿
+﻿@model AstRentals.Web.ViewModels.CheckoutViewModel
 @{
     ViewBag.Title = "Confirmation";
 }
@@ -17,7 +17,7 @@
             <div class="text-center mb-6">
                 <i class="fa fa-check-circle icon-6x text-success"></i>
                 <h3>
-                    Your order has been successfully placed!
+                    Your Rental has been successfully placed!
                 </h3>
                 <h4 class="font-weight-normal">
                     Your order number is: 346899-2834-ZZA
@@ -25,39 +25,23 @@
                 <p>A confirmation email has been sent to your email address: example@example.com.</p>
             </div>
             <h4>
-                Order Summary
+                Rental Summary
             </h4>
             <table class="table table-responsive mb-0 cart-table cart-table-summary">
                 <tbody>
                     <!-- Cart item 1 -->
                     <tr>
-                        <td class="text-left w-10">
+                        <td class="text-center">
                             <a href="#">
-                                <img class="cart-img img-fluid" src="assets/img/shop/gloves-1-thumb.jpg" alt="Product 1">
+                                <img class="cart-img img-fluid" src="@Url.Content(Model.Car.ImageUrl)" alt="@Model.Car.Make @Model.Car.Model (@Model.Car.Year)">
                             </a>
                         </td>
-                        <td class="w-75"> <span class="font-weight-bold">Gloves</span> / $18.99 x 2 </td>
-                        <td class="text-md-right w-15"><span class="font-weight-bold">$37.98</span></td>
-                    </tr>
-                    <!-- Cart item 2 -->
-                    <tr>
-                        <td class="text-left w-10">
-                            <a href="#">
-                                <img class="cart-img img-fluid" src="assets/img/shop/shoes-1-thumb.jpg" alt="Product 1">
-                            </a>
-                        </td>
-                        <td class="w-75"> <span class="font-weight-bold">Shoes</span> / $12.99 x 1 </td>
-                        <td class="text-md-right w-15"><span class="font-weight-bold">$12.99</span></td>
-                    </tr>
-                    <!-- Cart item 3 -->
-                    <tr>
-                        <td class="text-left w-10">
-                            <a href="#">
-                                <img class="cart-img img-fluid" src="assets/img/shop/gloves-1-thumb.jpg" alt="Product 1">
-                            </a>
-                        </td>
-                        <td class="w-75"> <span class="font-weight-bold">Gloves</span> / $18.99 x 2 </td>
-                        <td class="text-md-right w-15"><span class="font-weight-bold">$37.98</span></td>
+                        <td> <span class="font-weight-bold">@Model.Car.Make @Model.Car.Model (@Model.Car.Year)</span> </td>
+                        <td>@Model.Colour</td>
+                        <td>@Model.Features</td>
+                        <td>@Model.Cover</td>
+                        <td>From: @Model.StartDate.ToString("dd/MM/yyyy") To: @Model.EndDate.ToString("dd/MM/yyyy")</td>
+                        <td class="text-md-right"><span class="font-weight-bold">£199.99</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -66,20 +50,20 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h6 class="text-muted mb-3">
-                            If you have questions about your order please email us at example@example.com.
+                            If you have questions about your order please email us at support@astrentals.uk.com.
                         </h6>
                     </div>
                     <div class="col-md-8 text-md-right mt-3 mt-md-0">
                         <div class="cart-content-totals">
                             <h4 class="font-weight-light">
-                                Subtotal: $50.97
+                                Subtotal: £199.99
                             </h4>
                             <h4 class="font-weight-light">
-                                Discount (10%): <span class="text-danger">-$5.97</span>
+                                Discount (10%): <span class="text-danger">-£19.99</span>
                             </h4>
                             <hr class="my-3 w-50 ml-0 ml-md-auto mr-md-0" />
                             <h3>
-                                Total: <span class="text-primary">$45.00</span>
+                                Total: <span class="text-primary">£180.00</span>
                             </h3>
                             <hr class="my-3 w-50 ml-0 ml-md-auto mr-md-0" />
                         </div>

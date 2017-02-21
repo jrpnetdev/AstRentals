@@ -1,8 +1,13 @@
 ﻿(function (module) {
 
-    var carDetailsController = function (carService, carInfoService, carImageService) {
+    var carDetailsController = function ($http, carService, carInfoService, carImageService) {
 
         var model = this;
+
+        model.car = [];
+        model.colour = "Red";
+        model.features = "3door";
+        model.cover = "basic";
 
         model.getCar = function (id) {
 
@@ -25,6 +30,11 @@
                 }), function (data, status, header, config) {
                     model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
             };
+        };
+
+        model.submitDetails = function () {
+            var currentTime = new Date();
+            window.location = '/Cars/Checkout?carid=' + model.car.id + '&colour=' + model.colour + '&features=' + model.features + '&cover=' + model.cover + '&startdate=' + currentTime + '&enddate=' + currentTime;
         };
 
     };

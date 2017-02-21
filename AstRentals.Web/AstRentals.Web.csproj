@@ -127,9 +127,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CheckoutViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\accountController.js" />
+    <Content Include="App\checkoutController.js" />
+    <Content Include="App\registerController.js" />
     <Content Include="App\app.js" />
     <Content Include="App\loginController.js" />
     <Content Include="App\wishlistController.js" />
@@ -2933,6 +2935,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AstRentals.Data\AstRentals.Data.csproj">
+      <Project>{622B53C6-DAD7-4D18-BF04-26A7765F4E14}</Project>
+      <Name>AstRentals.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
