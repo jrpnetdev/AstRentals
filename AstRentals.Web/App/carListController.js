@@ -4,6 +4,7 @@
 
         var model = this;
 
+        model.pageSizeSelection = "10";
         model.searchType = "make";
         model.searchText = "";
         model.pages = [];
@@ -27,9 +28,9 @@
                         model.pages[i - 1] = i;
                     }
 
-                }), function (data, status, header, config) {
+                }, function (data, status, header, config) {
                     model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
-            };
+            });
         };
 
         model.getPageYear = function (year, index, size) {
@@ -50,9 +51,9 @@
                     model.pages[i - 1] = i;
                 }
 
-            }), function (data, status, header, config) {
+            }, function (data, status, header, config) {
                 model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
-            };
+            });
         };
 
         model.search = function (stext, index, size) {
@@ -75,9 +76,9 @@
                         model.pages[i - 1] = i;
                     }
 
-                }), function(data, status, header, config) {
+                }, function(data, status, header, config) {
                 model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
-            };
+            });
         }
 
         model.getNumber = function () {

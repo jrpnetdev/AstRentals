@@ -1,4 +1,35 @@
-﻿<!-- ======== Region: #footer ======== -->
+﻿<!-- ======== Region: #content-below ======== -->
+<div id="content-below">
+    <!-- Awesome features call to action -->
+    <div class="bg-primary text-white">
+        <div class="container py-3 pos-relative">
+            <div class="row">
+                <div class="col-lg-7 text-center text-lg-left">
+                    <i class="fa fa-envelope-o icon-4x op-4 float-left mr-3 hidden-lg-down"></i>
+                    <h2 class="text-uppercase font-weight-bold mt-2 mb-1 text-slab">
+                        Get Deals & Discounts
+                    </h2>
+                    <h5 class="text-faded">
+                        Direct to your inbox with our newsletter
+                    </h5>
+                </div>
+                <div class="col-lg-5 text-center text-lg-right flex-valign">
+                    <form>
+                        <div class="input-group input-group-rounded">
+                            <input type="text" class="form-control" id="email-field" placeholder="Email">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary btn-invert" type="button">Sign Up</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ======== Region: #footer ======== -->
 <footer id="footer">
     <div class="container">
         <div class="row">
@@ -38,66 +69,66 @@
                 <div class="row">
                     <div class="col-6 col-md-3">
                         <h4 class="mt-0 text-slab">
-                            Mens
+                            Make
                         </h4>
                         <ul class="list-unstyled footer-links">
-                            <li><a href="#">Shoes</a></li>
-                            <li><a href="#">Shirts</a></li>
-                            <li><a href="#">Trousers</a></li>
-                            <li><a href="#">Suits</a></li>
-                            <li><a href="#">Jackets</a></li>
-                            <li><a href="#">Sportswear</a></li>
-                            <li><a href="#">Shorts</a></li>
-                            <li><a href="#">Swimwear</a></li>
-                            <li><a href="#">T-shirts</a></li>
+                            <li><a href="#" ng-click="vm.getPageMake('Ford', 1, 10)">Ford</a></li>
+                            <li><a href="#" ng-click="vm.getPageMake('Nissan', 1, 10)">Nissan</a></li>
+                            <li><a href="#" ng-click="vm.getPageMake('Subaru', 1, 10)">Subaru</a></li>
+                            <li><a href="#" ng-click="vm.getPageMake('Jeep', 1, 10)">Jeep</a></li>
+                            <li><a href="#" ng-click="vm.getPageMake('Land Rover', 1, 10)">Land Rover</a></li>
+                            <li><a href="#" ng-click="vm.getPageMake('Mercedes-Benz', 1, 10)">Mercedes-Benz</a></li>
+                            <li><a href="#" ng-click="vm.getPageMake('Mazda', 1, 10)">Mazda</a></li>
+                            <li><a href="#" ng-click="vm.getPageMake('Toyota', 1, 10)">Toyota</a></li>
+                            <li><a href="#" ng-click="vm.getPageMake('Mitsubishi', 1, 10)">Mitsubishi</a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-md-3">
                         <h4 class="mt-0 text-slab">
-                            Womens
+                            Year
                         </h4>
                         <ul class="list-unstyled footer-links">
-                            <li><a href="#">Dresses</a></li>
-                            <li><a href="#">Jeans</a></li>
-                            <li><a href="#">Skirts</a></li>
-                            <li><a href="#">Suits</a></li>
-                            <li><a href="#">Jackets</a></li>
-                            <li><a href="#">Sportswear</a></li>
-                            <li><a href="#">Shorts</a></li>
-                            <li><a href="#">Swimwear</a></li>
-                            <li><a href="#">T-shirts</a></li>
+                            <li><a href="#" ng-click="vm.getPageYear(2013, 1, 10)">2013</a></li>
+                            <li><a href="#" ng-click="vm.getPageYear(2012, 1, 10)">2012</a></li>
+                            <li><a href="#" ng-click="vm.getPageYear(2011, 1, 10)">2011</a></li>
+                            <li><a href="#" ng-click="vm.getPageYear(2010, 1, 10)">2010</a></li>
+                            <li><a href="#" ng-click="vm.getPageYear(2009, 1, 10)">2009</a></li>
+                            <li><a href="#" ng-click="vm.getPageYear(2008, 1, 10)">2008</a></li>
+                            <li><a href="#" ng-click="vm.getPageYear(2007, 1, 10)">2007</a></li>
+                            <li><a href="#" ng-click="vm.getPageYear(2006, 1, 10)">2006</a></li>
+                            <li><a href="#" ng-click="vm.getPageYear(2005, 1, 10)">2005</a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-md-3">
                         <h4 class="mt-0 text-slab">
-                            Childrens
+                            Model
                         </h4>
                         <ul class="list-unstyled footer-links">
-                            <li><a href="#">Shoes</a></li>
-                            <li><a href="#">Sports Wear</a></li>
-                            <li><a href="#">School Clothes</a></li>
-                            <li><a href="#">Trousers</a></li>
-                            <li><a href="#">Suits</a></li>
-                            <li><a href="#">Jackets</a></li>
-                            <li><a href="#">Sportswear</a></li>
-                            <li><a href="#">Swimwear</a></li>
-                            <li><a href="#">T-shirts</a></li>
+                            <li><a href="#">Ford Mustang</a></li>
+                            <li><a href="#">BMW M3</a></li>
+                            <li><a href="#">Porsche 911</a></li>
+                            <li><a href="#">Jeep Wrangler</a></li>
+                            <li><a href="#">Mazda MX-5</a></li>
+                            <li><a href="#">Volvo C70</a></li>
+                            <li><a href="#">Jaguar XF</a></li>
+                            <li><a href="#">Aston Martin DB9</a></li>
+                            <li><a href="#">Audi S4</a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-md-3">
                         <h4 class="mt-0 text-slab">
-                            Baby
+                            Specials
                         </h4>
                         <ul class="list-unstyled footer-links">
-                            <li><a href="#">Newborn</a></li>
-                            <li><a href="#">Toddler</a></li>
-                            <li><a href="#">Preschool</a></li>
-                            <li><a href="#">Winter Suits</a></li>
-                            <li><a href="#">Jackets</a></li>
-                            <li><a href="#">Sportswear</a></li>
-                            <li><a href="#">Swimwear</a></li>
-                            <li><a href="#">T-shirts</a></li>
-                            <li><a href="#">Trousers</a></li>
+                            <li><a href="#">Convertibles</a></li>
+                            <li><a href="#">Roadsters</a></li>
+                            <li><a href="#">Sports Cars</a></li>
+                            <li><a href="#">American Muscle</a></li>
+                            <li><a href="#">British Classics</a></li>
+                            <li><a href="#">Hatchbacks</a></li>
+                            <li><a href="#">Sedan</a></li>
+                            <li><a href="#">Coupe</a></li>
+                            <li><a href="#">4x4s</a></li>       
                         </ul>
                     </div>
                 </div>
