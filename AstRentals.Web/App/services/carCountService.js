@@ -10,7 +10,6 @@
                 .then(function (response) {
                     // Success
                     result = response.data;
-                    console.log(response.data);
                 }, function () {
                     // Failure
             });

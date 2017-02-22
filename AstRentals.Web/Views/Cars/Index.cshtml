@@ -59,26 +59,28 @@
                                     </select>
                                 </form>
                             </div>
-                            <div class="col-lg-12 collapse" id="adv-search">
+                            <div class="col-lg-12 collapse" id="adv-search" ng-init="vm.ddlInit()">
                                 <!-- Advanced search form -->
-                                <form class="mt-3 bg-faded p-3 rounded mb-4 text-sm">
+                                <form class="mt-3 bg-faded p-3 rounded mb-4 text-sm" name="advancedSearch">
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label>Make</label>
-                                            <select class="form-control">
-                                                <option value="#">BMW</option>
-                                                <option value="#">Ford</option>
-                                                <option value="#">Mercedes-Benz</option>
-                                                <option value="#">Honda</option>
+                                            <select class="form-control" name="make" ng-model="vm.selectedMake">
+                                                <option ng-selected="{{vm.selectedMake}}"
+                                                        ng-repeat="make in vm.makeDropDownValues"
+                                                        value="{{make}}">
+                                                    {{make}}
+                                                </option>
                                             </select>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label>Model</label>
-                                            <select class="form-control">
-                                                <option value="#">Brand 1</option>
-                                                <option value="#">Brand 2</option>
-                                                <option value="#">Brand 3</option>
-                                                <option value="#">Brand 4</option>
+                                            <select class="form-control" name="model" ng-model="vm.selectedModel">
+                                                <option ng-selected="{{vm.selectedModel}}"
+                                                        ng-repeat="model in vm.modelDropDownValues"
+                                                        value="{{model}}">
+                                                    {{model}}
+                                                </option>
                                             </select>
                                         </div>
                                         <div class="col-md-6 mb-3">
@@ -86,25 +88,28 @@
                                             <div class="row">
                                                 <div class="input-group col-md-6">
                                                     <span class="input-group-addon">$</span>
-                                                    <input type="text" class="form-control" placeholder="from">
+                                                    <input type="text" class="form-control" placeholder="from" disabled="disabled">
                                                 </div>
                                                 <div class="input-group col-md-6">
                                                     <span class="input-group-addon">$</span>
-                                                    <input type="text" class="form-control" placeholder="to">
+                                                    <input type="text" class="form-control" placeholder="to" disabled="disabled">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label>Year</label>
-                                            <select class="form-control">
-                                                <option value="#">2013</option>
-                                                <option value="#">2012</option>
-                                                <option value="#">2011</option>
-                                                <option value="#">2010</option>
+                                            <select class="form-control" name="year" ng-model="vm.selectedYear">
+                                                <option ng-selected="{{vm.selectedYear}}"
+                                                        ng-repeat="year in vm.yearDropDownValues"
+                                                        value="{{year}}">
+                                                    {{year}}
+                                                </option>
                                             </select>
                                         </div>
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary"> <i class="fa fa-search"></i> Search </button>
+                                            <button type="submit" class="btn btn-primary" ng-click="vm.getPageMake(vm.selectedMake, 1, vm.pageSizeSelection)"> <i class="fa fa-search"></i> Search Make</button>
+                                            <button type="submit" class="btn btn-primary" ng-click="vm.getPageYear(vm.selectedYear, 1, vm.pageSizeSelection)"> <i class="fa fa-search"></i> Search Year</button>
+                                            <button type="submit" class="btn btn-primary" ng-click="vm.search(vm.selectedModel, 1, vm.pageSizeSelection)"> <i class="fa fa-search"></i> Search Model</button>
                                         </div>
                                     </div>
                                 </form>
@@ -262,6 +267,7 @@
     <script src="~/App/wishlistController.js"></script>
     <script src="~/App/services/carService.js"></script>
     <script src="~/App/services/carSearchService.js"></script>
+    <script src="~/App/services/carDropDownService.js"></script>
     <script src="~/App/directives/categoriesDirective.js"></script>
     <script src="~/App/directives/scrollDirective.js"></script>
 }

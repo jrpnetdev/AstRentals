@@ -1,6 +1,6 @@
 ﻿(function (module) {
 
-    var carListController = function (carService, carSearchService) {
+    var carListController = function (carService, carSearchService, carDropDownService) {
 
         var model = this;
 
@@ -9,7 +9,8 @@
         model.searchText = "";
         model.pages = [];
         var pgx = 0;
-        
+
+       
         model.getPageMake = function (make, index, size) {
             if (index > model.numberOfPages || index <= 0) {
                 return;
@@ -98,6 +99,28 @@
             return model.pages;
         }
 
+
+        // Drop down list functionality
+
+        model.makeDropDownValues = [];
+        model.modelDropDownValues = [];
+        model.yearDropDownValues = [];
+
+        model.selectedMake = "Ferrari";
+        model.selectedYear = "2013";
+        model.selectedModel = "Mustang";
+
+        model.ddlInit = function () {
+            carDropDownService.getMakeDropDownValues().then(function (response) {
+                model.makeDropDownValues = response.data;
+            });
+            carDropDownService.getModelDropDownValues().then(function (response) {
+                model.modelDropDownValues = response.data;
+            });
+            carDropDownService.getYearDropDownValues().then(function (response) {
+                model.yearDropDownValues = response.data;
+            });
+        }
     };
 
     module.controller("carListController", carListController);
