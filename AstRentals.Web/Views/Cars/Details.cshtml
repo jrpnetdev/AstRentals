@@ -88,7 +88,7 @@
                             <form role="form" ng-submit="vm.submitDetails()">
                                 <div class="card-block p-4 pos-relative">
                                     <!-- Product details -->
-                                    <p class="text-muted text-uppercase text-xs mb-0"><span class="text-primary">Mens</span> / Jackets</p>
+                                    <p class="text-muted text-uppercase text-xs mb-0"><span class="text-primary">{{vm.car.make}}</span> / {{vm.car.model}}</p>
                                     <h2 class="card-title mb-2">
                                         {{vm.car.make}} {{vm.car.model}} ({{vm.car.year}}) @Model
                                     </h2>
@@ -114,38 +114,45 @@
                                     <p class="text-muted text-sm">Brevitas in molior ullamcorper. Abdo capto obruo occuro proprius rusticus sit utinam. Consequat esca exputo gravis haero quis saepius si vicis.</p>
                                     <p class="text-muted text-sm">Hos ibidem patria. Fere neque nostrud. Amet huic jus nobis nostrud qui vel verto. Acsi commoveo cui imputo pertineo refero vero vulpes vulputate.</p>
                                     <hr class="my-3 mb-5" />
+                                    
                                     <!-- Cart options/links -->
                                     <div class="product-options row mb-4">
-                                        <div class="col-md-12 text-sm text-uppercase">Colour</div>
-                                        <div class="col-md-4 mb-3">
-                                            <select class="form-control form-control-sm" ng-model="vm.colour" ng-selected="vm.colour">
-                                                <option value="Red">Red</option>
-                                                <option value="Silver">Silver</option>
-                                                <option value="Blue">Blue</option>
-                                                <option value="Black">Black</option>
-                                            </select>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <div class="text-sm text-uppercase">Colour</div>
+                                                    <select class="form-control form-control-sm" ng-model="vm.colour" ng-selected="vm.colour">
+                                                        <option value="Red">Red</option>
+                                                        <option value="Silver">Silver</option>
+                                                        <option value="Blue">Blue</option>
+                                                        <option value="Black">Black</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <div class="text-sm text-uppercase">Features</div>
+                                                    <select class="form-control form-control-sm" ng-model="vm.features" ng-selected="vm.features">
+                                                        <option value="3door">3 Door</option>
+                                                        <option value="5door">5 Door</option>
+                                                        <option value="convertible">Convertible</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <div class="text-sm text-uppercase">Insurance and Cover</div>
+                                                    <select class="form-control form-control-sm" ng-model="vm.cover" ng-selected="vm.cover">
+                                                        <option value="basic">Basic Cover (£0.00)</option>
+                                                        <option value="cancellation">Basic Cover + Cancellation Guarantee (£20.00)</option>
+                                                        <option value="extended">Extended Insurance (£100.00)</option>
+                                                        <option value="premium">Premium Cover (£250.00)</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-12 text-sm text-uppercase">Features</div>
-                                        <div class="col-md-4 mb-3">
-                                            <select class="form-control form-control-sm" ng-model="vm.features" ng-selected="vm.features">
-                                                <option value="3door">3 Door</option>
-                                                <option value="5door">5 Door</option>
-                                                <option value="convertible">Convertible</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-12 text-sm text-uppercase">Insurance and Cover</div>
-                                        <div class="col-md-4 mb-3">
-                                            <select class="form-control form-control-sm" ng-model="vm.cover" ng-selected="vm.cover">
-                                                <option value="basic">Basic Cover (£0.00)</option>
-                                                <option value="cancellation">Basic Cover + Cancellation Guarantee (£20.00)</option>
-                                                <option value="extended">Extended Insurance (£100.00)</option>
-                                                <option value="premium">Premium Cover (£250.00)</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-12 text-sm text-uppercase"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i> Hire Dates</div>
-                                        <div class="col-md-4 mb-3" ng-controller="DatepickerCtrl">
+                                        <div class="col-md-6 mb-3" ng-controller="DatepickerCtrl">
+                                            <div class="text-sm text-uppercase"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i> Hire Dates</div>
                                             <div>
-                                                <div style="display:inline-block; min-height:255px;">
+                                                <div style="display: inline-block; min-height: 255px;">
                                                     <uib-datepicker template-url="../../App/DatePicker/datepicker.html" ng-model="dt" min-date="minDate" init-date="initDate" class="well well-sm" custom-class="getDayClass(date, mode)"></uib-datepicker>
                                                 </div>
 
@@ -154,6 +161,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div ng-controller="wishlistController">
                                         <button class="btn btn-primary" type="submit"><i class="fa fa-car mr-2"></i> Book Rental</button>
                                         <a href="#" class="btn btn-link btn-sm" ng-click="addToWishlist(@Model)"><i class="fa fa-heart"></i> Add to Wishlist</a>
