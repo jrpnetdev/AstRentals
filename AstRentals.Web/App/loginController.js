@@ -1,6 +1,6 @@
 ﻿(function (module) {
 
-    var loginController = function(loginService) {
+    var loginController = function ($window, loginService) {
 
         var model = this;
 
@@ -10,7 +10,7 @@
 
         model.loginSubmit = function () {
             loginService.login(model.email, model.password).then(function() {
-                // todo: redirect to car list
+                $window.location.href = 'http://localhost:50592/Cars/Index';
             });
         }
     };

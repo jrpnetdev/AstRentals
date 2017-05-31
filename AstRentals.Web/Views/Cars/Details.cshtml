@@ -39,43 +39,43 @@
                         <div class="product-gallery pos-relative">
                             @*<div class="bg-info text-white rounded pos-absolute pos-zindex-2 mt-2 ml-2 py-2 px-3">On Sale</div>*@
                             <div class="owl-carousel owl-nav-over" id="product-gallery" data-toggle="owl-carousel" data-owl-carousel-settings='{"responsive":{"0":{"items":1,"nav":true, "dots":false}}}'>
-                                <a href="#" data-img-zoom="{{vm.carImages.data.images[0].image_url}}">
-                                    <img src="{{vm.carImages.data.images[0].image_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
+                                <a href="#" data-img-zoom="{{vm.carImages.items[0].link}}">
+                                    <img ng-src="{{vm.carImages.items[0].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
                                 </a>
-                                <a href="#" data-img-zoom="{{vm.carImages.data.images[1].image_url}}">
-                                    <img src="{{vm.carImages.data.images[1].image_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
+                                <a href="#" data-img-zoom="{{vm.carImages.items[1].link}}">
+                                    <img ng-src="{{vm.carImages.items[1].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
                                 </a>
-                                <a href="#" data-img-zoom="{{vm.carImages.data.images[2].image_url}}">
-                                    <img src="{{vm.carImages.data.images[2].image_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
+                                <a href="#" data-img-zoom="{{vm.carImages.items[2].link}}">
+                                    <img ng-src="{{vm.carImages.items[2].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
                                 </a>
-                                <a href="#" data-img-zoom="{{vm.carImages.data.images[3].image_url}}">
-                                    <img src="{{vm.carImages.data.images[3].image_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
+                                <a href="#" data-img-zoom="{{vm.carImages.items[3].link}}">
+                                    <img ng-src="{{vm.carImages.items[3].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
                                 </a>
-                                <a href="#" data-img-zoom="{{vm.carImages.data.images[4].image_url}}">
-                                    <img src="{{vm.carImages.data.images[4].image_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
+                                <a href="#" data-img-zoom="{{vm.carImages.items[4].link}}">
+                                    <img ng-src="{{vm.carImages.items[4].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
                                 </a>
-                                <a href="#" data-img-zoom="{{vm.carImages.data.images[5].image_url}}">
-                                    <img src="{{vm.carImages.data.images[5].image_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
+                                <a href="#" data-img-zoom="{{vm.carImages.items[5].link}}">
+                                    <img ng-src="{{vm.carImages.items[5].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})" class="lazyOwl img-fluid" width="200" />
                                 </a>
                             </div>
                             <div class="owl-thumbs" data-toggle="owl-carousel" data-owl-carousel-thumbs="#product-gallery" data-owl-carousel-settings='{"nav":false, "dots":false, "margin":5}'>
                                 <a class="owl-thumb">
-                                    <img class="img-fluid" src="{{vm.carImages.data.images[0].thumb_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
+                                    <img class="img-fluid" src="{{vm.carImages.items[0].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                                 </a>
                                 <a class="owl-thumb">
-                                    <img class="img-fluid" src="{{vm.carImages.data.images[1].thumb_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
+                                    <img class="img-fluid" src="{{vm.carImages.items[1].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                                 </a>
                                 <a class="owl-thumb">
-                                    <img class="img-fluid" src="{{vm.carImages.data.images[2].thumb_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
+                                    <img class="img-fluid" src="{{vm.carImages.items[2].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                                 </a>
                                 <a class="owl-thumb">
-                                    <img class="img-fluid" src="{{vm.carImages.data.images[3].thumb_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
+                                    <img class="img-fluid" src="{{vm.carImages.items[3].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                                 </a>
                                 <a class="owl-thumb">
-                                    <img class="img-fluid" src="{{vm.carImages.data.images[4].thumb_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
+                                    <img class="img-fluid" src="{{vm.carImages.items[4].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                                 </a>
                                 <a class="owl-thumb">
-                                    <img class="img-fluid" src="{{vm.carImages.data.images[5].thumb_url}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
+                                    <img class="img-fluid" src="{{vm.carImages.items[5].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                                 </a>
                             </div>
                         </div>

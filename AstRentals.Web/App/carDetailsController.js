@@ -22,7 +22,7 @@
                     });
 
                     carImageService.getCarImages(model.car.year, model.car.make, model.car.model, 6).then(function (response) {
-                        model.carImages = angular.fromJson(response.data);;
+                        model.carImages = angular.fromJson(response.data);
                     }, function (data, status, header, config) {
                         model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
                     });

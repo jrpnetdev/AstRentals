@@ -1,6 +1,6 @@
 ﻿(function (module) {
 
-    var carListController = function (carService, carSearchService, carDropDownService) {
+    var carListController = function (carService, carSearchService, carDropDownService, loginService) {
 
         var model = this;
 
@@ -9,6 +9,8 @@
         model.searchText = "";
         model.pages = [];
         var pgx = 0;
+
+        console.log(loginService.userIsloggedin());
 
        
         model.getPageMake = function (make, index, size) {
@@ -98,7 +100,6 @@
 
             return model.pages;
         }
-
 
         // Drop down list functionality
 

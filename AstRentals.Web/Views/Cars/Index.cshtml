@@ -147,7 +147,7 @@
                                                     </p>
                                                     <p class="text-muted text-xs">Consectetuer feugiat hendrerit jus neo usitas valde verto. Abbas duis interdico modo ymo.</p>
                                                     <div class="mt-auto" ng-controller="wishlistController">
-                                                        <a href="shop-cart.htm" class="btn btn-primary btn-sm"><i class="fa fa-car mr-2"></i> Book Car Now</a>
+                                                        <a href="@Url.Content("~/Cars/Details/"){{item.id}}" class="btn btn-primary btn-sm"><i class="fa fa-car mr-2"></i> Book Car Now</a>
                                                         <a href="#" class="btn btn-link btn-sm" data-id="{{item.id}}" ng-click="test($event)"><i class="fa fa-heart"></i> <i class="fa fa-heart-o"></i> Add to Wishlist</a>
                                                         <p class="text-muted text-xs d-inline hidden-md-down">3 available</p>
                                                     </div>
@@ -270,4 +270,5 @@
     <script src="~/App/services/carDropDownService.js"></script>
     <script src="~/App/directives/categoriesDirective.js"></script>
     <script src="~/App/directives/scrollDirective.js"></script>
+    <script src="~/App/services/loginService.js"></script>
 }
