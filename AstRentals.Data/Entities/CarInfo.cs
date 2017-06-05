@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AstRentals.Data.Entities
+﻿namespace AstRentals.Data.Entities
 {
     public class CarInfo
     {

@@ -50,14 +50,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\CarInfo.cs" />
+    <Compile Include="Entities\Favourite.cs" />
     <Compile Include="Infrastructure\AstRentalsContext.cs" />
-    <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Car.cs" />
-    <Compile Include="Entities\Customer.cs" />
-    <Compile Include="Entities\Vehicle.cs" />
-    <Compile Include="Entities\VehicleType.cs" />
+    <Compile Include="Infrastructure\FavouriteRepository.cs" />
     <Compile Include="Infrastructure\CarInfoRepository.cs" />
     <Compile Include="Infrastructure\CarRepository.cs" />
+    <Compile Include="Infrastructure\IFavouriteRepository.cs" />
     <Compile Include="Infrastructure\ICarInfoRepository.cs" />
     <Compile Include="Infrastructure\ICarRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

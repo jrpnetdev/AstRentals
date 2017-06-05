@@ -10,17 +10,13 @@ namespace AstRentals.Data.Infrastructure
             Database.SetInitializer(new CreateDatabaseIfNotExists<AstRentalsContext>());
         }
 
-        //public DbSet<Customer> Customers { get; set; }
-        //public DbSet<Address> Addresses { get; set; }
-        public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Car> Cars { get; set; }
         public DbSet<CarInfo> CarInfo { get; set; }
+        public DbSet<Favourite> Favourites { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Customer>().HasMany(c => c.Vehicles);
-
-            base.OnModelCreating(modelBuilder);
-        }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+        //}
     }
 }

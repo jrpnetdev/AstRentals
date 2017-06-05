@@ -70,6 +70,7 @@ namespace AstRentals.Api.App_Start
             kernel.Bind<AstRentalsContext>().To<AstRentalsContext>().InRequestScope();
             kernel.Bind<ICarRepository>().To<CarRepository>();
             kernel.Bind<ICarInfoRepository>().To<CarInfoRepository>();
+            kernel.Bind<IFavouriteRepository>().To<FavouriteRepository>();
         }        
     }
 }

@@ -30,6 +30,7 @@
                     <label class="sr-only" for="login-password-page">Password</label>
                     <input type="password" id="login-password-page" class="form-control password" ng-model="vm.password" placeholder="Password">
                 </div>
+                <div class="alert alert-warning" role="alert" ng-show="vm.error !== ''"> <strong>Warning:</strong> {{vm.error}}</div>
                 <button type="submit" class="btn btn-primary">Login</button>
                 |
                 <small><a href="#">Forgotten Password?</a></small>

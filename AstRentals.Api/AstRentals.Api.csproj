@@ -256,16 +256,17 @@
     <Compile Include="Controllers\CarImageController.cs" />
     <Compile Include="Controllers\CarInfoController.cs" />
     <Compile Include="Controllers\CarSearchController.cs" />
+    <Compile Include="Controllers\FavouritesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CarsController.cs" />
-    <Compile Include="Data\AstRentalsMigrations\201702102249245_InitalCreate.cs" />
-    <Compile Include="Data\AstRentalsMigrations\201702102249245_InitalCreate.Designer.cs">
-      <DependentUpon>201702102249245_InitalCreate.cs</DependentUpon>
+    <Compile Include="Data\AstRentalsMigrations\201706050912284_InitalCreate.cs" />
+    <Compile Include="Data\AstRentalsMigrations\201706050912284_InitalCreate.Designer.cs">
+      <DependentUpon>201706050912284_InitalCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\AstRentalsMigrations\Configuration.cs" />
-    <Compile Include="Data\IdentityMigrations\201702102249020_InitalCreate.cs" />
-    <Compile Include="Data\IdentityMigrations\201702102249020_InitalCreate.Designer.cs">
-      <DependentUpon>201702102249020_InitalCreate.cs</DependentUpon>
+    <Compile Include="Data\IdentityMigrations\201706050913049_InitalCreate.cs" />
+    <Compile Include="Data\IdentityMigrations\201706050913049_InitalCreate.Designer.cs">
+      <DependentUpon>201706050913049_InitalCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\IdentityMigrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -273,7 +274,6 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Favourite.cs" />
     <Compile Include="Models\CarListViewModel.cs" />
     <Compile Include="Models\CarMakeCount.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -359,11 +359,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data\AstRentalsMigrations\201702102249245_InitalCreate.resx">
-      <DependentUpon>201702102249245_InitalCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Data\AstRentalsMigrations\201706050912284_InitalCreate.resx">
+      <DependentUpon>201706050912284_InitalCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Data\IdentityMigrations\201702102249020_InitalCreate.resx">
-      <DependentUpon>201702102249020_InitalCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Data\IdentityMigrations\201706050913049_InitalCreate.resx">
+      <DependentUpon>201706050913049_InitalCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,6 +10,7 @@ namespace AstRentals.Web.Controllers
 {
     public class CarsController : Controller
     {
+        //[Authorize]
         public ActionResult Index()
         {
             return View();

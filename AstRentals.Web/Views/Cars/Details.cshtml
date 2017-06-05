@@ -162,9 +162,9 @@
                                         </div>
                                     </div>
 
-                                    <div ng-controller="wishlistController">
+                                    <div ng-controller="favouriteController">
                                         <button class="btn btn-primary" type="submit"><i class="fa fa-car mr-2"></i> Book Rental</button>
-                                        <a href="#" class="btn btn-link btn-sm" ng-click="addToWishlist(@Model)"><i class="fa fa-heart"></i> Add to Wishlist</a>
+                                        <a href="#" class="btn btn-link btn-sm" ng-click="addToFavouritesDetails(@Model)"><i class="fa fa-heart"></i> Add to Wishlist</a>
                                         @*<p class="text-muted text-xs d-inline hidden-md-down">12769 in stock</p>*@
                                     </div>
                                 </div>
@@ -331,7 +331,7 @@
     <script src="~/App/services/carInfoService.js"></script>
     <script src="~/App/services/carImageService.js"></script>
     <script src="~/App/carDetailsController.js"></script>
-    <script src="~/App/wishlistController.js"></script>
+    <script src="~/App/favouriteController.js"></script>
     <script src="~/App/directives/carSpec.js"></script>
     <script src="~/App/DatePicker/DatePickerCtrl.js"></script>
 }
