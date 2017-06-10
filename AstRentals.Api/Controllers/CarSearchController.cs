@@ -1,59 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using AstRentals.Api.Models;
-using AstRentals.Api.Utilities;
 using AstRentals.Data.Entities;
 using AstRentals.Data.Infrastructure;
+
 
 namespace AstRentals.Api.Controllers
 {
     public class CarSearchController : ApiController
     {
-        private readonly ICarRepository _repo;
+        private readonly AstRentalsContext _ctx;
 
-        public CarSearchController(ICarRepository repo)
+        public CarSearchController(AstRentalsContext ctx)
         {
-            _repo = repo;
+            _ctx = ctx;
         }
 
-        //http://localhost:50604/api/carsearch?searchtext=Ford%20Mustang
-        //http://localhost:50604/api/carsearch?searchtext=Ford%20Mustang%201989
-        //http://localhost:50604/api/carsearch?searchtext=Mustang%202005
         public CarListViewModel Get(string searchText, int index, int size)
         {
             CarListViewModel clvm = new CarListViewModel();
-            var allCars = _repo.All();
+            //Todo: Add a preprocessor to format input term
 
-            if (String.IsNullOrWhiteSpace(searchText))
+            var results = new List<Car>();
+
+            using (var context = _ctx)
             {
-                clvm.Cars = allCars;
+                var clientIdParameter = new SqlParameter("@term", searchText);
+
+                results = context.Database
+                    .SqlQuery<Car>("dbo.SearchCars @term", clientIdParameter)
+                    .ToList();
             }
 
-            SearchUtilities utils = new SearchUtilities();
-
-            var results = utils.TextSearch(searchText, allCars);
-
-            //if (!results.Any())
-            //{
-            //    // Todo: What to return ???
-            //}
-
-            clvm.TotalCars = results.Count();
-
+            clvm.Cars = results;
+            clvm.TotalCars = results.Count;
 
             var skip = (index - 1) * size;
 
             if (skip != 0)
             {
-                results = results.OrderBy(q => q.Id).Skip(skip);
+                results = results.OrderBy(q => q.Id).Skip(skip).ToList();
             }
 
             clvm.Cars = results.Take(size);
-
 
             var pages = clvm.TotalCars / size;
             var remainder = clvm.TotalCars % size;
@@ -68,21 +59,23 @@ namespace AstRentals.Api.Controllers
             return clvm;
         }
 
-        public IEnumerable<Car> Get(string searchText)
+        public List<Car> Get(string term)
         {
-            var allCars = _repo.All();
 
-            //if (String.IsNullOrWhiteSpace(searchText))
-            //{
-            //    clvm.Cars = allCars;
-            //}
+            //Todo: Add a preprocessor to format input term
 
-            SearchUtilities utils = new SearchUtilities();
+            var result = new List<Car>();
 
-            var results = utils.TextSearch(searchText, allCars);
+            using (var context = _ctx)
+            {
+                var clientIdParameter = new SqlParameter("@term", term);
 
-            return results;
+                result = context.Database
+                    .SqlQuery<Car>("dbo.SearchCars @term", clientIdParameter)
+                    .ToList();
+            }
 
+            return result;
         }
     }
 }

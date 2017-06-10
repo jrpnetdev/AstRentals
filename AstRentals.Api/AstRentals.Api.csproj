@@ -252,13 +252,12 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
-    <Compile Include="Controllers\NewSearchController.cs" />
+    <Compile Include="Controllers\CarSearchController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\CarCountController.cs" />
     <Compile Include="Controllers\CarDropDownController.cs" />
     <Compile Include="Controllers\CarImageController.cs" />
     <Compile Include="Controllers\CarInfoController.cs" />
-    <Compile Include="Controllers\CarSearchController.cs" />
     <Compile Include="Controllers\FavouritesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CarsController.cs" />
@@ -284,7 +283,6 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Utilities\SearchUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
