@@ -1,34 +1,46 @@
 ﻿(function (module) {
 
-    var carListController = function (carService, carSearchService, carDropDownService) {
+    var carListController = function (carService, carSearchService, carDropDownService, userInfoService) {
 
         var model = this;
 
         model.pageSizeSelection = "10";
         model.searchType = "make";
         model.searchText = "";
+        model.userEmail = "";
         model.pages = [];
         var pgx = 0;
+
+        model.getUserEmail = function() {
+            userInfoService.getEmail().then(function (response) {
+                model.userEmail = response.data;
+                console.log(model.userEmail);
+            }, function (data, status, header, config) {
+                model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
+            });
+        };
        
         model.getPageMake = function (make, index, size) {
             if (index > model.numberOfPages || index <= 0) {
                 return;
             }
             carService.getCarsByPage(make, index, size).then(function (response) {
-                    model.searchType = "make";
-                    model.cars = response.data.cars;
-                    model.totalCars = response.data.totalCars;
-                    model.numberOfPages = response.data.numberOfPages;
-                    model.currentPage = response.data.currentPage;
-                    
-                    model.numberOfPages < 10 ? pgx = model.numberOfPages : pgx = size;
-                    
-                    model.pages = new Array(pgx);
-                    for (var i = 1; i <= pgx; i++) {
-                        model.pages[i - 1] = i;
-                    }
+                model.searchType = "make";
+                model.cars = response.data.cars;
+                model.totalCars = response.data.totalCars;
+                model.numberOfPages = response.data.numberOfPages;
+                model.currentPage = response.data.currentPage;
+                
+                model.numberOfPages < 10 ? pgx = model.numberOfPages : pgx = size;
+                
+                model.pages = new Array(pgx);
+                for (var i = 1; i <= pgx; i++) {
+                    model.pages[i - 1] = i;
+                }
 
-                }, function (data, status, header, config) {
+                model.getUserEmail();
+
+            }, function (data, status, header, config) {
                     model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
             });
         };
@@ -51,6 +63,8 @@
                     model.pages[i - 1] = i;
                 }
 
+                model.getUserEmail();
+
             }, function (data, status, header, config) {
                 model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
             });
@@ -63,30 +77,24 @@
             model.searchText = stext;
             carSearchService.getSearchResults(model.searchText, index, 10)
                 .then(function(response) {
-                        model.searchType = "search";
-                        model.cars = response.data.cars;
-                        model.totalCars = response.data.totalCars;
-                        model.numberOfPages = response.data.numberOfPages;
-                        model.currentPage = response.data.currentPage;
+                    model.searchType = "search";
+                    model.cars = response.data.cars;
+                    model.totalCars = response.data.totalCars;
+                    model.numberOfPages = response.data.numberOfPages;
+                    model.currentPage = response.data.currentPage;
 
-                        model.numberOfPages < 10 ? pgx = model.numberOfPages : pgx = size;
+                    model.numberOfPages < 10 ? pgx = model.numberOfPages : pgx = size;
 
-                        model.pages = new Array(pgx);
-                        for (var i = 1; i <= pgx; i++) {
-                            model.pages[i - 1] = i;
-                        }
+                    model.pages = new Array(pgx);
+                    for (var i = 1; i <= pgx; i++) {
+                        model.pages[i - 1] = i;
+                    }
 
-                    },
-                    function(data, status, header, config) {
-                        model.error = "error :" +
-                            data +
-                            "   status:" +
-                            status +
-                            "   header:" +
-                            header +
-                            "   config:" +
-                            config;
-                    });
+                    model.getUserEmail();
+
+                }, function (data, status, header, config) {
+                    model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
+                });
         };
 
         model.getNumber = function() {

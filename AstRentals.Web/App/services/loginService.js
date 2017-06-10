@@ -9,9 +9,9 @@
 
         var login = function(username, password) {
             return $http({
-                url: 'http://localhost:50604/Token',
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                url: "http://localhost:50604/Token",
+                method: "POST",
+                headers: { 'Content-Type': "application/x-www-form-urlencoded" },
                 data: "userName=" + username + "&password=" + password + "&grant_type=password"
             }).then(function(data) {
                     isloggedin = true;
