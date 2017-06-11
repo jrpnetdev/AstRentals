@@ -1,25 +1,15 @@
 ﻿(function (module) {
 
-    var carListController = function (carService, carSearchService, carDropDownService, userInfoService) {
+    var carListController = function (carService, carSearchService, carDropDownService) {
 
         var model = this;
 
         model.pageSizeSelection = "10";
         model.searchType = "make";
         model.searchText = "";
-        model.userEmail = "";
         model.pages = [];
         var pgx = 0;
 
-        model.getUserEmail = function() {
-            userInfoService.getEmail().then(function (response) {
-                model.userEmail = response.data;
-                console.log(model.userEmail);
-            }, function (data, status, header, config) {
-                model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
-            });
-        };
-       
         model.getPageMake = function (make, index, size) {
             if (index > model.numberOfPages || index <= 0) {
                 return;
@@ -37,8 +27,6 @@
                 for (var i = 1; i <= pgx; i++) {
                     model.pages[i - 1] = i;
                 }
-
-                model.getUserEmail();
 
             }, function (data, status, header, config) {
                     model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
@@ -62,8 +50,6 @@
                 for (var i = 1; i <= pgx; i++) {
                     model.pages[i - 1] = i;
                 }
-
-                model.getUserEmail();
 
             }, function (data, status, header, config) {
                 model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
@@ -89,8 +75,6 @@
                     for (var i = 1; i <= pgx; i++) {
                         model.pages[i - 1] = i;
                     }
-
-                    model.getUserEmail();
 
                 }, function (data, status, header, config) {
                     model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;

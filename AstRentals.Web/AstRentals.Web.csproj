@@ -135,7 +135,6 @@
     <Content Include="App\app.js" />
     <Content Include="App\loginController.js" />
     <Content Include="App\services\carDropDownService.js" />
-    <Content Include="App\services\userInfoService.js" />
     <Content Include="App\services\loginService.js" />
     <Content Include="App\favouriteController.js" />
     <Content Include="App\DatePicker\datepicker.html" />

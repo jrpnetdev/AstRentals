@@ -2,6 +2,7 @@
 using AstRentals.Data.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Http;
 
 namespace AstRentals.Api.Controllers
@@ -10,35 +11,25 @@ namespace AstRentals.Api.Controllers
     {
 
         private readonly IFavouriteRepository _repo;
-        private readonly ICarRepository _carRepo;
 
-        public FavouritesController(IFavouriteRepository repo, ICarRepository carRepo)
+        public FavouritesController(IFavouriteRepository repo)
         {
             _repo = repo;
-            _carRepo = carRepo;
         }
 
-        public List<Car> Get()
+        public List<Favourite> Get(string email)
         {
-            var allFavourites = _repo.All().ToList();
+            var favourites = _repo.FindAll(p => p.Email == email).ToList();
 
-            var carList = new List<Car>();
-
-            foreach (var favourite in allFavourites)
-            {
-                var car = _carRepo.Find(c => c.Id == favourite.CarId);
-                carList.Add(car);
-            }
-
-            return carList;
+            return favourites;
         }
 
         [HttpPost]
-        public int Post([FromBody]int id)
+        public int Post([FromBody]FavouritePost favourite)
         {
-            var car = _carRepo.Find(c => c.Id == id);
+            if (favourite.Email == "null") return 0;
 
-            _repo.Add(new Favourite() {CarId = car.Id});
+            _repo.Add(new Favourite() {CarId = favourite.CarId, Email = favourite.Email});
 
             return 1;
         }

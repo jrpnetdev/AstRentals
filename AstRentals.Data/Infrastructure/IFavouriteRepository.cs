@@ -14,6 +14,8 @@ namespace AstRentals.Data.Infrastructure
 
         Favourite Find(Expression<Func<Favourite, bool>> predicate);
 
+        IQueryable<Favourite> FindAll(Expression<Func<Favourite, bool>> predicate);
+
         int Add(Favourite favourite);
 
         int Delete(Favourite favourite);

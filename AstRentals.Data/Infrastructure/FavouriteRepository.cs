@@ -27,6 +27,11 @@ namespace AstRentals.Data.Infrastructure
             return _ctx.Favourites.SingleOrDefault(predicate);
         }
 
+        public IQueryable<Favourite> FindAll(Expression<Func<Favourite, bool>> predicate)
+        {
+            return _ctx.Favourites.Where(predicate).AsQueryable();
+        }
+
         public int Add(Favourite favourite)
         {
             _ctx.Favourites.Add(favourite);

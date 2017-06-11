@@ -1,10 +1,10 @@
-﻿using System;
+﻿using AstRentals.Data.Entities;
+using AstRentals.Web.ViewModels;
+using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using AstRentals.Data.Entities;
-using AstRentals.Web.ViewModels;
-using Newtonsoft.Json;
 
 namespace AstRentals.Web.Controllers
 {
@@ -13,6 +13,8 @@ namespace AstRentals.Web.Controllers
         //[Authorize]
         public ActionResult Index()
         {
+            ViewBag.Email = TempData["email"] ?? "null";
+
             return View();
         }
 
@@ -50,6 +52,7 @@ namespace AstRentals.Web.Controllers
             return View(vm);
         }
 
+        #region Helpers
         public async Task<string> GetCar(int id)
         {
             string temp = "";
@@ -61,5 +64,12 @@ namespace AstRentals.Web.Controllers
 
             return temp;
         }
+
+        [HttpPost]
+        public void AddEmailToTempData(string email)
+        {
+            TempData["email"] = email;
+        }
+        #endregion
     }
 }
