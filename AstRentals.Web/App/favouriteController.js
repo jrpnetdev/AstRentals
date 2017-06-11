@@ -2,12 +2,7 @@
 
     var favouriteController = function ($scope, $http) {
 
-
-        $scope.addToFavouritesDetails = function(id) {
-            console.log(id);
-        };
-
-        $scope.addToFavouritesIndex = function(e) {
+        $scope.addToFavourites = function(e) {
             //console.log($(e.currentTarget).attr("data-id"));
 
             var id = $(e.currentTarget).attr("data-id");
@@ -22,8 +17,10 @@
                 // success callback
                 function(response) {
                     if (response.data === 0) {
-                        // todo: pop up 'please log in to save favourites'
-                    }
+                        // todo: toastr 'please log in to save favourites'
+                    } 
+
+                    // todo: toastr notification 'successfully added favourites'
                 },
                 // error callback
                 function(data, status, header, config) {

@@ -5,6 +5,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 
 namespace AstRentals.Web.Controllers
 {
@@ -18,14 +19,17 @@ namespace AstRentals.Web.Controllers
             return View();
         }
 
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, string email)
         {
-            if (!id.HasValue)
+
+            if (id == null || email == "null")
             {
-                return RedirectToAction("Index","Error");
+                return RedirectToAction("Index", "Error");
             }
 
-            return View(id);
+            DetailsViewModel vm = new DetailsViewModel() { Email = email, CarId = id };
+            
+            return View(vm);
         }
 
         public async Task<ActionResult> Checkout(CheckoutViewModel vm)

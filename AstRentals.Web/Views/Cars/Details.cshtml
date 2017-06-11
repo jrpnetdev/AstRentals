@@ -1,4 +1,4 @@
-﻿@model int?
+﻿@model AstRentals.Web.ViewModels.DetailsViewModel
 @{
     ViewBag.Title = "Details";
 }
@@ -9,7 +9,7 @@
 
 <div class="ng-cloak">
     <!-- ======== Region: body ======== -->
-    <div class="page page-shop header-compact-sticky page-shop-product navbar-layout-navbar-below" ng-controller="carDetailsController as vm" ng-init="vm.getCar(@Model)">
+    <div class="page page-shop header-compact-sticky page-shop-product navbar-layout-navbar-below" ng-controller="carDetailsController as vm" ng-init="vm.getCar(@Html.Raw(Model.CarId))">
 
         <!-- plugin: page loading indicator, delete to remove loader -->
         <div class="page-loader" data-toggle="page-loader"></div>
@@ -60,22 +60,22 @@
                             </div>
                             <div class="owl-thumbs" data-toggle="owl-carousel" data-owl-carousel-thumbs="#product-gallery" data-owl-carousel-settings='{"nav":false, "dots":false, "margin":5}'>
                                 <a class="owl-thumb">
-                                    <img class="img-fluid" src="{{vm.carImages.items[0].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
+                                    <img class="img-fluid" ng-src="{{vm.carImages.items[0].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                                 </a>
                                 <a class="owl-thumb">
-                                    <img class="img-fluid" src="{{vm.carImages.items[1].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
+                                    <img class="img-fluid" ng-src="{{vm.carImages.items[1].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                                 </a>
                                 <a class="owl-thumb">
-                                    <img class="img-fluid" src="{{vm.carImages.items[2].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
+                                    <img class="img-fluid" ng-src="{{vm.carImages.items[2].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                                 </a>
                                 <a class="owl-thumb">
-                                    <img class="img-fluid" src="{{vm.carImages.items[3].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
+                                    <img class="img-fluid" ng-src="{{vm.carImages.items[3].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                                 </a>
                                 <a class="owl-thumb">
-                                    <img class="img-fluid" src="{{vm.carImages.items[4].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
+                                    <img class="img-fluid" ng-src="{{vm.carImages.items[4].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                                 </a>
                                 <a class="owl-thumb">
-                                    <img class="img-fluid" src="{{vm.carImages.items[5].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
+                                    <img class="img-fluid" ng-src="{{vm.carImages.items[5].link}}" alt="{{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})">
                                 </a>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                                     <!-- Product details -->
                                     <p class="text-muted text-uppercase text-xs mb-0"><span class="text-primary">{{vm.car.make}}</span> / {{vm.car.model}}</p>
                                     <h2 class="card-title mb-2">
-                                        {{vm.car.make}} {{vm.car.model}} ({{vm.car.year}}) @Model
+                                        {{vm.car.make}} {{vm.car.model}} ({{vm.car.year}}) @Model.CarId
                                     </h2>
                                     <h4 class="font-weight-bold text-primary">
                                         <del class="op-5">£250.00</del>
@@ -164,8 +164,9 @@
 
                                     <div ng-controller="favouriteController">
                                         <button class="btn btn-primary" type="submit"><i class="fa fa-car mr-2"></i> Book Rental</button>
-                                        <a href="#" class="btn btn-link btn-sm" ng-click="addToFavouritesDetails(@Model)"><i class="fa fa-heart"></i> Add to Wishlist</a>
-                                        @*<p class="text-muted text-xs d-inline hidden-md-down">12769 in stock</p>*@
+                                        <a href="#" class="btn btn-link btn-sm" data-id="@Model.CarId" data-email="@Model.Email" ng-click="addToFavourites($event)"><i class="fa fa-heart"></i> Add to Favourites</a>
+                                        <a href="#" class="btn btn-link btn-sm" data-id="@Model.CarId" data-email="@Model.Email" ng-click="removeFromFavourites($event)"><i class="fa fa-heart-o"></i> Remove From Favourites</a>
+                                        <p class="text-muted text-xs d-inline hidden-md-down">Car available now!</p>
                                     </div>
                                 </div>
                             </form>

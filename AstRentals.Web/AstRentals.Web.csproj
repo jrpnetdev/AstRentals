@@ -128,6 +128,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CheckoutViewModel.cs" />
+    <Compile Include="ViewModels\DetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\checkoutController.js" />
