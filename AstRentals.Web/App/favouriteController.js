@@ -1,8 +1,8 @@
 ﻿(function (module) {
 
-    var favouriteController = function ($scope, $http) {
+    var favouriteController = function ($scope, $rootScope, $http, toastr) {
 
-        $scope.addToFavourites = function(e) {
+        $scope.addToFavourites = function (e) {
 
             var id = $(e.currentTarget).attr("data-id");
             var email = $(e.currentTarget).attr("data-email");
@@ -16,10 +16,10 @@
                 // success callback
                 function(response) {
                     if (response.data === 0) {
-                        // todo: toastr 'please log in to save favourites'
-                    } 
-
-                    // todo: toastr notification 'successfully added favourites'
+                        toastr.error("Please log in to save favourites");
+                    }
+                    $rootScope.$broadcast("updatedFavourites", email);
+                    toastr.success("Successfully added to Favourites");
                 },
                 // error callback
                 function(data, status, header, config) {

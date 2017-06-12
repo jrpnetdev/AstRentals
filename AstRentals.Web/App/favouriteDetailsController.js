@@ -1,6 +1,6 @@
 ﻿(function (module) {
 
-    var favouriteDetailsController = function ( $http) {
+    var favouriteDetailsController = function ($scope, $rootScope, $http, toastr) {
 
         var model = this;
 
@@ -18,18 +18,19 @@
 
         };
 
-        model.removeFavourite = function (e) {
+        model.removeFavourite = function(e) {
             var id = $(e.currentTarget).attr("data-id");
             var email = $(e.currentTarget).attr("data-email");
 
-            $http.delete("http://localhost:50604/api/favourites?id=" + id + "&email=" + email).then(function (response) {
+            $http.delete("http://localhost:50604/api/favourites?id=" + id + "&email=" + email).then(function(response) {
                 if (response.data === 1) {
-                    //todo: toastr 'favourite succesfully removed'
-                    console.log("removed Favourite... " + id + "email: " + email);
+                    toastr.success("Favourite successfully removed");
                     model.getFavourites(email);
                 }
             });
-        }
+        };
+
+        $rootScope.$on("updatedFavourites", function (event, email) { model.getFavourites(email); });
 
     };
 

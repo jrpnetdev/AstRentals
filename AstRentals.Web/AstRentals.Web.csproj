@@ -341,6 +341,12 @@
     <Content Include="assets\img\team\steve.jpg" />
     <Content Include="assets\img\transparent.png" />
     <Content Include="assets\js\angular-animate.js" />
+    <Content Include="assets\plugins\angular-toastr\angular-toastr.css" />
+    <Content Include="assets\plugins\angular-toastr\angular-toastr.js" />
+    <Content Include="assets\plugins\angular-toastr\angular-toastr.min.css" />
+    <Content Include="assets\plugins\angular-toastr\angular-toastr.min.js" />
+    <Content Include="assets\plugins\angular-toastr\angular-toastr.tpls.js" />
+    <Content Include="assets\plugins\angular-toastr\angular-toastr.tpls.min.js" />
     <Content Include="assets\js\angular.js" />
     <Content Include="assets\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="assets\js\script.js" />
