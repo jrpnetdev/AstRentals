@@ -21,6 +21,8 @@ namespace AstRentals.Web.Controllers
         public ActionResult Details(int? id, string email)
         {
 
+            ViewBag.Email = email;
+
             if (id == null || email == "null")
             {
                 return RedirectToAction("Index", "Error");

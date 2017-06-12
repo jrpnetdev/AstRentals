@@ -12,11 +12,24 @@
             if (email !== "null" || email !== undefined) {
                 $http.get("http://localhost:50604/api/favourites?email=" + email).then(function (response) {
                     model.favouritesCount = response.data.length;
-                    model.favourites = JSON.stringify(response.data);
+                    model.favourites = response.data;
                 });
             }
 
         };
+
+        model.removeFavourite = function (e) {
+            var id = $(e.currentTarget).attr("data-id");
+            var email = $(e.currentTarget).attr("data-email");
+
+            $http.delete("http://localhost:50604/api/favourites?id=" + id + "&email=" + email).then(function (response) {
+                if (response.data === 1) {
+                    //todo: toastr 'favourite succesfully removed'
+                    console.log("removed Favourite... " + id + "email: " + email);
+                    model.getFavourites(email);
+                }
+            });
+        }
 
     };
 

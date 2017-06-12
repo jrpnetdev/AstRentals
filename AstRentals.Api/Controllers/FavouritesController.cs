@@ -38,14 +38,23 @@ namespace AstRentals.Api.Controllers
         {
             if (favourite.Email == "null") return 0;
 
+            // check for duplicates
+            var favourites = _repo.FindAll(f => f.Email == favourite.Email).ToList();
+
+            if (favourites.Any(item => item.CarId == favourite.CarId))
+            {
+                return 0;
+            }
+
             _repo.Add(new Favourite() {CarId = favourite.CarId, Email = favourite.Email});
 
             return 1;
         }
 
-        public int Delete(string s, int id)
+        [HttpDelete]
+        public int Delete(int id, string email)
         {
-            var favourite = _repo.Find(f => f.CarId == id);
+            var favourite = _repo.Find(f => f.CarId == id && f.Email == email);
 
             _repo.Delete(favourite);
 
