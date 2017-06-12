@@ -11,17 +11,26 @@ namespace AstRentals.Api.Controllers
     {
 
         private readonly IFavouriteRepository _repo;
+        private readonly ICarRepository _carRepo;
 
-        public FavouritesController(IFavouriteRepository repo)
+        public FavouritesController(IFavouriteRepository repo, ICarRepository carRepo)
         {
             _repo = repo;
+            _carRepo = carRepo;
         }
 
-        public List<Favourite> Get(string email)
+        public List<Favourite> Get()
         {
-            var favourites = _repo.FindAll(p => p.Email == email).ToList();
+            var favourites = _repo.All().ToList();
 
             return favourites;
+        }
+
+        public List<Car> Get(string email)
+        {
+            var favourites = _repo.FindAll(f => f.Email == email).ToList();
+
+            return favourites.Select(favourite => _carRepo.Find(c => c.Id == favourite.CarId)).ToList();
         }
 
         [HttpPost]

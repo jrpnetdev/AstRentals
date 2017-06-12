@@ -164,7 +164,7 @@
 
                                     <div ng-controller="favouriteController">
                                         <button class="btn btn-primary" type="submit"><i class="fa fa-car mr-2"></i> Book Rental</button>
-                                        <a href="#" class="btn btn-link btn-sm" data-id="@Model.CarId" data-email="@Model.Email" ng-click="addToFavourites($event)"><i class="fa fa-heart"></i> Add to Favourites</a>
+                                        <a href="#" class="btn btn-link btn-sm" data-id="@Model.CarId" data-email="@Model.Email" ng-click="addToFavourites($event)"><i class="fa fa-heart" style="color: red"></i> Add to Favourites</a>
                                         <a href="#" class="btn btn-link btn-sm" data-id="@Model.CarId" data-email="@Model.Email" ng-click="removeFromFavourites($event)"><i class="fa fa-heart-o"></i> Remove From Favourites</a>
                                         <p class="text-muted text-xs d-inline hidden-md-down">Car available now!</p>
                                     </div>
@@ -333,6 +333,7 @@
     <script src="~/App/services/carImageService.js"></script>
     <script src="~/App/carDetailsController.js"></script>
     <script src="~/App/favouriteController.js"></script>
+    <script src="~/App/favouriteDetailsController.js"></script>
     <script src="~/App/directives/carSpec.js"></script>
     <script src="~/App/DatePicker/DatePickerCtrl.js"></script>
 }

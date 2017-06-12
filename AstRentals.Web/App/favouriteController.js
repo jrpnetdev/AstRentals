@@ -3,7 +3,7 @@
     var favouriteController = function ($scope, $http) {
 
         $scope.addToFavourites = function(e) {
-            //console.log($(e.currentTarget).attr("data-id"));
+            // todo: check if duplicate - if  hes already been added
 
             var id = $(e.currentTarget).attr("data-id");
             var email = $(e.currentTarget).attr("data-email");

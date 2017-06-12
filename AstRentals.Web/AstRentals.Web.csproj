@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\checkoutController.js" />
+    <Content Include="App\favouriteDetailsController.js" />
     <Content Include="App\registerController.js" />
     <Content Include="App\app.js" />
     <Content Include="App\loginController.js" />
