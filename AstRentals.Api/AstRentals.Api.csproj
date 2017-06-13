@@ -253,11 +253,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\CarSearchController.cs" />
-    <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\CarCountController.cs" />
     <Compile Include="Controllers\CarDropDownController.cs" />
     <Compile Include="Controllers\CarImageController.cs" />
     <Compile Include="Controllers\CarInfoController.cs" />
+    <Compile Include="Controllers\OrdersControllery.cs" />
     <Compile Include="Controllers\FavouritesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CarsController.cs" />

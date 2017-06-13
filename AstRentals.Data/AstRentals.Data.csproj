@@ -52,11 +52,14 @@
     <Compile Include="Entities\CarInfo.cs" />
     <Compile Include="Entities\FavouritePost.cs" />
     <Compile Include="Entities\Favourite.cs" />
+    <Compile Include="Entities\Order.cs" />
     <Compile Include="Infrastructure\AstRentalsContext.cs" />
     <Compile Include="Entities\Car.cs" />
+    <Compile Include="Infrastructure\OrderRepository.cs" />
     <Compile Include="Infrastructure\FavouriteRepository.cs" />
     <Compile Include="Infrastructure\CarInfoRepository.cs" />
     <Compile Include="Infrastructure\CarRepository.cs" />
+    <Compile Include="Infrastructure\IOrderRepository.cs" />
     <Compile Include="Infrastructure\IFavouriteRepository.cs" />
     <Compile Include="Infrastructure\ICarInfoRepository.cs" />
     <Compile Include="Infrastructure\ICarRepository.cs" />

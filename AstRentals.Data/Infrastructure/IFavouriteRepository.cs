@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AstRentals.Data.Entities;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using AstRentals.Data.Entities;
 
 namespace AstRentals.Data.Infrastructure
 {

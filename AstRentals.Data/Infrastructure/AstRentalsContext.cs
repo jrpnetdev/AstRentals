@@ -13,10 +13,7 @@ namespace AstRentals.Data.Infrastructure
         public DbSet<Car> Cars { get; set; }
         public DbSet<CarInfo> CarInfo { get; set; }
         public DbSet<Favourite> Favourites { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //}
     }
 }

@@ -46,13 +46,11 @@
                                 <form class="form-inline justify-content-lg-end text-sm">
                                     <label class="control-label mr-2">
                                         Sort By:&nbsp;
-                                        <select class="form-control form-control-sm">
-                                            <option value="#">Name (A - Z)</option>
-                                            <option value="#">Name (Z - A)</option>
-                                            <option value="#">Price (Low &gt; High)</option>
-                                            <option value="#" selected="">Price (High &gt; Low)</option>
-                                            <option value="#">Rating (Highest)</option>
-                                            <option value="#">Rating (Lowest)</option>
+                                        <select class="form-control form-control-sm" ng-model="sortBy">
+                                            @*No value provides 'Make' as the default selected option*@
+                                            <option value="">Make</option>
+                                            <option value="model">Model</option>
+                                            <option value="year">Year</option>
                                         </select>
                                     </label>
                                     <label class="control-label mr-2 ml-lg-3">
@@ -125,7 +123,7 @@
 
                         <div class="row">
                             <div ng-show="vm.error">{{vm.error}}</div>
-                            <div ng-repeat="item in vm.cars" ng-if="vm.cars" scroll-directive>
+                            <div ng-repeat="item in vm.cars | orderBy:sortBy" ng-if="vm.cars" scroll-directive>
                                 <div ng-class="$index > 5 ? 'hideme' : ''">
                                     <div class="col-lg-12">
                                         <!-- Product -->

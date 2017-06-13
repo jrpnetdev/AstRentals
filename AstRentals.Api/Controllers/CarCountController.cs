@@ -1,11 +1,8 @@
-﻿using System;
+﻿using AstRentals.Api.Models;
+using AstRentals.Data.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using AstRentals.Api.Models;
-using AstRentals.Data.Infrastructure;
 
 namespace AstRentals.Api.Controllers
 {
