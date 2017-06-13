@@ -2,16 +2,16 @@
 
     var carService = function ($http) {
 
-        var getCarsByPage = function (make, index, size) {
-            return $http.get('http://localhost:50604/api/cars?make=' + make + '&index=' + index + '&size=' + size);
-        };
+        var getCars = function (term, index, size, type) {
 
-        var getCarsByYear = function (year, index, size) {
-            return $http.get('http://localhost:50604/api/cars?year=' + year + '&index=' + index + '&size=' + size);
-        };
+            if (type === "year") {
+                return $http.get('http://localhost:50604/api/cars?year=' + term + '&index=' + index + '&size=' + size);
+            }
+            else if (type === "search") {
+                return $http.get('http://localhost:50604/api/carsearch?searchtext=' + term + '&index=' + index + '&size=' + size);
+            }
 
-        var getCarsByMake = function (make, size) {
-            return $http.get('http://localhost:50604/api/cars?make=' + make + '&size=' + size);
+            return $http.get('http://localhost:50604/api/cars?make=' + term + '&index=' + index + '&size=' + size);
         };
 
         var getCarById = function (id) {
@@ -19,9 +19,7 @@
         };
 
         return {
-            getCarsByPage: getCarsByPage,
-            getCarsByYear: getCarsByYear,
-            getCarsByMake: getCarsByMake,
+            getCars: getCars,
             getCarById: getCarById
         };
     };

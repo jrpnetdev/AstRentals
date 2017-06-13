@@ -148,7 +148,6 @@
     <Content Include="App\services\carImageService.js" />
     <Content Include="App\carListController.js" />
     <Content Include="App\services\carInfoService.js" />
-    <Content Include="App\services\carSearchService.js" />
     <Content Include="App\services\carService.js" />
     <Content Include="App\directives\carSpec.html" />
     <Content Include="App\directives\categories.html" />

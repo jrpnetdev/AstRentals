@@ -61,9 +61,6 @@ namespace AstRentals.Api.Controllers
 
         public List<Car> Get(string term)
         {
-
-            //Todo: Add a preprocessor to format input term
-
             var result = new List<Car>();
 
             using (var context = _ctx)

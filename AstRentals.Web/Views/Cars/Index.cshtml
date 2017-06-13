@@ -3,7 +3,7 @@
     ViewBag.Title = "Car List";
 }
 
-<div class="ng-cloak" ng-controller="carListController as vm" ng-init="vm.getPageMake('Ferrari', 1, vm.pageSizeSelection)">
+<div class="ng-cloak" ng-controller="carListController as vm" ng-init="vm.getCars('Ferrari', 1, vm.pageSizeSelection, 'make')">
     <!-- ======== Region: body ======== -->
     <div class="page page-shop header-compact-sticky page-shop-list navbar-layout-navbar-below">
 
@@ -37,7 +37,7 @@
                                 <form class="form-inline justify-content-lg-start text-sm">
                                     <label class="control-label mr-2">
                                         Keyword:&nbsp;
-                                        <input type="text" class="form-control form-control-sm mr-lg-2" ng-model="vm.searchText" placeholder="ie. Ford Mustang" ng-keypress="($event.which === 13)?vm.search(vm.searchText, 1, vm.pageSizeSelection):0">
+                                        <input type="text" class="form-control form-control-sm mr-lg-2" ng-model="vm.searchText" placeholder="ie. Ford Mustang" ng-keypress="($event.which === 13)?vm.getCars(vm.searchText, 1, vm.pageSizeSelection, 'search'):0">
                                     </label>
                                     <a href="#adv-search" data-toggle="collapse" class="text-sm">advanced search</a>
                                 </form>
@@ -55,7 +55,7 @@
                                     </label>
                                     <label class="control-label mr-2 ml-lg-3">
                                         Show:&nbsp;
-                                        <select class="form-control form-control-sm" ng-model="vm.pageSizeSelection" ng-selected="vm.pageSizeSelection">
+                                        <select class="form-control form-control-sm" ng-model="vm.pageSizeSelection" ng-change="vm.getCars(vm.term, 1, vm.pageSizeSelection, vm.searchType)">
                                             <option value="10">10</option>
                                             <option value="15">15</option>
                                             <option value="20">20</option>
@@ -111,9 +111,9 @@
                                             </select>
                                         </div>
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary" ng-click="vm.getPageMake(vm.selectedMake, 1, vm.pageSizeSelection)"> <i class="fa fa-search"></i> Search Make</button>
-                                            <button type="submit" class="btn btn-primary" ng-click="vm.getPageYear(vm.selectedYear, 1, vm.pageSizeSelection)"> <i class="fa fa-search"></i> Search Year</button>
-                                            <button type="submit" class="btn btn-primary" ng-click="vm.search(vm.selectedModel, 1, vm.pageSizeSelection)"> <i class="fa fa-search"></i> Search Model</button>
+                                            <button type="submit" class="btn btn-primary" ng-click="vm.getCars(vm.selectedMake, 1, vm.pageSizeSelection, 'make')"> <i class="fa fa-search"></i> Search Make</button>
+                                            <button type="submit" class="btn btn-primary" ng-click="vm.getCars(vm.selectedYear, 1, vm.pageSizeSelection, 'year')"> <i class="fa fa-search"></i> Search Year</button>
+                                            <button type="submit" class="btn btn-primary" ng-click="vm.getCars(vm.selectedModel, 1, vm.pageSizeSelection, 'search')"> <i class="fa fa-search"></i> Search Model</button>
                                         </div>
                                     </div>
                                 </form>
@@ -184,13 +184,13 @@
                             <nav aria-label="Page navigation">
                                 <ul class="pagination pagination-lg justify-content-center">
                                     <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous" ng-click="vm.getPageMake(vm.cars[0].make, vm.currentPage-1, vm.pageSizeSelection)"> <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span> </a>
+                                        <a class="page-link" href="#" aria-label="Previous" ng-click="vm.getCars(vm.cars[0].make, vm.currentPage-1, vm.pageSizeSelection, 'make')"> <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span> </a>
                                     </li>
 
-                                    <li ng-class="vm.currentPage === i ? 'page-item active' : 'page-item'" ng-repeat="i in vm.getNumber() track by $index"><a class="page-link" href="#" ng-click="vm.getPageMake(vm.cars[0].make, i, vm.pageSizeSelection)">{{i}}</a></li>
+                                    <li ng-class="vm.currentPage === i ? 'page-item active' : 'page-item'" ng-repeat="i in vm.getNumber() track by $index"><a class="page-link" href="#" ng-click="vm.getCars(vm.cars[0].make, i, vm.pageSizeSelection, 'make')">{{i}}</a></li>
 
                                     <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next" ng-click="vm.getPageMake(vm.cars[0].make, vm.currentPage+1, vm.pageSizeSelection)"> <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span> </a>
+                                        <a class="page-link" href="#" aria-label="Next" ng-click="vm.getCars(vm.cars[0].make, vm.currentPage+1, vm.pageSizeSelection, 'make')"> <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span> </a>
                                     </li>
                                 </ul>
                             </nav>
@@ -200,13 +200,13 @@
                             <nav aria-label="Page navigation">
                                 <ul class="pagination pagination-lg justify-content-center">
                                     <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous" ng-click="vm.getPageYear(vm.cars[0].year, vm.currentPage-1, vm.pageSizeSelection)"> <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span> </a>
+                                        <a class="page-link" href="#" aria-label="Previous" ng-click="vm.getCars(vm.cars[0].year, vm.currentPage-1, vm.pageSizeSelection, 'year')"> <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span> </a>
                                     </li>
 
-                                    <li ng-class="vm.currentPage === i ? 'page-item active' : 'page-item'" ng-repeat="i in vm.getNumber() track by $index"><a class="page-link" href="#" ng-click="vm.getPageYear(vm.cars[0].year, i, vm.pageSizeSelection)">{{i}}</a></li>
+                                    <li ng-class="vm.currentPage === i ? 'page-item active' : 'page-item'" ng-repeat="i in vm.getNumber() track by $index"><a class="page-link" href="#" ng-click="vm.getCars(vm.cars[0].year, i, vm.pageSizeSelection, 'year')">{{i}}</a></li>
 
                                     <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next" ng-click="vm.getPageYear(vm.cars[0].year, vm.currentPage+1, vm.pageSizeSelection)"> <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span> </a>
+                                        <a class="page-link" href="#" aria-label="Next" ng-click="vm.getCars(vm.cars[0].year, vm.currentPage+1, vm.pageSizeSelection, 'year')"> <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span> </a>
                                     </li>
                                 </ul>
                             </nav>
@@ -216,13 +216,13 @@
                             <nav aria-label="Page navigation">
                                 <ul class="pagination pagination-lg justify-content-center">
                                     <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous" ng-click="vm.search(vm.searchText, vm.currentPage-1, vm.pageSizeSelection)"> <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span> </a>
+                                        <a class="page-link" href="#" aria-label="Previous" ng-click="vm.getCars(vm.searchText, vm.currentPage-1, vm.pageSizeSelection, 'search')"> <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span> </a>
                                     </li>
 
-                                    <li ng-class="vm.currentPage === i ? 'page-item active' : 'page-item'" ng-repeat="i in vm.getNumber() track by $index"><a class="page-link" href="#" ng-click="vm.search(vm.searchText, i, vm.pageSizeSelection)">{{i}}</a></li>
+                                    <li ng-class="vm.currentPage === i ? 'page-item active' : 'page-item'" ng-repeat="i in vm.getNumber() track by $index"><a class="page-link" href="#" ng-click="vm.getCars(vm.searchText, i, vm.pageSizeSelection, 'search')">{{i}}</a></li>
 
                                     <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next" ng-click="vm.search(vm.searchText, vm.currentPage+1, vm.pageSizeSelection)"> <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span> </a>
+                                        <a class="page-link" href="#" aria-label="Next" ng-click="vm.getCars(vm.searchText, vm.currentPage+1, vm.pageSizeSelection, 'search')"> <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span> </a>
                                     </li>
                                 </ul>
                             </nav>
@@ -269,7 +269,6 @@
     <script src="~/App/favouriteController.js"></script>
     <script src="~/App/favouriteDetailsController.js"></script>
     <script src="~/App/services/carService.js"></script>
-    <script src="~/App/services/carSearchService.js"></script>
     <script src="~/App/services/carDropDownService.js"></script>
     <script src="~/App/directives/categoriesDirective.js"></script>
     <script src="~/App/directives/scrollDirective.js"></script>
