@@ -23,7 +23,11 @@ namespace AstRentals.Web.Controllers
 
             ViewBag.Email = email;
 
-            if (id == null || email == "null")
+            if (email == "null")
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            if (id == null)
             {
                 return RedirectToAction("Index", "Error");
             }

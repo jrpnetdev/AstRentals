@@ -65,7 +65,7 @@
                             </div>
                             <div class="col-lg-12 collapse" id="adv-search" ng-init="vm.ddlInit()">
                                 <!-- Advanced search form -->
-                                <form class="mt-3 bg-faded p-3 rounded mb-4 text-sm" name="advancedSearch">
+                                <form class="mt-3 bg-faded p-3 rounded mb-4 text-sm" name="advancedSearch" ng-submit="vm.submit(vm.selectedMake, vm.selectedModel, vm.selectedYear)">
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label>Make</label>
@@ -111,9 +111,8 @@
                                             </select>
                                         </div>
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary" ng-click="vm.getCars(vm.selectedMake, 1, vm.pageSizeSelection, 'make')"> <i class="fa fa-search"></i> Search Make</button>
-                                            <button type="submit" class="btn btn-primary" ng-click="vm.getCars(vm.selectedYear, 1, vm.pageSizeSelection, 'year')"> <i class="fa fa-search"></i> Search Year</button>
-                                            <button type="submit" class="btn btn-primary" ng-click="vm.getCars(vm.selectedModel, 1, vm.pageSizeSelection, 'search')"> <i class="fa fa-search"></i> Search Model</button>
+                                            <button type="submit" class="btn btn-primary"> <i class="fa fa-search"></i> Search</button>
+                                            <button type="button" class="btn btn-danger" ng-click="vm.clear()"> <i class="fa fa-times" aria-hidden="true"></i> Clear</button>
                                         </div>
                                     </div>
                                 </form>
@@ -122,7 +121,7 @@
                         <hr class="my-4" />
 
                         <div class="row">
-                            <div ng-show="vm.error">{{vm.error}}</div>
+                            <div ng-show="vm.error" mg-model="{{vm.error}}">{{vm.error}}</div>
                             <div ng-repeat="item in vm.cars | orderBy:sortBy" ng-if="vm.cars" scroll-directive>
                                 <div ng-class="$index > 5 ? 'hideme' : ''">
                                     <div class="col-lg-12">
@@ -151,9 +150,17 @@
                                                     </p>
                                                     <p class="text-muted text-xs">Consectetuer feugiat hendrerit jus neo usitas valde verto. Abbas duis interdico modo ymo.</p>
                                                     <div class="mt-auto" ng-controller="favouriteController">
-                                                        <a href="@Url.Action("Details", "Cars")?Id={{item.id}}&Email=@ViewBag.Email" class="btn btn-primary btn-sm"><i class="fa fa-car mr-2"></i> Book Car Now</a>
-                                                        <a href="#" class="btn btn-link btn-sm" data-id="{{item.id}}" data-email="@ViewBag.Email" ng-click="addToFavourites($event)"><i class="fa fa-heart" style="color: red"></i> Add to Favourites</a>
-                                                        <a href="#" class="btn btn-link btn-sm" data-id="{{item.id}}" data-email="@ViewBag.Email" ng-click="removeFromFavourites($event)"><i class="fa fa-heart-o"></i> Remove From Favourites</a>
+                                                        
+                                                        @if (ViewBag.email == "null")
+                                                        {
+                                                            <a href="@Url.Action("LogIn", "Home")" class="btn btn-primary btn-sm"><i class="fa fa-car mr-2"></i> Book Car Now</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href="@Url.Action("Details", "Cars")?Id={{item.id}}&Email=@ViewBag.Email" class="btn btn-primary btn-sm"><i class="fa fa-car mr-2"></i> Book Car Now</a>
+                                                            <a href="#" class="btn btn-link btn-sm" data-id="{{item.id}}" data-email="@ViewBag.Email" ng-click="addToFavourites($event)"><i class="fa fa-heart" style="color: red"></i> Add to Favourites</a>
+                                                            <a href="#" class="btn btn-link btn-sm" data-id="{{item.id}}" data-email="@ViewBag.Email" ng-click="removeFromFavourites($event)"><i class="fa fa-heart-o"></i> Remove From Favourites</a>
+                                                        }
                                                     </div>
                                                 </div>
                                             </div>

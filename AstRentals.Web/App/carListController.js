@@ -21,14 +21,13 @@
                 model.pageSizeSelection = size;
 
                 // poulate data from returned results
-                console.log(response.data);
                 model.cars = response.data.cars;
                 model.totalCars = response.data.totalCars;
                 model.numberOfPages = response.data.numberOfPages;
                 model.currentPage = response.data.currentPage;
 
                 // page calculation for pagination links
-                model.numberOfPages < model.pageSizeSelection ? pgx = model.numberOfPages : pgx = size;
+                model.numberOfPages < 10 ? pgx = model.numberOfPages : pgx = 10;
                 
                 model.pages = new Array(pgx);
                 for (var i = 1; i <= pgx; i++) {
@@ -57,15 +56,34 @@
             return model.pages;
         };
 
-        // Drop down list functionality
+        // Advanced search form
+        model.selectedMake = "";
+        model.selectedYear = "";
+        model.selectedModel = "";
 
+        model.submit = function (make, model, year) {
+
+            var term = make + " " + model + " " + year;
+
+            if (term.trim() === "") {
+                model.error = "No values selected.";
+                return;
+            }
+
+            this.getCars(term.trim(), 1, this.pageSizeSelection, "search");
+
+        };
+
+        model.clear = function() {
+            this.selectedMake = "";
+            this.selectedYear = "";
+            this.selectedModel = "";
+        };
+
+        // Get Drop down list values for Advanced search form
         model.makeDropDownValues = [];
         model.modelDropDownValues = [];
         model.yearDropDownValues = [];
-
-        model.selectedMake = "Ferrari";
-        model.selectedYear = "2013";
-        model.selectedModel = "Mustang";
 
         model.ddlInit = function() {
             carDropDownService.getMakeDropDownValues().then(function(response) {
