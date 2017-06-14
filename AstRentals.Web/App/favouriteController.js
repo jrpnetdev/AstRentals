@@ -23,8 +23,7 @@
                 },
                 // error callback
                 function(data, status, header, config) {
-                    console.log(
-                        "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config);
+                    console.log("error :" + data + "   status:" + status + "   header:" + header + "   config:" + config);
                 });
         };
 

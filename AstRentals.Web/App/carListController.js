@@ -8,6 +8,7 @@
         model.searchType = "make";
         model.searchText = "";
         model.term = "";
+        model.error = "";
         model.pages = [];
         var pgx = 0;
 
@@ -25,6 +26,12 @@
                 model.totalCars = response.data.totalCars;
                 model.numberOfPages = response.data.numberOfPages;
                 model.currentPage = response.data.currentPage;
+
+                if (model.totalCars === 0) {
+                    model.error = "Sorry, No results were found";
+                } else {
+                    model.error = "";
+                }
 
                 // page calculation for pagination links
                 model.numberOfPages < 10 ? pgx = model.numberOfPages : pgx = 10;
@@ -66,10 +73,11 @@
             var term = make + " " + model + " " + year;
 
             if (term.trim() === "") {
-                model.error = "No values selected.";
+                this.error = "No values were selected.";
                 return;
             }
 
+            this.error = "";
             this.getCars(term.trim(), 1, this.pageSizeSelection, "search");
 
         };
@@ -95,6 +103,26 @@
             carDropDownService.getYearDropDownValues().then(function(response) {
                 model.yearDropDownValues = response.data;
             });
+        };
+
+        // Logic to change value Drop down values on selection
+        model.runflag = false;
+
+        model.dropDownUpdate = function (searchTerm, searchType) {
+
+            if (this.runflag === true) {
+                return;
+            }
+
+            this.runflag = true;
+
+            carDropDownService.onChanged(searchTerm, searchType).then(function (response) {
+                model.makeDropDownValues = response.data[0];
+                model.modelDropDownValues = response.data[1];
+                model.yearDropDownValues = response.data[2];
+                console.log(response.data);
+            });
+
         };
     };
 

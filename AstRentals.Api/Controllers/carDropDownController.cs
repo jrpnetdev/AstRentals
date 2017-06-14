@@ -14,22 +14,22 @@ namespace AstRentals.Api.Controllers
             _repo = repo;
         }
 
-        public IEnumerable<string> Get(string var)
+        public IEnumerable<string> Get(string searchType)
         {
 
             IEnumerable<string> results = new List<string>();
 
             var cars = _repo.All();
 
-            if (var == "make")
+            if (searchType == "make")
             {
                 results = cars.Select(c => c.Make).ToList().Distinct().OrderBy(c => c);
             }
-            else if (var == "model")
+            else if (searchType == "model")
             {
                 results = cars.Select(c => c.Model).ToList().Distinct().OrderBy(c => c);
             }
-            else if (var == "year")
+            else if (searchType == "year")
             {
                 results = cars.Select(c => c.Year.ToString()).ToList().Distinct().OrderByDescending(c => c);
             }
@@ -37,5 +37,44 @@ namespace AstRentals.Api.Controllers
             return results;
         }
 
+        public IEnumerable<IEnumerable<string>> Get(string searchTerm, string searchType)
+        {
+            List<List<string>> results = new List<List<string>>();
+            List<string> makes;
+            List<string> models;
+            List<string> years;
+
+            var cars = _repo.All();
+
+            switch (searchType)
+            {
+                case "make":
+                    makes = cars.Where(c => c.Make == searchTerm).Select(c => c.Make).Distinct().OrderBy(c => c).ToList();
+                    results.Add(makes);
+                    models = cars.Where(c => c.Make == searchTerm).Select(c => c.Model).Distinct().OrderBy(c => c).ToList();
+                    results.Add(models);
+                    years = cars.Where(c => c.Make == searchTerm).Select(c => c.Year.ToString()).Distinct().OrderByDescending(c => c).ToList();
+                    results.Add(years);
+                    break;
+                case "model":
+                    makes = cars.Where(c => c.Model == searchTerm).Select(c => c.Make).Distinct().OrderBy(c => c).ToList();
+                    results.Add(makes);
+                    models = cars.Where(c => c.Model == searchTerm).Select(c => c.Model).Distinct().OrderBy(c => c).ToList();
+                    results.Add(models);
+                    years = cars.Where(c => c.Model == searchTerm).Select(c => c.Year.ToString()).Distinct().OrderByDescending(c => c).ToList();
+                    results.Add(years);
+                    break;
+                case "year":
+                    makes = cars.Where(c => c.Year.ToString() == searchTerm).Select(c => c.Make).Distinct().OrderBy(c => c).ToList();
+                    results.Add(makes);
+                    models = cars.Where(c => c.Year.ToString() == searchTerm).Select(c => c.Model).Distinct().OrderBy(c => c).ToList();
+                    results.Add(models);
+                    years = cars.Where(c => c.Year.ToString() == searchTerm).Select(c => c.Year.ToString()).Distinct().OrderByDescending(c => c).ToList();
+                    results.Add(years);
+                    break;
+            }
+
+            return results;
+        }
     }
 }
