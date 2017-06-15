@@ -57,10 +57,7 @@ namespace AstRentals.Data.Infrastructure
 
         }
 
-        public int Count
-        {
-           get { return _ctx.Cars.Count(); }
-        }
+        public int Count => _ctx.Cars.Count();
 
         public int Update(Car car)
         {

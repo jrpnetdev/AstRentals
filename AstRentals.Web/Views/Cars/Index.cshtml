@@ -120,47 +120,48 @@
                         </div>
                         <hr class="my-4" />
 
-                    <div class="row">
-                        <div class="alert alert-warning" role="alert" ng-show="vm.error !== ''" mg-model="{{vm.error}}">{{vm.error}}</div>
-                        <div ng-repeat="item in vm.cars | orderBy:sortBy" ng-if="vm.cars" scroll-directive>
-                            <div ng-class="$index > 5 ? 'hideme' : ''">
-                                <div class="col-lg-12">
-                                    <!-- Product -->
-                                    <div class="card product-card mb-4">
-                                        <!-- Ribbon -->
-                                        <div ng-show="$index === 3" class="card-ribbon card-ribbon-bottom card-ribbon-right bg-primary text-white">Top Rated</div>
-                                        <div ng-show="$index === 7" class="card-ribbon card-ribbon-bottom card-ribbon-right bg-danger text-white">Special</div>
-                                        <!-- Content -->
-                                        <div class="card-block p-3 pos-relative row">
-                                            <!-- Image content -->
-                                            <div class="col-md-4 mb-2 mb-md-0">
-                                                <img class="rounded img-fluid" ng-src="{{item.imageUrl}}" alt="Car image" width="600" height="400">
-                                            </div>
-                                            <!-- Product details -->
-                                            <div class="col-md-8 d-flex flex-column align-items-start">
-                                                <p class="text-muted text-uppercase text-xs mb-0">
-                                                    <span class="text-primary">{{item.make}}</span> / {{item.model}} {{item.id}}
-                                                </p>
-                                                <h4 class="card-title mb-2">
-                                                    <a href="@Url.Action("Details", "Cars")?Id={{item.id}}&Email=@ViewBag.Email" class="text-grey-dark">{{item.make}} {{item.model}} ({{item.year}})</a>
-                                                </h4>
-                                                <p class="font-weight-bold">£199.99 per day</p>
-                                                <p class="pos-md-absolute pos-t pos-r mr-3 text-md-right">
-                                                    <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star-half-o text-primary"></i>
-                                                </p>
-                                                <p class="text-muted text-xs">{{vm.carInfoText}}</p>
-                                                <div class="mt-auto" ng-controller="favouriteController">
+                        <div class="row">
+                            <div class="alert alert-warning" role="alert" ng-show="vm.error !== ''" mg-model="{{vm.error}}">{{vm.error}}</div>
+                            <div ng-repeat="item in vm.cars | orderBy:sortBy" ng-if="vm.cars" scroll-directive>
+                                <div ng-class="$index > 5 ? 'hideme' : ''">
+                                    <div class="col-lg-12">
+                                        <!-- Product -->
+                                        <div class="card product-card mb-4">
+                                            <!-- Ribbon -->
+                                            <div ng-show="$index === 3" class="card-ribbon card-ribbon-bottom card-ribbon-right bg-primary text-white">Top Rated</div>
+                                            <div ng-show="$index === 7" class="card-ribbon card-ribbon-bottom card-ribbon-right bg-danger text-white">Special</div>
+                                            <!-- Content -->
+                                            <div class="card-block p-3 pos-relative row">
+                                                <!-- Image content -->
+                                                <div class="col-md-4 mb-2 mb-md-0">
+                                                    <img class="rounded img-fluid" ng-src="{{item.imageUrl}}" alt="Car image" width="600" height="400">
+                                                </div>
+                                                <!-- Product details -->
+                                                <div class="col-md-8 d-flex flex-column align-items-start">
+                                                    <p class="text-muted text-uppercase text-xs mb-0">
+                                                        <span class="text-primary">{{item.make}}</span> / {{item.model}} {{item.id}}
+                                                    </p>
+                                                    <h4 class="card-title mb-2">
+                                                        <a href="@Url.Action("Details", "Cars")?Id={{item.id}}&Email=@ViewBag.Email" class="text-grey-dark">{{item.make}} {{item.model}} ({{item.year}})</a>
+                                                    </h4>
+                                                    <p class="font-weight-bold">£199.99 per day</p>
+                                                    <p class="pos-md-absolute pos-t pos-r mr-3 text-md-right">
+                                                        <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star-half-o text-primary"></i>
+                                                    </p>
+                                                    <p class="text-muted text-xs">{{vm.carInfoText}}</p>
+                                                    <div class="mt-auto" ng-controller="favouriteController">
 
-                                                    @if (ViewBag.email == "null")
-                                                    {
-                                                        <a href="@Url.Action("LogIn", "Home")" class="btn btn-primary btn-sm"><i class="fa fa-car mr-2"></i> Book Car Now</a>
-                                                    }
-                                                    else
-                                                    {
-                                                        <a href="@Url.Action("Details", "Cars")?Id={{item.id}}&Email=@ViewBag.Email" class="btn btn-primary btn-sm"><i class="fa fa-car mr-2"></i> Book Car Now</a>
-                                                        <a href="#" class="btn btn-link btn-sm" data-id="{{item.id}}" data-email="@ViewBag.Email" ng-click="addToFavourites($event)"><i class="fa fa-heart" style="color: red"></i> Add to Favourites</a>
-                                                        <a href="#" class="btn btn-link btn-sm" data-id="{{item.id}}" data-email="@ViewBag.Email" ng-click="removeFromFavourites($event)"><i class="fa fa-heart-o"></i> Remove From Favourites</a>
-                                                    }
+                                                        @if (ViewBag.email == "null")
+                                                        {
+                                                            <a href="@Url.Action("LogIn", "Home")" class="btn btn-primary btn-sm"><i class="fa fa-car mr-2"></i> Book Car Now</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href="@Url.Action("Details", "Cars")?Id={{item.id}}&Email=@ViewBag.Email" class="btn btn-primary btn-sm"><i class="fa fa-car mr-2"></i> Book Car Now</a>
+                                                            <a href="#" class="btn btn-link btn-sm" data-id="{{item.id}}" data-email="@ViewBag.Email" ng-click="addToFavourites($event)"><i class="fa fa-heart" style="color: red"></i> Add to Favourites</a>
+                                                            <a href="#" class="btn btn-link btn-sm" data-id="{{item.id}}" data-email="@ViewBag.Email" ng-click="removeFromFavourites($event)"><i class="fa fa-heart-o"></i> Remove From Favourites</a>
+                                                        }
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -168,7 +169,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                         <!-- Call to action -->
                         <div class="my-3" data-url="#">
@@ -265,6 +265,12 @@
                     </div>
                 </div>
             </div>
+            @if (ViewBag.Email != "null")
+            {
+                <hr class="mt-6 mb-0" />
+                <div class="bg-faded py-5">@Html.Partial("PartialViews/_Recommended")</div>
+            }
+
         </div>
     </div>
     @Html.Partial("_Footer")

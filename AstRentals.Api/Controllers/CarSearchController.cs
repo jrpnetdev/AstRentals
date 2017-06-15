@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web.Http;
+using AstRentals.Api.Helpers;
 using AstRentals.Api.Models;
 using AstRentals.Data.Entities;
 using AstRentals.Data.Infrastructure;
@@ -12,10 +13,14 @@ namespace AstRentals.Api.Controllers
     public class CarSearchController : ApiController
     {
         private readonly AstRentalsContext _ctx;
+        private readonly ICarRepository _repo;
+        private readonly IRecommendedHelper _helper;
 
-        public CarSearchController(AstRentalsContext ctx)
+        public CarSearchController(AstRentalsContext ctx, ICarRepository repo, IRecommendedHelper helper)
         {
             _ctx = ctx;
+            _repo = repo;
+            _helper = helper;
         }
 
         public CarListViewModel Get(string searchText, int index, int size)
@@ -55,6 +60,8 @@ namespace AstRentals.Api.Controllers
 
             clvm.NumberOfPages = pages;
             clvm.CurrentPage = index;
+
+            clvm.RecommendedCars = _helper.GetRecommendedCars(_repo.Count);
 
             return clvm;
         }

@@ -90,7 +90,7 @@
                                     <!-- Product details -->
                                     <p class="text-muted text-uppercase text-xs mb-0"><span class="text-primary">{{vm.car.make}}</span> / {{vm.car.model}}</p>
                                     <h2 class="card-title mb-2">
-                                        {{vm.car.make}} {{vm.car.model}} ({{vm.car.year}}) @Model.CarId
+                                        {{vm.car.make}} {{vm.car.model}} ({{vm.car.year}})
                                     </h2>
                                     <h4 class="font-weight-bold text-primary">
                                         <del class="op-5">£250.00</del>
@@ -111,10 +111,9 @@
                                         <p class="my-0 text-xs">10 reviews | <a href="#reviews">write review</a></p>
                                     </div>
                                     <hr class="my-3" />
-                                    <p class="text-muted text-sm">Brevitas in molior ullamcorper. Abdo capto obruo occuro proprius rusticus sit utinam. Consequat esca exputo gravis haero quis saepius si vicis.</p>
-                                    <p class="text-muted text-sm">Hos ibidem patria. Fere neque nostrud. Amet huic jus nobis nostrud qui vel verto. Acsi commoveo cui imputo pertineo refero vero vulpes vulputate.</p>
+                                    <p class="text-muted text-sm">{{vm.carInfoText}}</p>
                                     <hr class="my-3 mb-5" />
-                                    
+
                                     <!-- Cart options/links -->
                                     <div class="product-options row mb-4">
                                         <div class="col-md-6 mb-3">

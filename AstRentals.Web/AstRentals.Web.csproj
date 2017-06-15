@@ -2935,9 +2935,6 @@
     <Content Include="Views\Cars\Confirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Cars\PartialViews\_Recommended.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Home\LogIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -2948,6 +2945,9 @@
       <Project>{622B53C6-DAD7-4D18-BF04-26A7765F4E14}</Project>
       <Name>AstRentals.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cars\PartialViews\_Recommended.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

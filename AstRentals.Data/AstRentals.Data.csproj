@@ -64,7 +64,6 @@
     <Compile Include="Infrastructure\ICarInfoRepository.cs" />
     <Compile Include="Infrastructure\ICarRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Temp\EfRepository.cs" />
     <Compile Include="Temp\IRepositoryRibbit.cs" />
   </ItemGroup>
   <ItemGroup>

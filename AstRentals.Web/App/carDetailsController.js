@@ -17,12 +17,19 @@
 
                     carInfoService.getCarInfo(model.car.make, model.car.model).then(function (response) {
                         model.carInfo = response.data.info;
+                        model.carInfoText = res.substr(0, 250) + "...";
                     }, function (data, status, header, config) {
                         model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
                     });
 
                     carImageService.getCarImages(model.car.year, model.car.make, model.car.model, 6).then(function (response) {
                         model.carImages = angular.fromJson(response.data);
+                    }, function (data, status, header, config) {
+                        model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
+                    });
+
+                    $http.get("http://localhost:50604/api/cardetails").then(function(response) {
+                        model.recommendedCars = response.data;
                     }, function (data, status, header, config) {
                         model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
                     });

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web.Http;
+using AstRentals.Api.Helpers;
 using AstRentals.Api.Models;
 using AstRentals.Data.Entities;
 using AstRentals.Data.Infrastructure;
@@ -10,24 +12,23 @@ namespace AstRentals.Api.Controllers
     //[Authorize]
     public class CarsController : ApiController
     {
-
         private readonly ICarRepository _repo;
+        private readonly IRecommendedHelper _helper;
 
-        public CarsController(ICarRepository repo)
+        public CarsController(ICarRepository repo, IRecommendedHelper helper)
         {
             _repo = repo;
+            _helper = helper;
         }
 
         public IEnumerable<Car> Get()
         {
-            //int cars = _repo.Count;
             return _repo.All();
         }
 
         // GET api/cars?make=Ford&index=3&size=10
         public IEnumerable<Car> Get(string make)
         {
-
             return _repo.FindAll(c => c.Make == make).OrderByDescending(c => c.Year).ToList();
         }
 
@@ -36,7 +37,6 @@ namespace AstRentals.Api.Controllers
         {
             CarListViewModel clvm = new CarListViewModel();
 
-            //int cars = _repo.Count;
             var cars = _repo.FindAll(c => c.Make == make, index, size).OrderBy(c => c.Id).ToList();
             clvm.Cars = cars;
 
@@ -51,6 +51,8 @@ namespace AstRentals.Api.Controllers
 
             clvm.NumberOfPages = pages;
             clvm.CurrentPage = index;
+
+            clvm.RecommendedCars = _helper.GetRecommendedCars(_repo.Count);
 
             return clvm;
         }
@@ -75,6 +77,8 @@ namespace AstRentals.Api.Controllers
 
             clvm.NumberOfPages = pages;
             clvm.CurrentPage = index;
+
+            clvm.RecommendedCars = _helper.GetRecommendedCars(_repo.Count);
 
             return clvm;
         }

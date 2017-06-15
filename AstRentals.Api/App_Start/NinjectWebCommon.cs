@@ -1,5 +1,6 @@
 using System.Web.Http;
 using AstRentals.Api.Data;
+using AstRentals.Api.Helpers;
 using WebApiContrib.IoC.Ninject;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(AstRentals.Api.App_Start.NinjectWebCommon), "Start")]
@@ -71,6 +72,7 @@ namespace AstRentals.Api.App_Start
             kernel.Bind<ICarRepository>().To<CarRepository>();
             kernel.Bind<ICarInfoRepository>().To<CarInfoRepository>();
             kernel.Bind<IFavouriteRepository>().To<FavouriteRepository>();
+            kernel.Bind<IRecommendedHelper>().To<RecommendedHelper>();
         }        
     }
 }

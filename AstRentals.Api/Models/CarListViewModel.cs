@@ -12,5 +12,6 @@ namespace AstRentals.Api.Models
         public int TotalCars { get; set; }
         public int NumberOfPages { get; set; }
         public int CurrentPage { get; set; }
+        public IEnumerable<Car> RecommendedCars { get; set; }
     }
 }

@@ -6,100 +6,88 @@
     </h2>
     <hr class="mb-3 w-50 mx-auto" />
     <div class="mt-4 owl-nav-over owl-nav-over-lg" data-toggle="owl-carousel" data-owl-carousel-settings='{"responsive":{"0":{"items":1}, "600":{"items":2}, "980":{"items":4}}, "margin":10, "nav":true, "dots":false}'>
-        <!-- Product 1 -->
+        <!-- Recommended Car 1 -->
         <div class="card product-card overlay-hover">
             <!-- Hover content -->
             <div class="overlay-hover-content overlay-op-7 product-card-hover-tools">
-                <h4 class="text-white">
-                    Audi A6 (2005)
-                </h4>
-                <a href="@Url.Action("Details", new { id = 4595, @Email = ViewBag.Email } )" class="btn btn-primary text-uppercase font-weight-bold mb-2"><i class="fa fa-car mr-2"></i> View Car</a>
+                <h4 class="text-white">{{vm.recommendedCars[0].make}} {{vm.recommendedCars[0].model}} {{vm.recommendedCars[0].year}}</h4>
+                <a href="@Url.Action("Details", "Cars")?Id={{vm.recommendedCars[0].id}}&Email=@ViewBag.Email" class="btn btn-primary text-uppercase font-weight-bold mb-2"><i class="fa fa-car mr-2"></i> View Car</a>
             </div>
             <!-- Image & price content -->
             <div class="pos-relative">
-                <img class="card-img-top img-fluid" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRgymHdJix0iRGbMqZlGnf4-JWqMXI9cSYCM38DZefG8Qcu-xQp" height="115" width="236" alt="Car image">
+                <img class="card-img-top" ng-src="{{vm.recommendedCars[0].imageUrl}}" height="200" width="240" alt="{{vm.recommendedCars[0].make}} {{vm.recommendedCars[0].model}} {{vm.recommendedCars[0].year}}">
                 <span class="badge badge-primary product-price-badge pos-absolute pos-t pos-l mt-2 ml-2">
                     <del class="op-5">£250.00</del>
                     / £199.99 p/w
                 </span>
             </div>
         </div>
-        <!-- Product 2 -->
+        <!-- Recommended Car 2 -->
         <div class="card product-card overlay-hover">
             <!-- Hover content -->
             <div class="overlay-hover-content overlay-op-7 product-card-hover-tools">
-                <h4 class="text-white">
-                    Dodge Viper (2008)
-                </h4>
-                <a href="@Url.Action("Details", new { id = 5772, @Email = ViewBag.Email } )" class="btn btn-primary text-uppercase font-weight-bold mb-3"><i class="fa fa-car mr-2"></i> View Car</a>
+                <h4 class="text-white">{{vm.recommendedCars[1].make}} {{vm.recommendedCars[1].model}} {{vm.recommendedCars[1].year}}</h4>
+                <a href="@Url.Action("Details", "Cars")?Id={{vm.recommendedCars[1].id}}&Email=@ViewBag.Email" class="btn btn-primary text-uppercase font-weight-bold mb-2"><i class="fa fa-car mr-2"></i> View Car</a>
             </div>
             <!-- Ribbon -->
             <div class="card-ribbon card-ribbon-top card-ribbon-right bg-primary text-white">Top Rated</div>
             <!-- Image & price content -->
             <div class="pos-relative">
-                <img class="card-img-top img-fluid" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSWw747vpDVyAbbD8AGfCknviVLTpjV3FeyI4_jzUOw2JikKGbHgQ" height="115" width="236" alt="Car image">
+                <img class="card-img-top" ng-src="{{vm.recommendedCars[1].imageUrl}}" height="200" width="240" alt="{{vm.recommendedCars[1].make}} {{vm.recommendedCars[1].model}} {{vm.recommendedCars[1].year}}">
                 <span class="badge badge-primary product-price-badge pos-absolute pos-t pos-l mt-2 ml-2">£199.99 p/w</span>
             </div>
         </div>
-        <!-- Product 3 -->
+        <!-- Recommended Car 3 -->
         <div class="card product-card overlay-hover">
             <!-- Hover content -->
             <div class="overlay-hover-content overlay-op-7 product-card-hover-tools">
-                <h4 class="text-white">
-                    Porsche 911 (1985)
-                </h4>
-                <a href="@Url.Action("Details", new { id = 348, @Email = ViewBag.Email } )" class="btn btn-primary text-uppercase font-weight-bold mb-3"><i class="fa fa-car mr-2"></i> View Car</a>
+                <h4 class="text-white">{{vm.recommendedCars[2].make}} {{vm.recommendedCars[2].model}} {{vm.recommendedCars[2].year}}</h4>
+                <a href="@Url.Action("Details", "Cars")?Id={{vm.recommendedCars[2].id}}&Email=@ViewBag.Email" class="btn btn-primary text-uppercase font-weight-bold mb-2"><i class="fa fa-car mr-2"></i> View Car</a>
             </div>
             <!-- Image & price content -->
             <div class="pos-relative">
-                <img class="card-img-top img-fluid" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRJPK4oBvIWZ9ZRAerkUiyIU5_0ek3gXoQ385VZFOx3O6kTmGd0" height="115" width="236" alt="Car image">
+                <img class="card-img-top" ng-src="{{vm.recommendedCars[2].imageUrl}}" height="200" width="240" alt="{{vm.recommendedCars[2].make}} {{vm.recommendedCars[2].model}} {{vm.recommendedCars[2].year}}">
                 <span class="badge badge-primary product-price-badge pos-absolute pos-t pos-l mt-2 ml-2">£199.99 p/w</span>
             </div>
         </div>
-        <!-- Product 4 -->
+        <!-- Recommended Car 4 -->
         <div class="card product-card overlay-hover">
             <!-- Hover content -->
             <div class="overlay-hover-content overlay-op-7 product-card-hover-tools">
-                <h4 class="text-white">
-                    Lancer Evolution (2011)
-                </h4>
-                <a href="@Url.Action("Details", new { id = 6856, @Email = ViewBag.Email } )" class="btn btn-primary text-uppercase font-weight-bold mb-3"><i class="fa fa-car mr-2"></i> View Car</a>
+                <h4 class="text-white">{{vm.recommendedCars[3].make}} {{vm.recommendedCars[3].model}} {{vm.recommendedCars[3].year}}</h4>
+                <a href="@Url.Action("Details", "Cars")?Id={{vm.recommendedCars[3].id}}&Email=@ViewBag.Email" class="btn btn-primary text-uppercase font-weight-bold mb-2"><i class="fa fa-car mr-2"></i> View Car</a>
             </div>
             <!-- Ribbon -->
             <div class="card-ribbon card-ribbon-top card-ribbon-right bg-primary text-white">Limited</div>
             <!-- Image & price content -->
             <div class="pos-relative">
-                <img class="card-img-top img-fluid" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRNLiQDYaHH9Kg055d8IKoZSvE0jUeSHvjvArFdS8JqKNL3HPnU" height="115" width="236" alt="Car image">
+                <img class="card-img-top" ng-src="{{vm.recommendedCars[3].imageUrl}}" height="200" width="240" alt="{{vm.recommendedCars[3].make}} {{vm.recommendedCars[3].model}} {{vm.recommendedCars[3].year}}">
                 <span class="badge badge-primary product-price-badge pos-absolute pos-t pos-l mt-2 ml-2">£199.99 p/w</span>
             </div>
         </div>
-        <!-- Product 5 -->
+        <!-- Recommended Car 5 -->
         <div class="card product-card overlay-hover">
             <!-- Hover content -->
             <div class="overlay-hover-content overlay-op-7 product-card-hover-tools">
-                <h4 class="text-white">
-                    BMW 3-Series (2006)
-                </h4>
-                <a href="@Url.Action("Details", new { id = 4826, @Email = ViewBag.Email } )" class="btn btn-primary text-uppercase font-weight-bold mb-3"><i class="fa fa-car mr-2"></i> View Car</a>
+                <h4 class="text-white">{{vm.recommendedCars[4].make}} {{vm.recommendedCars[4].model}} {{vm.recommendedCars[4].year}}</h4>
+                <a href="@Url.Action("Details", "Cars")?Id={{vm.recommendedCars[4].id}}&Email=@ViewBag.Email" class="btn btn-primary text-uppercase font-weight-bold mb-2"><i class="fa fa-car mr-2"></i> View Car</a>
             </div>
             <!-- Image & price content -->
             <div class="pos-relative">
-                <img class="card-img-top img-fluid" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR1Pl27q9OYp4t5IKQd0EB3zw0lx1kKYjA-NnXWCSfy87DVnnIlWA" height="115" width="236" alt="Car image">
+                <img class="card-img-top" ng-src="{{vm.recommendedCars[4].imageUrl}}" height="200" width="240" alt="{{vm.recommendedCars[4].make}} {{vm.recommendedCars[4].model}} {{vm.recommendedCars[4].year}}">
                 <span class="badge badge-primary product-price-badge pos-absolute pos-t pos-l mt-2 ml-2">£199.99 p/w</span>
             </div>
         </div>
-        <!-- Product 6 -->
+        <!-- Recommended Car 6 -->
         <div class="card product-card overlay-hover">
             <!-- Hover content -->
             <div class="overlay-hover-content overlay-op-7 product-card-hover-tools">
-                <h4 class="text-white">
-                    Chevy Corvette (2011)
-                </h4>
-                <a href="@Url.Action("Details", new { id = 6728, @Email = ViewBag.Email } )" class="btn btn-primary text-uppercase font-weight-bold mb-3"><i class="fa fa-car mr-2"></i> View Car</a>
+                <h4 class="text-white">{{vm.recommendedCars[5].make}} {{vm.recommendedCars[5].model}} {{vm.recommendedCars[5].year}}</h4>
+                <a href="@Url.Action("Details", "Cars")?Id={{vm.recommendedCars[5].id}}&Email=@ViewBag.Email" class="btn btn-primary text-uppercase font-weight-bold mb-2"><i class="fa fa-car mr-2"></i> View Car</a>
             </div>
             <!-- Image & price content -->
             <div class="pos-relative">
-                <img class="card-img-top img-fluid" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbIUDljxgmnHE5TLeft_1S5_EaH3MBX2s1f9URJ9RJsSDFWDRl_A" height="115" width="236" alt="Car image">
+                <img class="card-img-top" ng-src="{{vm.recommendedCars[5].imageUrl}}" height="200" width="240" alt="{{vm.recommendedCars[5].make}} {{vm.recommendedCars[5].model}} {{vm.recommendedCars[5].year}}">
                 <span class="badge badge-primary product-price-badge pos-absolute pos-t pos-l mt-2 ml-2">£199.99 p/w</span>
             </div>
         </div>

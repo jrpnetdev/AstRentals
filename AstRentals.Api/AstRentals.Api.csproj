@@ -251,7 +251,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\CarDetailsController.cs" />
     <Compile Include="Controllers\CarSearchController.cs" />
     <Compile Include="Controllers\CarCountController.cs" />
     <Compile Include="Controllers\CarDropDownController.cs" />
@@ -274,6 +274,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\IRecommendedHelper.cs" />
+    <Compile Include="Helpers\RecommendedHelper.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CarListViewModel.cs" />

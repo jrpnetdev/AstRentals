@@ -27,6 +27,8 @@
                 model.totalCars = response.data.totalCars;
                 model.numberOfPages = response.data.numberOfPages;
                 model.currentPage = response.data.currentPage;
+                model.recommendedCars = response.data.recommendedCars;
+                console.log(model.recommendedCars);
 
                 if (model.totalCars === 0) {
                     model.error = "Sorry, No results were found";
