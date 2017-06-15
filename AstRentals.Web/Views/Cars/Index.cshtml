@@ -148,7 +148,7 @@
                                                 <p class="pos-md-absolute pos-t pos-r mr-3 text-md-right">
                                                     <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star text-primary"></i> <i class="fa fa-star-half-o text-primary"></i>
                                                 </p>
-                                                <p class="text-muted text-xs">Consectetuer feugiat hendrerit jus neo usitas valde verto. Abbas duis interdico modo ymo.</p>
+                                                <p class="text-muted text-xs">{{vm.carInfoText}}</p>
                                                 <div class="mt-auto" ng-controller="favouriteController">
 
                                                     @if (ViewBag.email == "null")
@@ -277,6 +277,7 @@
     <script src="~/App/favouriteDetailsController.js"></script>
     <script src="~/App/services/carService.js"></script>
     <script src="~/App/services/carDropDownService.js"></script>
+    <script src="~/App/services/carInfoService.js"></script>
     <script src="~/App/directives/categoriesDirective.js"></script>
     <script src="~/App/directives/scrollDirective.js"></script>
 }

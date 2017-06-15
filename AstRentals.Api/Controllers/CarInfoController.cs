@@ -15,15 +15,6 @@ namespace AstRentals.Api.Controllers
             _repo = repo;
         }
 
-        //public object Get()
-        //{
-        //    var cars = _repo.All();
-
-        //    var results = cars.Select(c => new { c.Make, c.Model }).Distinct().ToList();
-
-        //    return results;
-        //}
-
         public IEnumerable<CarInfo> Get()
         {
             return _repo.All();

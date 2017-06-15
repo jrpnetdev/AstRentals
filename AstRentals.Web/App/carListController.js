@@ -1,6 +1,6 @@
 ﻿(function (module) {
 
-    var carListController = function (carService, carDropDownService) {
+    var carListController = function (carService, carDropDownService, carInfoService) {
 
         var model = this;
 
@@ -9,6 +9,7 @@
         model.searchText = "";
         model.term = "";
         model.error = "";
+        model.carInfoText = "";
         model.pages = [];
         var pgx = 0;
 
@@ -29,9 +30,23 @@
 
                 if (model.totalCars === 0) {
                     model.error = "Sorry, No results were found";
+                    model.clear();
                 } else {
                     model.error = "";
                 }
+
+                if (type === "make" || type === "model") {
+                    carInfoService.getCarInfo(model.cars[0].make, model.cars[0].model).then(function(response) {
+                        var res = response.data.info;
+                            model.carInfoText = res.substr(0, 120) + "...";
+                        },
+                        function(data, status, header, config) {
+                            model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
+                        });
+                } else {
+                    model.carInfoText = "This model comes with carbon ceramic brakes as standard.\nAdditionally, the engine has been tweaked in both the cars to produce more horsepower.For more info...";
+                }
+                
 
                 // page calculation for pagination links
                 model.numberOfPages < 10 ? pgx = model.numberOfPages : pgx = 10;
@@ -70,7 +85,13 @@
 
         model.submit = function (make, model, year) {
 
-            var term = make + " " + model + " " + year;
+            var term = "";
+
+            if (model === "") {
+                term = make.trim() + " " + year.trim();
+            } else {
+                term = make.trim() + " " + model.trim() + " " + year.trim();
+            }
 
             if (term.trim() === "") {
                 this.error = "No values were selected.";
@@ -86,6 +107,8 @@
             this.selectedMake = "";
             this.selectedYear = "";
             this.selectedModel = "";
+            this.runflag = false;
+            this.ddlInit();
         };
 
         // Get Drop down list values for Advanced search form
@@ -120,7 +143,6 @@
                 model.makeDropDownValues = response.data[0];
                 model.modelDropDownValues = response.data[1];
                 model.yearDropDownValues = response.data[2];
-                console.log(response.data);
             });
 
         };
