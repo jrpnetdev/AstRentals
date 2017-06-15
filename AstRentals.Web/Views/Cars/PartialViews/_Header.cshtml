@@ -66,7 +66,7 @@
                                         </a>
                                         <div class="float-left">
                                             <h5 class="mb-0">
-                                                <a href="@Url.Action("Details", "Cars")?Id={{item.id}}&Email=@ViewBag.Email"> {{item.make}} {{item.model}} {{item.year}}</a>
+                                                <a href="@Url.Action("Details", "Cars")?Id={{item.id}}"> {{item.make}} {{item.model}} {{item.year}}</a>
                                             </h5>
                                             <p class="mb-0">Available now.</p>
                                             <a href="#" data-id="{{item.id}}" data-email="@ViewBag.Email" ng-click="vm.removeFavourite($event)" class="close cart-remove text-primary"> <i class="fa fa-times"></i> </a>
@@ -188,7 +188,7 @@
                         }
                         else
                         {
-                            <li class="nav-item dropdown dropdowns-no-carets dropdown-persist"> <a href="" class="btn btn-primary btn-sm btn-rounded text-uppercase font-weight-bold px-3 ml-3">Log Out</a> </li>
+                            <li class="nav-item dropdown dropdowns-no-carets dropdown-persist"> <a href="@Url.Action("Logout", "Cars")" class="btn btn-primary btn-sm btn-rounded text-uppercase font-weight-bold px-3 ml-3">Log Out</a> </li>
                         }
 
                         <li class="nav-item dropdown dropdowns-no-carets dropdown-persist"> <a href="@Url.Action("Register", "Home")" class="btn btn-primary btn-sm btn-rounded text-uppercase font-weight-bold px-3 ml-3">Register</a> </li>

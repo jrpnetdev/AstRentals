@@ -5,6 +5,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using AstRentals.Web.Helpers;
 
 namespace AstRentals.Web.Controllers
 {
@@ -13,17 +14,26 @@ namespace AstRentals.Web.Controllers
         //[Authorize]
         public ActionResult Index()
         {
-            ViewBag.Email = TempData["email"] ?? "null";
+            ViewBag.Email = CookieStore.GetCookie("Email");
+
+            if (ViewBag.Email == "")
+            {
+                ViewBag.Email = "null";
+            }
 
             return View();
         }
 
-        public ActionResult Details(int? id, string email)
+        public ActionResult Details(int? id)
         {
 
-            ViewBag.Email = email;
+            ViewBag.Email = CookieStore.GetCookie("Email");
+            if (ViewBag.Email == "")
+            {
+                ViewBag.Email = "null";
+            }
 
-            if (email == "null")
+            if (ViewBag.Email == "null")
             {
                 return RedirectToAction("Login", "Home");
             }
@@ -32,7 +42,7 @@ namespace AstRentals.Web.Controllers
                 return RedirectToAction("Index", "Error");
             }
 
-            DetailsViewModel vm = new DetailsViewModel() { Email = email, CarId = id };
+            DetailsViewModel vm = new DetailsViewModel() { Email = ViewBag.Email, CarId = id };
             
             return View(vm);
         }
@@ -61,7 +71,17 @@ namespace AstRentals.Web.Controllers
             return View(vm);
         }
 
+        public ActionResult Logout()
+        {
+            var responseCookie = HttpContext.Response.Cookies["Email"];
+            if (responseCookie != null)
+                responseCookie.Expires = DateTime.Now.AddDays(-1);
+
+            return RedirectToAction("Index");
+        }
+
         #region Helpers
+
         public async Task<string> GetCar(int id)
         {
             string temp = "";
@@ -77,7 +97,8 @@ namespace AstRentals.Web.Controllers
         [HttpPost]
         public void AddEmailToTempData(string email)
         {
-            TempData["email"] = email;
+            CookieStore.SetCookie("Email", email, TimeSpan.FromDays(1));
+            //TempData["email"] = email;
         }
         #endregion
     }

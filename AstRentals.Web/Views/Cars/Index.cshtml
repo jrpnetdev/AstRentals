@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Car List";
 }
 
@@ -142,7 +141,7 @@
                                                         <span class="text-primary">{{item.make}}</span> / {{item.model}} {{item.id}}
                                                     </p>
                                                     <h4 class="card-title mb-2">
-                                                        <a href="@Url.Action("Details", "Cars")?Id={{item.id}}&Email=@ViewBag.Email" class="text-grey-dark">{{item.make}} {{item.model}} ({{item.year}})</a>
+                                                        <a href="@Url.Action("Details", "Cars")?Id={{item.id}}" class="text-grey-dark">{{item.make}} {{item.model}} ({{item.year}})</a>
                                                     </h4>
                                                     <p class="font-weight-bold">£199.99 per day</p>
                                                     <p class="pos-md-absolute pos-t pos-r mr-3 text-md-right">
@@ -157,7 +156,7 @@
                                                         }
                                                         else
                                                         {
-                                                            <a href="@Url.Action("Details", "Cars")?Id={{item.id}}&Email=@ViewBag.Email" class="btn btn-primary btn-sm"><i class="fa fa-car mr-2"></i> Book Car Now</a>
+                                                            <a href="@Url.Action("Details", "Cars")?Id={{item.id}}" class="btn btn-primary btn-sm"><i class="fa fa-car mr-2"></i> Book Car Now</a>
                                                             <a href="#" class="btn btn-link btn-sm" data-id="{{item.id}}" data-email="@ViewBag.Email" ng-click="addToFavourites($event)"><i class="fa fa-heart" style="color: red"></i> Add to Favourites</a>
                                                             <a href="#" class="btn btn-link btn-sm" data-id="{{item.id}}" data-email="@ViewBag.Email" ng-click="removeFromFavourites($event)"><i class="fa fa-heart-o"></i> Remove From Favourites</a>
                                                         }
@@ -242,7 +241,7 @@
 
                         <categories></categories>
 
-                        <div class="p-3 overlay overlay-op-5 rounded flex-valign mb-4" data-bg-img="../../assets/img/shop/promo-truck.jpg" data-css='{"background-position":"center bottom"}' data-url="@Url.Action("Details")">
+                        <div class="p-3 overlay overlay-op-5 rounded flex-valign mb-4" data-bg-img="../../assets/img/shop/promo-truck.jpg" data-css='{"background-position":"center bottom"}' data-url="@Url.Action("Details", "Cars")?Id=3889">
                             <h4 class="text-white mb-0">
                                 Free Shipping
                             </h4>
