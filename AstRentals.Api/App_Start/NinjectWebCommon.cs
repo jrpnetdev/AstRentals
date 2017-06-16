@@ -72,6 +72,7 @@ namespace AstRentals.Api.App_Start
             kernel.Bind<ICarRepository>().To<CarRepository>();
             kernel.Bind<ICarInfoRepository>().To<CarInfoRepository>();
             kernel.Bind<IFavouriteRepository>().To<FavouriteRepository>();
+            kernel.Bind<IOrderRepository>().To<OrderRepository>();
             kernel.Bind<IRecommendedHelper>().To<RecommendedHelper>();
         }        
     }

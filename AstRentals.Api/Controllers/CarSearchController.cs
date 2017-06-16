@@ -25,8 +25,10 @@ namespace AstRentals.Api.Controllers
 
         public CarListViewModel Get(string searchText, int index, int size)
         {
+
             CarListViewModel clvm = new CarListViewModel();
-            //Todo: Add a preprocessor to format input term
+
+            clvm.RecommendedCars = _helper.GetRecommendedCars(_repo.Count);
 
             var results = new List<Car>();
 
@@ -60,8 +62,6 @@ namespace AstRentals.Api.Controllers
 
             clvm.NumberOfPages = pages;
             clvm.CurrentPage = index;
-
-            clvm.RecommendedCars = _helper.GetRecommendedCars(_repo.Count);
 
             return clvm;
         }

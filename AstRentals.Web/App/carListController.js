@@ -90,6 +90,8 @@
 
             if (model === "") {
                 term = make.trim() + " " + year.trim();
+            } else if (model === "" && make === "" ) {
+                term = year.trim();
             } else {
                 term = make.trim() + " " + model.trim() + " " + year.trim();
             }

@@ -1,5 +1,8 @@
-﻿namespace AstRentals.Data.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AstRentals.Data.Entities
 {
+    [Table("CarInfo")]
     public class CarInfo
     {
         public int Id { get; set; }

@@ -14,6 +14,5 @@ namespace AstRentals.Data.Infrastructure
         public DbSet<CarInfo> CarInfo { get; set; }
         public DbSet<Favourite> Favourites { get; set; }
         public DbSet<Order> Orders { get; set; }
-
     }
 }

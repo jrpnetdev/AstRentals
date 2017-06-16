@@ -11,7 +11,6 @@ namespace AstRentals.Web.Controllers
 {
     public class CarsController : Controller
     {
-        //[Authorize]
         public ActionResult Index()
         {
             DeleteCheckoutCookie();
@@ -66,12 +65,14 @@ namespace AstRentals.Web.Controllers
             // check if CheckoutDetails json is valid
             if(json == "")
             {
+                DeleteCheckoutCookie();
                 return RedirectToAction("Index", "Cars");
             }
             if(json.StartsWith("NoEndDate:"))
             {
                 string[] words = json.Split(':');
                 var returnId = Convert.ToInt32(words[1]);
+                DeleteCheckoutCookie();
                 return RedirectToAction("Details", "Cars", new { id = returnId });
             }
 
@@ -84,10 +85,12 @@ namespace AstRentals.Web.Controllers
             var email = CookieStore.GetCookie("Email");
             if (email == "")
             {
+                DeleteCheckoutCookie();
                 return RedirectToAction("Login", "Home");
             }
 
             vm.EmailAddress = email;
+            ViewBag.Email = email;  //Required for favourites
 
             ViewBag.Car = await GetCar(vm.CarId);
 
@@ -98,6 +101,9 @@ namespace AstRentals.Web.Controllers
 
         public async Task<ActionResult> Confirmation(CheckoutViewModel vm)
         {
+            //todo: get last (most recent) order in Db for Customer email
+            // add FindOrder() to orderController - return single order
+
             ViewBag.Car = await GetCar(vm.CarId);
 
             return View(vm);

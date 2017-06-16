@@ -51,6 +51,8 @@
                             "&startDate=" + model.startDate + "&endDate=" + model.endDate
             }).then(function() {
                 window.location = "/Cars/Checkout";
+            }, function (data, status, header, config) {
+                model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
             });
         };
 

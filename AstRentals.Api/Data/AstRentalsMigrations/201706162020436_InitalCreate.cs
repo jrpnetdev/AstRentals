@@ -8,7 +8,7 @@ namespace AstRentals.Api.Data.AstRentalsMigrations
         public override void Up()
         {
             CreateTable(
-                "dbo.CarInfoes",
+                "dbo.CarInfo",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -40,13 +40,33 @@ namespace AstRentals.Api.Data.AstRentalsMigrations
                     })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.Orders",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        CarId = c.Int(nullable: false),
+                        Colour = c.String(),
+                        Features = c.String(),
+                        Cover = c.String(),
+                        StartDate = c.DateTime(nullable: false),
+                        EndDate = c.DateTime(nullable: false),
+                        RentalCost = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        CoverCost = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        TotalPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        NumberOfDays = c.Int(nullable: false),
+                        EmailAddress = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
         {
+            DropTable("dbo.Orders");
             DropTable("dbo.Favourites");
             DropTable("dbo.Cars");
-            DropTable("dbo.CarInfoes");
+            DropTable("dbo.CarInfo");
         }
     }
 }

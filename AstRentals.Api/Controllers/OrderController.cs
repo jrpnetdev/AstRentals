@@ -7,25 +7,25 @@ using System.Web.Http;
 
 namespace AstRentals.Api.Controllers
 {
-    public class OrdersController : ApiController
+    public class OrderController : ApiController
     {
 
         private readonly IOrderRepository _repo;
 
-        public OrdersController(IOrderRepository repo)
+        public OrderController(IOrderRepository repo)
         {
             _repo = repo;
         }
 
         public List<Order> Get(string email)
         {
-            return _repo.FindAll(f => f.Email == email).ToList();
+            return _repo.FindAll(f => f.EmailAddress == email).ToList();
         }
 
         [HttpPost]
         public int Post([FromBody]Order order)
         {
-            if (order.Email == "null") return 0;
+            if (order.EmailAddress == "null") return 0;
 
             _repo.Add(order);
 
@@ -35,7 +35,7 @@ namespace AstRentals.Api.Controllers
         [HttpDelete]
         public int Delete(int id, string email)
         {
-            var order = _repo.Find(o => o.Id == id && o.Email == email);
+            var order = _repo.Find(o => o.Id == id && o.EmailAddress == email);
 
             _repo.Delete(order);
 

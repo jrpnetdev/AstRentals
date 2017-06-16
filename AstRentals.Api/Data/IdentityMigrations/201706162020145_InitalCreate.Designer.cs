@@ -13,7 +13,7 @@ namespace AstRentals.Api.Data.IdentityMigrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201706050913049_InitalCreate"; }
+            get { return "201706162020145_InitalCreate"; }
         }
         
         string IMigrationMetadata.Source
