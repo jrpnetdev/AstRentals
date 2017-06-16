@@ -1,6 +1,6 @@
 ﻿(function (module) {
 
-    var carDetailsController = function ($http, carService, carInfoService, carImageService) {
+    var carDetailsController = function ($rootScope, $scope, $http, carService, carInfoService, carImageService) {
 
         var model = this;
 
@@ -8,6 +8,8 @@
         model.colour = "Red";
         model.features = "3door";
         model.cover = "basic";
+        model.startDate = new Date();
+        model.endDate = new Date();
 
         model.getCar = function (id) {
 
@@ -15,21 +17,21 @@
                 .then(function(response) {
                     model.car = response.data;
 
-                    carInfoService.getCarInfo(model.car.make, model.car.model).then(function (response) {
-                        model.carInfo = response.data.info;
-                        model.carInfoText = res.substr(0, 250) + "...";
+                    carInfoService.getCarInfo(model.car.make, model.car.model).then(function (inforesponse) {
+                        model.carInfo = inforesponse.data.info;
+                        model.carInfoText = model.carInfo.substr(0, 250) + "...";
                     }, function (data, status, header, config) {
                         model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
                     });
 
-                    carImageService.getCarImages(model.car.year, model.car.make, model.car.model, 6).then(function (response) {
-                        model.carImages = angular.fromJson(response.data);
+                    carImageService.getCarImages(model.car.year, model.car.make, model.car.model, 6).then(function (imgresponse) {
+                        model.carImages = angular.fromJson(imgresponse.data);
                     }, function (data, status, header, config) {
                         model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
                     });
 
-                    $http.get("http://localhost:50604/api/cardetails").then(function(response) {
-                        model.recommendedCars = response.data;
+                    $http.get("http://localhost:50604/api/cardetails").then(function(rcresponse) {
+                        model.recommendedCars = rcresponse.data;
                     }, function (data, status, header, config) {
                         model.error = "error :" + data + "   status:" + status + "   header:" + header + "   config:" + config;
                     });
@@ -40,10 +42,22 @@
         };
 
         model.submitDetails = function () {
-            var currentTime = new Date();
-            window.location = '/Cars/Checkout?carid=' + model.car.id + '&colour=' + model.colour + '&features=' + model.features + '&cover=' + model.cover + '&startdate=' + currentTime + '&enddate=' + currentTime;
+
+            $http({
+                url: "/Cars/PreCheckout",
+                method: "POST",
+                headers: { 'Content-Type': "application/x-www-form-urlencoded" },
+                data: "carid=" + model.car.id + "&colour=" + model.colour + "&features=" + model.features + "&cover=" + model.cover +
+                            "&startDate=" + model.startDate + "&endDate=" + model.endDate
+            }).then(function() {
+                window.location = "/Cars/Checkout";
+            });
         };
 
+        $rootScope.$on("selectedDates", function (e, startdate, enddate) {
+            model.startDate = startdate;
+            model.endDate = enddate;
+        });
     };
 
     module.controller("carDetailsController", carDetailsController);

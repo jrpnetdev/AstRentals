@@ -1,7 +1,9 @@
-﻿angular.module('app').controller('DatepickerCtrl', function ($scope) {
+﻿angular.module("app").controller("DatepickerCtrl", function ($rootScope, $scope) {
+
     $scope.today = function () {
         $scope.dt = new Date();
     };
+
     $scope.today();
 
     $scope.minDate = -1;
@@ -9,15 +11,13 @@
     $scope.start = null;
     $scope.end = null;
 
-
-
     $scope.dateOptions = {
-        formatYear: 'yy',
+        formatYear: "yy",
         startingDay: 1
     };
 
     $scope.getDayClass = function (date, mode) {
-        if (mode === 'day') {
+        if (mode === "day") {
             var calDay = new Date(date).setHours(0, 0, 0, 0);
             for (var i = 0; i < $scope.events.length; i++) {
                 var eventDate = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
@@ -28,16 +28,11 @@
                 }
             }
         }
-        //console.log('event start', $scope.start);
-        //console.log('event end', $scope.end);
-        console.log('digest');
 
-
-        return '';
+        return "";
     };
 
-    $scope.$watch('dt', function () {
-
+    $scope.$watch("dt", function () {
 
         if (!$scope.dt) {
             return;
@@ -58,20 +53,25 @@
         }
 
         if ($scope.start) {
-            $scope.events.push({ date: $scope.start, status: 'full', label: 'start' })
+            $scope.events.push({ date: $scope.start, status: "full", label: "start" });
         }
         if ($scope.end) {
-            $scope.events.push({ date: $scope.end, status: 'full', label: 'end' })
+            $scope.events.push({ date: $scope.end, status: "full", label: "end" });
 
             var tempDate;
-            for (var i = 1; i <= daydiff($scope.start, $scope.end) ; i++) {
+            for (var i = 1; i <= daydiff($scope.start, $scope.end); i++) {
                 tempDate = new Date();
                 tempDate.setDate($scope.start.getDate() + i);
-                $scope.events.push({ date: tempDate, status: 'partially' })
+                $scope.events.push({ date: tempDate, status: "partially" });
 
             }
 
         }
+
+        //console.log("event start ", $scope.start);
+        //console.log("event end ", $scope.end);
+
+        $rootScope.$broadcast("selectedDates", $scope.start, $scope.end);
 
         $scope.dt = null;
 

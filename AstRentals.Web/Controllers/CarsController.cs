@@ -14,6 +14,8 @@ namespace AstRentals.Web.Controllers
         //[Authorize]
         public ActionResult Index()
         {
+            DeleteCheckoutCookie();
+
             ViewBag.Email = CookieStore.GetCookie("Email");
 
             if (ViewBag.Email == "")
@@ -26,14 +28,10 @@ namespace AstRentals.Web.Controllers
 
         public ActionResult Details(int? id)
         {
+            DeleteCheckoutCookie();
 
             ViewBag.Email = CookieStore.GetCookie("Email");
             if (ViewBag.Email == "")
-            {
-                ViewBag.Email = "null";
-            }
-
-            if (ViewBag.Email == "null")
             {
                 return RedirectToAction("Login", "Home");
             }
@@ -47,26 +45,60 @@ namespace AstRentals.Web.Controllers
             return View(vm);
         }
 
-        public async Task<ActionResult> Checkout(CheckoutViewModel vm)
+        [HttpPost]
+        public void PreCheckout(PreCheckoutModel vm)
         {
-            var carstr = await GetCar(vm.CarId);
+            if (vm.EndDate == "null")
+            {
+                CookieStore.SetCookie("CheckoutDetails", "NoEndDate:" + vm.CarId, TimeSpan.FromDays(1));
+                return;
+            }
 
-            vm.Car = JsonConvert.DeserializeObject<Car>(carstr);
+            var json = JsonConvert.SerializeObject(vm);
 
-            vm.StartDate = DateTime.Now;
-            vm.EndDate = DateTime.Now.AddDays(7);
+            CookieStore.SetCookie("CheckoutDetails", json, TimeSpan.FromDays(1));
+        }
+
+        public async Task<ActionResult> Checkout()
+        {
+            var json = CookieStore.GetCookie("CheckoutDetails");
+
+            // check if CheckoutDetails json is valid
+            if(json == "")
+            {
+                return RedirectToAction("Index", "Cars");
+            }
+            if(json.StartsWith("NoEndDate:"))
+            {
+                string[] words = json.Split(':');
+                var returnId = Convert.ToInt32(words[1]);
+                return RedirectToAction("Details", "Cars", new { id = returnId });
+            }
+
+            var preCheckoutVm = JsonConvert.DeserializeObject<PreCheckoutModel>(json);
+
+            CheckoutViewModelHelper helper = new CheckoutViewModelHelper();
+            var vm = helper.CreateCheckoutViewModel(preCheckoutVm);
+
+            //Get email address from cookie
+            var email = CookieStore.GetCookie("Email");
+            if (email == "")
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
+            vm.EmailAddress = email;
+
+            ViewBag.Car = await GetCar(vm.CarId);
+
+            DeleteCheckoutCookie();
 
             return View(vm);
         }
 
         public async Task<ActionResult> Confirmation(CheckoutViewModel vm)
         {
-            var carstr = await GetCar(vm.CarId);
-
-            vm.Car = JsonConvert.DeserializeObject<Car>(carstr);
-
-            vm.StartDate = DateTime.Now;
-            vm.EndDate = DateTime.Now.AddDays(7);
+            ViewBag.Car = await GetCar(vm.CarId);
 
             return View(vm);
         }
@@ -77,12 +109,14 @@ namespace AstRentals.Web.Controllers
             if (responseCookie != null)
                 responseCookie.Expires = DateTime.Now.AddDays(-1);
 
+            DeleteCheckoutCookie();
+
             return RedirectToAction("Index");
         }
 
         #region Helpers
 
-        public async Task<string> GetCar(int id)
+        public async Task<Car> GetCar(int id)
         {
             string temp = "";
 
@@ -91,14 +125,21 @@ namespace AstRentals.Web.Controllers
                 temp = await client.GetStringAsync("http://localhost:50604/api/cars?id=" + id);
             }
 
-            return temp;
+            var car = JsonConvert.DeserializeObject<Car>(temp);
+            return car;
         }
 
         [HttpPost]
-        public void AddEmailToTempData(string email)
+        public void AddEmailToCookie(string email)
         {
             CookieStore.SetCookie("Email", email, TimeSpan.FromDays(1));
-            //TempData["email"] = email;
+        }
+
+        private void DeleteCheckoutCookie()
+        {
+            var checkoutCookie = HttpContext.Response.Cookies["CheckoutDetails"];
+            if (checkoutCookie != null)
+                checkoutCookie.Expires = DateTime.Now.AddDays(-1);
         }
         #endregion
     }

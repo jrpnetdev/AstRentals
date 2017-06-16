@@ -16,7 +16,7 @@
                 if (response === "") {
 
                     $http({
-                        url: "/Cars/AddEmailToTempData",
+                        url: "/Cars/AddEmailToCookie",
                         method: "POST",
                         headers: { 'Content-Type': "application/x-www-form-urlencoded" },
                         data: "email=" + model.email

@@ -217,7 +217,7 @@
                         <th class="w-10"></th>
                         <th class="w-20">Item</th>
                         <th class="w-20">Price</th>
-                        <th class="w-20">Colour</th>
+                        <th class="w-10">Colour</th>
                         <th class="w-20">Features</th>
                         <th class="w-20">Insurance & Cover</th>
                         <th class="w-20">Dates</th>
@@ -232,16 +232,16 @@
                         </td>
                         <td class="text-center">
                             <a href="#">
-                                <img class="cart-img img-fluid" src="@Url.Content(Model.Car.ImageUrl)" alt="@Model.Car.Make @Model.Car.Model (@Model.Car.Year)">
+                                <img class="cart-img img-fluid" src="@Url.Content(ViewBag.Car.ImageUrl)" alt="@ViewBag.Car.Make @ViewBag.Car.Model (@ViewBag.Car.Year)">
                             </a>
                         </td>
-                        <td> <span class="font-weight-bold">@Model.Car.Make @Model.Car.Model (@Model.Car.Year)</span> </td>
-                        <td>£199.99 per week</td>
+                        <td> <span class="font-weight-bold">@ViewBag.Car.Make @ViewBag.Car.Model (@ViewBag.Car.Year)</span> </td>
+                        <td>£28.00 perday</td>
                         <td>@Model.Colour</td>
                         <td>@Model.Features</td>
                         <td>@Model.Cover</td>
                         <td>From: @Model.StartDate.ToString("dd/MM/yyyy") To: @Model.EndDate.ToString("dd/MM/yyyy")</td>
-                        <td class="text-md-right"><span class="font-weight-bold">£199.99</span></td>
+                        <td class="text-md-right"><span class="font-weight-bold">£ @Model.RentalCost</span></td>
                     </tr>
 
                 </tbody>
@@ -268,19 +268,22 @@
                     <div class="col-md-8 text-md-right mt-3 mt-md-0">
                         <div class="cart-content-totals">
                             <h4 class="font-weight-light">
-                                Subtotal: £199.99
+                                Rental Cost (£28.00 * <strong>@Model.NumberOfDays</strong> Days): @Model.RentalCost
                             </h4>
                             <h4 class="font-weight-light">
-                                Discount (10%): <span class="text-danger">£19.99</span>
+                                Cover Cost: <span class="text-danger">@Model.CoverCost</span>
                             </h4>
                             <hr class="my-3 w-50 ml-0 ml-md-auto mr-md-0" />
                             <h3>
-                                Total: <span class="text-primary">£180.00</span>
+                                Total: <span class="text-primary">@Model.TotalPrice</span>
                             </h3>
+                            <h4 class="font-weight-light">
+                                Contact Email: <span class="text-danger">@Model.EmailAddress</span>
+                            </h4>
                             <hr class="my-3 w-50 ml-0 ml-md-auto mr-md-0" />
                         </div>
                         <!-- Proceed to checkout -->
-                        <a href="@Url.Action("Details", new {id = Model.Car.Id })" class="btn btn-outline-primary btn-rounded btn-lg"><i class="fa fa-car"></i> Back to Car Details</a>
+                        <a href="@Url.Action("Details", new {id = ViewBag.Car.Id })" class="btn btn-outline-primary btn-rounded btn-lg"><i class="fa fa-car"></i> Back to Car Details</a>
                         <button class="btn btn-primary btn-rounded btn-lg" ng-click="vm.confirm(@Json.Encode(Model))">Make Payment</button>
                     </div>
                 </div>
