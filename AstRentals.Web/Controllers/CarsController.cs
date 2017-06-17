@@ -2,6 +2,7 @@
 using AstRentals.Web.ViewModels;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -25,7 +26,7 @@ namespace AstRentals.Web.Controllers
             return View();
         }
 
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             DeleteCheckoutCookie();
 
@@ -39,7 +40,20 @@ namespace AstRentals.Web.Controllers
                 return RedirectToAction("Index", "Error");
             }
 
-            DetailsViewModel vm = new DetailsViewModel() { Email = ViewBag.Email, CarId = id };
+            //Check if favourite added to display correct link in view
+            ViewBag.FavouriteAdded = false;
+
+            List<Car> cars = await GetFavourites(ViewBag.Email);
+
+            foreach(var car in cars)
+            {
+                if (car.Id == id)
+                {
+                    ViewBag.FavouriteAdded = true;
+                }
+            }
+
+            var vm = new DetailsViewModel() { Email = ViewBag.Email, CarId = id };
             
             return View(vm);
         }
@@ -73,15 +87,15 @@ namespace AstRentals.Web.Controllers
                 string[] words = json.Split(':');
                 var returnId = Convert.ToInt32(words[1]);
                 DeleteCheckoutCookie();
+                TempData["Error"] = "No End Date was selected";
                 return RedirectToAction("Details", "Cars", new { id = returnId });
             }
 
             var preCheckoutVm = JsonConvert.DeserializeObject<PreCheckoutModel>(json);
 
-            CheckoutViewModelHelper helper = new CheckoutViewModelHelper();
+            var helper = new CheckoutViewModelHelper();
             var vm = helper.CreateCheckoutViewModel(preCheckoutVm);
 
-            //Get email address from cookie
             var email = CookieStore.GetCookie("Email");
             if (email == "")
             {
@@ -157,6 +171,20 @@ namespace AstRentals.Web.Controllers
             var order = JsonConvert.DeserializeObject<CheckoutViewModel>(temp);
 
             return order;
+        }
+
+        public async Task<List<Car>> GetFavourites(string email)
+        {
+            string temp = "";
+
+            using (HttpClient client = new HttpClient())
+            {
+                temp = await client.GetStringAsync("http://localhost:50604/api/favourites?email=" + email);
+            }
+
+            var cars = JsonConvert.DeserializeObject<List<Car>>(temp);
+
+            return cars;
         }
 
         [HttpPost]

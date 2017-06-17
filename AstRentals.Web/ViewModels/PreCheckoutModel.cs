@@ -1,11 +1,4 @@
-﻿using AstRentals.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-
-namespace AstRentals.Web.ViewModels
+﻿namespace AstRentals.Web.ViewModels
 {
     public class PreCheckoutModel
     {

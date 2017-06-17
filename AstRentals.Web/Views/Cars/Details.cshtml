@@ -1,6 +1,7 @@
 ﻿@model AstRentals.Web.ViewModels.DetailsViewModel
 @{
     ViewBag.Title = "Details";
+    var error = TempData["Error"] ?? "null";
 }
 @section styles {
     <link href="~/assets/css/daterangepicker.css" rel="stylesheet" />
@@ -137,7 +138,13 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
-                                                    <div class="text-sm text-uppercase">Insurance and Cover</div>
+                                                    <div class="text-sm text-uppercase" style="display: inline">
+                                                        Insurance and Cover 
+                                                        <a href="" class="btn" data-toggle="popover" data-trigger="hover" data-html="true" title="<b>Cover Information</b>"
+                                                           data-content="<b>Basic Cover</b><p>Includes: third-party only.</p><b>Cancellation Guarantee</b><p>Includes basic cover & guarantee we will cancel order within 24 hours. Terms and conditions apply.</p><b>Extended Insurance</b><p>Includes basic & cancellation plus Third-party, fire and theft</p><b>Premium Cover</b><p>All other options included: Comprehensive cover plus bonus points.</p>">
+                                                            <i class="fa fa-info-circle" style="padding-left: -10px"></i>
+                                                        </a>
+                                                    </div>
                                                     <select class="form-control form-control-sm" ng-model="vm.cover" ng-selected="vm.cover">
                                                         <option value="basic">Basic Cover (£0.00)</option>
                                                         <option value="cancellation">Basic Cover + Cancellation Guarantee (£20.00)</option>
@@ -157,13 +164,23 @@
                                                 <div class="col-md-12">Start: {{start | date:'fullDate'}}</div>
                                                 <div class="col-md-12">End: {{end | date:'fullDate'}}</div>
                                             </div>
+                                            @if (error.ToString() != "null")
+                                            {
+                                                <div class="alert alert-warning" role="alert">No <strong>end date</strong> was selected.</div>
+                                            }
                                         </div>
                                     </div>
 
                                     <div ng-controller="favouriteController">
                                         <button class="btn btn-primary" type="submit"><i class="fa fa-car mr-2"></i> Book Rental</button>
-                                        <a href="#" class="btn btn-link btn-sm" data-id="@Model.CarId" data-email="@Model.Email" ng-click="addToFavourites($event)"><i class="fa fa-heart" style="color: red"></i> Add to Favourites</a>
-                                        <a href="#" class="btn btn-link btn-sm" data-id="@Model.CarId" data-email="@Model.Email" ng-click="removeFromFavourites($event)"><i class="fa fa-heart-o"></i> Remove From Favourites</a>
+                                        @if (ViewBag.FavouriteAdded == false)
+                                        {
+                                            <a href="#" class="btn btn-link btn-sm" data-id="@Model.CarId" data-email="@Model.Email" ng-click="addToFavourites($event)"><i class="fa fa-heart" style="color: red"></i> Add to Favourites</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="#" class="btn btn-link btn-sm" data-id="@Model.CarId" data-email="@Model.Email" ng-click="removeFromFavourites($event)"><i class="fa fa-heart-o"></i> Remove From Favourites</a>
+                                        }
                                         <p class="text-muted text-xs d-inline hidden-md-down">Car available now!</p>
                                     </div>
                                 </div>

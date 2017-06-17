@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using AstRentals.Data.Entities;
+﻿using AstRentals.Data.Entities;
 using AstRentals.Web.Helpers;
 using AstRentals.Web.ViewModels;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace AstRentals.Web.Controllers
 {
     public class MyAccountController : Controller
     {
-        // GET: MyAccount
         public async Task<ActionResult> Orders()
         {
             ViewBag.Email = CookieStore.GetCookie("Email");

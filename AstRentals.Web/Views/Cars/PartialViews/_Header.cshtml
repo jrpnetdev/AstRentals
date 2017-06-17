@@ -94,15 +94,12 @@
                 <div class="container clearfix">
                     <!--main navigation-->
                     <ul class="nav navbar-nav float-lg-left navbar-nav-flush dropdown-effect-fadeup">
-                        <!-- Shop Homepage -->
-                        <li class="nav-item"> <a href="@Url.Action("Index", "Home")" class="nav-link">Shop Home</a> </li>
+                        <!-- Homepage -->
+                        <li class="nav-item"> <a href="@Url.Action("Index", "Home")" class="nav-link">Home</a> </li>
 
-                        <!-- Shop Pages -->
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="pages-drop" data-toggle="dropdown" data-hover="dropdown">Shop Pages</a>
-                            <!-- Menu -->
-                            <div class="dropdown-menu"> <a href="shop-grid.htm" class="dropdown-item">Products Grid</a> <a href="@Url.Action("Index")" class="dropdown-item active">Car Rentals List</a> <a href="@Url.Action("Details")" class="dropdown-item">Product View</a> <a href="shop-cart.htm" class="dropdown-item">Cart</a> <a href="shop-checkout.htm" class="dropdown-item">Checkout</a> <a href="shop-confirmation.htm" class="dropdown-item">Confirmation</a> </div>
-                        </li>
+                        <!-- Car List -->
+                        <li class="nav-item"> <a href="@Url.Action("Index", "Cars")" class="nav-link">Car List</a> </li>
+
                         <li class="nav-item dropdown dropdown-mega-menu dropdown-persist active">
                             <a href="shop.htm" class="nav-link dropdown-toggle" id="shop-mega-menu" data-toggle="dropdown" data-hover="dropdown">Shop Mega Menu</a>
                             <!-- Dropdown Menu -->
