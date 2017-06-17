@@ -123,6 +123,7 @@
     <Compile Include="Controllers\CarsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MyAccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -130,11 +131,13 @@
     <Compile Include="Helpers\CookieStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CheckoutViewModel.cs" />
+    <Compile Include="ViewModels\MyAccountOrdersViewModel.cs" />
     <Compile Include="ViewModels\PreCheckoutModel.cs" />
     <Compile Include="ViewModels\DetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\checkoutController.js" />
+    <Content Include="App\myAccountFavouritesController.js" />
     <Content Include="App\favouriteDetailsController.js" />
     <Content Include="App\registerController.js" />
     <Content Include="App\app.js" />
@@ -2951,6 +2954,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Cars\PartialViews\_Recommended.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MyAccount\Orders.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MyAccount\Favourites.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

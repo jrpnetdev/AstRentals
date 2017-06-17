@@ -99,10 +99,20 @@ namespace AstRentals.Web.Controllers
             return View(vm);
         }
 
-        public async Task<ActionResult> Confirmation(CheckoutViewModel vm)
+        public async Task<ActionResult> Confirmation()
         {
-            //todo: get last (most recent) order in Db for Customer email
-            // add FindOrder() to orderController - return single order
+
+            //Get email address from cookie
+            var email = CookieStore.GetCookie("Email");
+            if (email == "")
+            {
+                DeleteCheckoutCookie();
+                return RedirectToAction("Login", "Home");
+            }
+
+            ViewBag.Email = email;  //Required for favourites
+
+            var vm = await GetLatestOrder(email);
 
             ViewBag.Car = await GetCar(vm.CarId);
 
@@ -133,6 +143,20 @@ namespace AstRentals.Web.Controllers
 
             var car = JsonConvert.DeserializeObject<Car>(temp);
             return car;
+        }
+
+        public async Task<CheckoutViewModel> GetLatestOrder(string email)
+        {
+            string temp = "";
+
+            using (HttpClient client = new HttpClient())
+            {
+                temp = await client.GetStringAsync("http://localhost:50604/api/order?email=" + email);
+            }
+
+            var order = JsonConvert.DeserializeObject<CheckoutViewModel>(temp);
+
+            return order;
         }
 
         [HttpPost]

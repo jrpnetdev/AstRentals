@@ -18,6 +18,10 @@
                 return;
             }
             carService.getCars(term, index, size, type).then(function (response) {
+
+                console.log(term);
+
+                model.searchText = term;
                 model.term = term;
                 model.searchType = type;
                 model.pageSizeSelection = size;
@@ -48,7 +52,6 @@
                     model.carInfoText = "This model comes with carbon ceramic brakes as standard.\nAdditionally, the engine has been tweaked in both the cars to produce more horsepower.For more info...";
                 }
                 
-
                 // page calculation for pagination links
                 model.numberOfPages < 10 ? pgx = model.numberOfPages : pgx = 10;
                 
@@ -100,6 +103,10 @@
                 this.error = "No values were selected.";
                 return;
             }
+
+            this.searchText = term;
+            this.term = term;
+            this.searchtype = "search";
 
             this.error = "";
             this.getCars(term.trim(), 1, this.pageSizeSelection, "search");

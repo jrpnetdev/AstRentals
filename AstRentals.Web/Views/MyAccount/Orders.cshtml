@@ -1,0 +1,75 @@
+﻿@model AstRentals.Web.ViewModels.MyAccountOrdersViewModel
+@{
+    ViewBag.Title = "Confirmation";
+    int i = 0;
+}
+
+<div class="page page-shop header-compact-sticky page-shop-confirmation navbar-layout-navbar-below">
+
+    <!-- plugin: page loading indicator, delete to remove loader -->
+    <div class="page-loader" data-toggle="page-loader"></div>
+
+    <a href="#content" id="top" class="sr-only">Skip to content</a>
+    
+    @Html.Partial("~/Views/Cars/PartialViews/_Header.cshtml")
+
+    <div id="content" class="py-5">
+        <div class="container">
+            <div class="text-center mb-6">
+                <i class="fa fa-car icon-6x" style="color: #55a79a"></i>
+                <h3>
+                    Order History
+                </h3>
+            </div>
+            <table class="table table-responsive mb-0 cart-table cart-table-summary">
+                <tbody>
+                <!-- Rental information -->
+                @foreach (var item in Model.Orders)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <a href="#">
+                                <img class="cart-img img-fluid" src="@Url.Content(Model.Cars[i].ImageUrl)" alt="@Model.Cars[i].Make @Model.Cars[i].Model (@Model.Cars[i].Year)">
+                            </a>
+                        </td>
+                        <td> <span class="font-weight-bold">@Model.Cars[i].Make @Model.Cars[i].Model (@Model.Cars[i].Year)</span> </td>
+                        <td>@item.Colour</td>
+                        <td>@item.Features</td>
+                        <td>@item.Cover</td>
+                        <td>From: @item.StartDate.ToString("dd/MM/yyyy") To: @item.EndDate.ToString("dd/MM/yyyy")</td>
+                        <td class="text-md-right"><span class="font-weight-bold">Total: £@item.TotalPrice</span></td>
+                    </tr>
+                    i++;
+                }
+                
+                </tbody>
+            </table>
+            <hr class="my-4 hr-lg" />
+            <div class="cart-content-footer">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h6 class="text-muted mb-3">
+                            If you have questions about your orders please email us at support@astrentals.uk.com.
+                        </h6>
+                    </div>
+                    <div class="col-md-8 text-md-right mt-3 mt-md-0">
+                        <div class="cart-content-totals">
+                            <h4 class="font-weight-light">
+                                Total orders placed: @Model.Orders.Count()
+                            </h4>
+                            <hr class="my-3 w-50 ml-0 ml-md-auto mr-md-0" />
+                        </div>
+                        <!-- Proceed to checkout -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_Footer")
+
+@section scripts{
+    <!-- Angular scripts -->
+    <script src="~/App/favouriteDetailsController.js"></script>
+}

@@ -178,20 +178,19 @@
                                 <a href="#" class="nav-link dropdown-toggle" id="account-drop" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-user mr-2"></i>My Account</a>
                             }
                             <!-- Dropdown Menu -->
-                            <div class="dropdown-menu dropdown-menu-right"> <a href="#" class="dropdown-item">My Wish List</a> <a href="#" class="dropdown-item">Order History</a> <a href="#" class="dropdown-item">Track Orders</a>
+                            <div class="dropdown-menu dropdown-menu-right"> <a href="@Url.Action("Favourites", "MyAccount")" class="dropdown-item">My Favourites</a> <a href="@Url.Action("Orders", "MyAccount")" class="dropdown-item">Order History</a> <a href="#" class="dropdown-item">Track Orders</a>
                             </div>
                         </li>
                         
                         @if (@ViewBag.Email == "null")
                         {
                             <li class="nav-item dropdown dropdowns-no-carets dropdown-persist"> <a href="@Url.Action("LogIn", "Home")" class="btn btn-primary btn-sm btn-rounded text-uppercase font-weight-bold px-3 ml-3">Log In</a> </li>
+                            <li class="nav-item dropdown dropdowns-no-carets dropdown-persist"> <a href="@Url.Action("Register", "Home")" class="btn btn-primary btn-sm btn-rounded text-uppercase font-weight-bold px-3 ml-3">Register</a> </li>
                         }
                         else
                         {
                             <li class="nav-item dropdown dropdowns-no-carets dropdown-persist"> <a href="@Url.Action("Logout", "Cars")" class="btn btn-primary btn-sm btn-rounded text-uppercase font-weight-bold px-3 ml-3">Log Out</a> </li>
                         }
-
-                        <li class="nav-item dropdown dropdowns-no-carets dropdown-persist"> <a href="@Url.Action("Register", "Home")" class="btn btn-primary btn-sm btn-rounded text-uppercase font-weight-bold px-3 ml-3">Register</a> </li>
                     </ul>
                 </div>
             </div>

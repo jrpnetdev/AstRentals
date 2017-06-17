@@ -17,9 +17,15 @@ namespace AstRentals.Api.Controllers
             _repo = repo;
         }
 
-        public List<Order> Get(string email)
+        public List<Order> Get(string email, int id)
         {
-            return _repo.FindAll(f => f.EmailAddress == email).ToList();
+            return _repo.FindAll(o => o.EmailAddress == email).ToList();
+        }
+
+        [HttpGet]
+        public Order Get(string email)
+        {
+            return _repo.FindAll(o => o.EmailAddress == email).OrderByDescending(o => o.Id).FirstOrDefault();
         }
 
         [HttpPost]

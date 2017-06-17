@@ -266,8 +266,10 @@
             </div>
             @if (ViewBag.Email != "null")
             {
+                <div ng-show="vm.recommendedCars">
                 <hr class="mt-6 mb-0" />
-                <div class="bg-faded py-5">@Html.Partial("PartialViews/_Recommended")</div>
+                    <div class="bg-faded py-5">@Html.Partial("PartialViews/_Recommended")</div>
+                </div>
             }
 
         </div>
