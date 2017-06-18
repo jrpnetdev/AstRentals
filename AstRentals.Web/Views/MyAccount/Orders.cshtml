@@ -1,6 +1,6 @@
 ﻿@model AstRentals.Web.ViewModels.MyAccountOrdersViewModel
 @{
-    ViewBag.Title = "Confirmation";
+    ViewBag.Title = "Orders";
     int i = 0;
 }
 
@@ -21,6 +21,10 @@
                     Order History
                 </h3>
             </div>
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-warning" role="alert"><strong>@ViewBag.Error</strong></div>
+            }
             <table class="table table-responsive mb-0 cart-table cart-table-summary">
                 <tbody>
                 <!-- Rental information -->

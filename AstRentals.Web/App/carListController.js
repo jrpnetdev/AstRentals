@@ -19,8 +19,6 @@
             }
             carService.getCars(term, index, size, type).then(function (response) {
 
-                console.log(term);
-
                 model.searchText = term;
                 model.term = term;
                 model.searchType = type;

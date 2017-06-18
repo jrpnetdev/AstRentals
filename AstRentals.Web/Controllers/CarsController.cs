@@ -3,6 +3,7 @@ using AstRentals.Web.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -45,12 +46,15 @@ namespace AstRentals.Web.Controllers
 
             List<Car> cars = await GetFavourites(ViewBag.Email);
 
-            foreach(var car in cars)
+            if (cars.Any())
             {
-                if (car.Id == id)
+                foreach (var car in cars)
                 {
-                    ViewBag.FavouriteAdded = true;
-                }
+                    if (car.Id == id)
+                    {
+                        ViewBag.FavouriteAdded = true;
+                    }
+                } 
             }
 
             var vm = new DetailsViewModel() { Email = ViewBag.Email, CarId = id };

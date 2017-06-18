@@ -11,7 +11,6 @@
         model.confirmpassword = "";
         model.acceptedtc = false;
         model.error = "";
-        model.success = "";
 
         model.registerUser = function () {
             if (model.acceptedtc === false) {
@@ -25,8 +24,17 @@
 
             $http.post('http://localhost:50604/api/Account/Register',
                     { email: model.email, password: model.password, confirmpassword: model.confirmpassword })
-                .then(function(response) {
-                    model.success = response.data;
+                .then(function() {
+                    $http({
+                        url: "/Cars/AddEmailToCookie",
+                        method: "POST",
+                        headers: { 'Content-Type': "application/x-www-form-urlencoded" },
+                        data: "email=" + model.email
+                    }).then(function () {
+                        window.location = "/Cars/Index";
+                    }, function () {
+                        model.error = response.data.error_description;
+                    });
                 }, function (err) {
                     // ToDo Json strigify this
                     model.error = err.data.modelState;

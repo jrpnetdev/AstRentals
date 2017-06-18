@@ -79,7 +79,8 @@
                                     <h5 class="font-weight-bold">
                                         Favourites: <span class="text-primary">{{vm.favouritesCount}} cars available.</span>
                                     </h5>
-                                    <a href="shop-cart.htm" tabindex="-1" class="btn btn-outline-primary btn-sm btn-rounded mx-2">View Cart</a> <a href="shop-checkout.htm" tabindex="-1" class="btn btn-primary btn-sm btn-rounded mx-2">Checkout</a>
+                                    @*<a href="shop-cart.htm" tabindex="-1" class="btn btn-outline-primary btn-sm btn-rounded mx-2">View Cart</a>*@ 
+                                    <a href="@Url.Action("Index", "MyAccount")" tabindex="-1" class="btn btn-primary btn-sm btn-rounded mx-2">My Account</a>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +99,7 @@
                         <li class="nav-item"> <a href="@Url.Action("Index", "Home")" class="nav-link">Home</a> </li>
 
                         <!-- Car List -->
-                        <li class="nav-item"> <a href="@Url.Action("Index", "Cars")" class="nav-link">Car List</a> </li>
+                        <li class="nav-item"> <a href="@Url.Action("Index", "Cars")" class="nav-link"><i class="fa fa-car"></i> View Cars</a> </li>
 
                         <li class="nav-item dropdown dropdown-mega-menu dropdown-persist active">
                             <a href="shop.htm" class="nav-link dropdown-toggle" id="shop-mega-menu" data-toggle="dropdown" data-hover="dropdown">Shop Mega Menu</a>
@@ -169,16 +170,6 @@
                     </ul>
                     <!-- All Categories menu -->
                     <ul class="nav navbar-nav float-lg-right navbar-nav-flush-right dropdown-effect-fadeup">
-                        <li class="nav-item dropdown dropdowns-no-carets dropdown-persist">
-                            @if (@ViewBag.Email != "null")
-                            {
-                                <a href="#" class="nav-link dropdown-toggle" id="account-drop" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-user mr-2"></i>My Account</a>
-                            }
-                            <!-- Dropdown Menu -->
-                            <div class="dropdown-menu dropdown-menu-right"> <a href="@Url.Action("Favourites", "MyAccount")" class="dropdown-item">My Favourites</a> <a href="@Url.Action("Orders", "MyAccount")" class="dropdown-item">Order History</a> <a href="#" class="dropdown-item">Track Orders</a>
-                            </div>
-                        </li>
-                        
                         @if (@ViewBag.Email == "null")
                         {
                             <li class="nav-item dropdown dropdowns-no-carets dropdown-persist"> <a href="@Url.Action("LogIn", "Home")" class="btn btn-primary btn-sm btn-rounded text-uppercase font-weight-bold px-3 ml-3">Log In</a> </li>
@@ -186,6 +177,15 @@
                         }
                         else
                         {
+                            <li class="nav-item dropdown dropdowns-no-carets dropdown-persist">
+                                <a href="#" class="nav-link dropdown-toggle" id="account-drop" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-user mr-2"></i>My Account</a>
+                                <!-- Dropdown Menu -->
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="@Url.Action("Index", "MyAccount")" class="dropdown-item">My Account Overview</a>
+                                    <a href="@Url.Action("Orders", "MyAccount")" class="dropdown-item">Order History</a>
+                                    <a href="@Url.Action("Favourites", "MyAccount")" class="dropdown-item">My Favourites</a>
+                                </div>
+                            </li>
                             <li class="nav-item dropdown dropdowns-no-carets dropdown-persist"> <a href="@Url.Action("Logout", "Cars")" class="btn btn-primary btn-sm btn-rounded text-uppercase font-weight-bold px-3 ml-3">Log Out</a> </li>
                         }
                     </ul>

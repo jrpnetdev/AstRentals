@@ -15,15 +15,15 @@
 
                 if (response === "") {
 
-                    $http({
-                        url: "/Cars/AddEmailToCookie",
-                        method: "POST",
-                        headers: { 'Content-Type': "application/x-www-form-urlencoded" },
-                        data: "email=" + model.email
-                    }).then(function() {
-                        $window.location.href = "http://localhost:50592/Cars/Index";
-                    }, function () {
-                        model.error = response.data.error_description;
+                $http({
+                    url: "/Cars/AddEmailToCookie",
+                    method: "POST",
+                    headers: { 'Content-Type': "application/x-www-form-urlencoded" },
+                    data: "email=" + model.email
+                }).then(function() {
+                    $window.location.href = "http://localhost:50592/Cars/Index";
+                }, function () {
+                    model.error = response.data.error_description;
                 });
                 } else {
                     model.error = response.data.error_description;

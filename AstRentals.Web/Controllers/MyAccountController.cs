@@ -3,6 +3,7 @@ using AstRentals.Web.Helpers;
 using AstRentals.Web.ViewModels;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -11,6 +12,11 @@ namespace AstRentals.Web.Controllers
 {
     public class MyAccountController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public async Task<ActionResult> Orders()
         {
             ViewBag.Email = CookieStore.GetCookie("Email");
@@ -21,16 +27,23 @@ namespace AstRentals.Web.Controllers
 
             var model = new MyAccountOrdersViewModel {Orders = await GetOrdersData(ViewBag.Email)};
 
-
             List<Car> cars = new List<Car>();
 
-            foreach (var order in model.Orders)
+            if (model.Orders.Any())
             {
-                var car = await GetCar(order.CarId);
-                cars.Add(car);
+                foreach (var order in model.Orders)
+                {
+                    var car = await GetCar(order.CarId);
+                    cars.Add(car);
+                }
+
+                model.Cars = cars;
             }
 
-            model.Cars = cars;
+            if (model.Orders.Count == 0)
+            {
+                ViewBag.Error = "No orders have been placed.";
+            }
 
             return View(model);
         }
@@ -44,6 +57,11 @@ namespace AstRentals.Web.Controllers
             }
 
             var model = await GetFavouritesData(ViewBag.Email);
+
+            if (model.Count == 0)
+            {
+                ViewBag.Error = "No favourites have been added.";
+            }
 
             return View(model);
         }
