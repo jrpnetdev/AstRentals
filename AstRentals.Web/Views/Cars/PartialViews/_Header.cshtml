@@ -37,9 +37,12 @@
                             <i class="fa fa-phone text-primary"></i> (+44) 7283643345
                         </h6>
                     </div>
-
-                    <!--Search trigger -->
-                    <a href="#search" class="btn btn-icon btn-link header-btn float-right flex-last" data-toggle="search-form" data-target=".header-search"><i class="fa fa-search fa-flip-horizontal search-icon"></i></a>
+                    
+                    @if (ViewContext.RouteData.Values["action"].ToString() == "Index" && ViewContext.RouteData.Values["controller"].ToString() == "Cars")
+                    {
+                        <!--Search trigger -->
+                        <a href="#search" class="btn btn-icon btn-link header-btn float-right flex-last" data-toggle="search-form" data-target=".header-search"><i class="fa fa-search fa-flip-horizontal search-icon"></i></a>
+                    }
 
                     <!-- mobile collapse menu button - data-toggle="collapse" = default BS menu - data-toggle="jpanel-menu" = jPanel Menu - data-toggle="overlay" = Overlay Menu -->
                     <a href="#top" class="btn btn-link btn-icon header-btn float-right hidden-lg-up" data-toggle="jpanel-menu" data-target=".navbar-main" data-direction="right"> <i class="fa fa-bars"></i> </a>
@@ -47,10 +50,14 @@
 
                     <!--Shopping cart-->
                     <div class="dropdown dropdowns-no-carets dropdown-effect-fadeup float-right" ng-controller="favouriteDetailsController as vm" ng-init="vm.getFavourites('@ViewBag.Email')">
-                        <a href="#" class="btn btn-icon btn-inverse btn-link float-right dropdown-toggle cart-link" data-toggle="dropdown">
-                            <span class="cart-link-icon"> <i class="fa fa-car"></i> <span class="sr-only">Cart</span> <span class="cart-link-count bg-primary text-white">{{vm.favouritesCount}}</span> </span>
-                        </a>
-
+                        
+                        @if (@ViewBag.Email != "null")
+                        {
+                            <a href="#" class="btn btn-icon btn-inverse btn-link float-right dropdown-toggle cart-link" data-toggle="dropdown">
+                                <span class="cart-link-icon"> <i class="fa fa-car"></i> <span class="cart-link-count bg-primary text-white">{{vm.favouritesCount}}</span> </span>
+                            </a>
+                        }
+                        
                         <!--Shopping cart dropdown -->
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow cart-dropdown-menu" role="menu">
                                 <h5 class="dropdown-header mb-0">

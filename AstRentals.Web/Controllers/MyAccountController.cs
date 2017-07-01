@@ -12,9 +12,46 @@ namespace AstRentals.Web.Controllers
 {
     public class MyAccountController : Controller
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+
+            ViewBag.Email = CookieStore.GetCookie("Email");
+            if (ViewBag.Email == "")
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
+            MyAccountIndexViewModel model = new MyAccountIndexViewModel
+            {
+                Orders = await GetOrdersData(ViewBag.Email),
+                FavouriteCars = await GetFavouritesData(ViewBag.Email)
+            };
+
+            if (model.FavouriteCars.Count == 0)
+            {
+                ViewBag.FavouritesError = "No favourites have been added.";
+            }
+
+            List<Car> cars = new List<Car>();
+
+            if (model.Orders.Any())
+            {
+                foreach (var order in model.Orders)
+                {
+                    var car = await GetCar(order.CarId);
+                    cars.Add(car);
+                }
+
+                model.OrderCars = cars;
+            }
+
+            if (model.Orders.Count == 0)
+            {
+                ViewBag.OrderError = "No orders have been placed.";
+            }
+
+            return View(model);
+
         }
 
         public async Task<ActionResult> Orders()

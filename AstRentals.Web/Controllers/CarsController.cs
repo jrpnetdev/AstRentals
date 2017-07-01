@@ -19,6 +19,8 @@ namespace AstRentals.Web.Controllers
 
             ViewBag.Email = CookieStore.GetCookie("Email");
 
+            ViewBag.ShowSearchIcon = "True";
+
             if (ViewBag.Email == "")
             {
                 ViewBag.Email = "null";

@@ -131,6 +131,7 @@
     <Compile Include="Helpers\CookieStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CheckoutViewModel.cs" />
+    <Compile Include="ViewModels\MyAccountIndexViewModel.cs" />
     <Compile Include="ViewModels\MyAccountOrdersViewModel.cs" />
     <Compile Include="ViewModels\PreCheckoutModel.cs" />
     <Compile Include="ViewModels\DetailsViewModel.cs" />

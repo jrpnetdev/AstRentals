@@ -1,18 +1,113 @@
-﻿@{
+﻿
+@*
+    Todo: Address & Payment details:
+
+Turn recommended cars on/off*@
+
+@model AstRentals.Web.ViewModels.MyAccountIndexViewModel
+@{
     ViewBag.Title = "My Account";
+    var i = 0;
 }
 
-<h2>My Account</h2>
+<div class="page page-shop header-compact-sticky page-shop-confirmation navbar-layout-navbar-below">
 
-Address:
+    <!-- plugin: page loading indicator, delete to remove loader -->
+    <div class="page-loader" data-toggle="page-loader"></div>
 
-Payment details:
+    <a href="#content" id="top" class="sr-only">Skip to content</a>
 
+    @Html.Partial("~/Views/Cars/PartialViews/_Header.cshtml")
 
-Orders:
+    <div id="content" class="py-5">
+        <div class="container">
+            <div class="text-center">
+                <i class="fa fa-car icon-6x" style="color: #55a79a"></i>
+                <h2>My Account</h2>
+            </div>
+            <div class="mb-6">
+                <h3>
+                    Order History
+                </h3>
+            </div>
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-warning" role="alert"><strong>@ViewBag.OrderError</strong>
+                </div>
+            }
+            <table class="table table-responsive mb-0 cart-table cart-table-summary">
+                <tbody>
+                <!-- Rental information -->
+                @foreach (var item in Model.Orders)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <a href="#">
+                                <img class="cart-img img-fluid" src="@Url.Content(Model.OrderCars[i].ImageUrl)" alt="@Model.OrderCars[i].Make @Model.OrderCars[i].Model (@Model.OrderCars[i].Year)">
+                            </a>
+                        </td>
+                        <td> <span class="font-weight-bold">@Model.OrderCars[i].Make @Model.OrderCars[i].Model (@Model.OrderCars[i].Year)</span> </td>
+                        <td>@item.Colour</td>
+                        <td>@item.Features</td>
+                        <td>@item.Cover</td>
+                        <td>From: @item.StartDate.ToString("dd/MM/yyyy") To: @item.EndDate.ToString("dd/MM/yyyy")</td>
+                        <td class="text-md-right"><span class="font-weight-bold">Total: £@item.TotalPrice</span></td>
+                    </tr>
+                    i++;
+                }
 
+                </tbody>
+            </table>
+            <hr class="my-4 hr-lg"/>
+            <div class="mb-6">
+                <h3>
+                    Favourites
+                </h3>
+            </div>
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-warning" role="alert"><strong>@ViewBag.FavouritesError</strong>
+                </div>
+            }
+            <table class="table table-responsive mb-0 cart-table cart-table-summary" ng-controller="myAccountFavouritesController as vm">
+                <tbody>
+                <!-- Rental information -->
+                @foreach (var item in Model.FavouriteCars)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <a href="#">
+                                <img class="cart-img img-fluid" src="@Url.Content(item.ImageUrl)" alt="@item.Make @item.Model (@item.Year)">
+                            </a>
+                        </td>
+                        <td> <span class="font-weight-bold">@item.Make @item.Model (@item.Year)</span> </td>
+                        <td><a href="@Url.Action("Details", "Cars")?Id=@item.Id" class="btn btn-primary btn-sm"><i class="fa fa-car mr-2"></i> Book Car Now</a></td>
+                        <td>
+                            <a href="#" class="btn btn-link btn-sm" data-id="@item.Id" data-email="@ViewBag.Email" ng-click="vm.removeFavourite($event)"><i class="fa fa-heart-o"></i> Remove From Favourites</a>
+                        </td>
+                    </tr>
+                }
 
-Favourites:
+                </tbody>
+            </table>
+            <hr class="my-4 hr-lg"/>
+            <div class="cart-content-footer">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h6 class="text-muted mb-3">
+                            If you have questions about our rental cars please call our sales team on 035436543547.
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+@Html.Partial("_Footer")
 
-Turn recommended cars on/off
+@section scripts{
+    <!-- Angular scripts -->
+    <script src="~/App/favouriteDetailsController.js"></script>
+    <script src="~/App/myAccountFavouritesController.js"></script>
+}
