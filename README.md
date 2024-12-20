@@ -13,7 +13,7 @@
 ###Please Note: 
 
 Due to the size of database setup files (code first Seed configuation) and some multimedia files, I am unable to upload all files to GitHub for a complete code listing.
-For a fully working demonstarion please contact me (jrpnetdev@gmail.com)
+For a fully working demonstarion please contact me ()
 
 ###Purpose: 
 
